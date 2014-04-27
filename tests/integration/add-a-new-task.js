@@ -41,6 +41,11 @@ describe('Given I visit the home page', function (done) {
 			it("Then I am told the task has been saved", function () {
 				expect(browser.text('#info-box')).to.contain("Your new task has been saved.");
 			});
+
+			it("And the task is listed", function () {
+				expect(browser.query('#no-current-tasks')).to.not.exist;
+				expect(browser.text('#tasks')).to.contain("Do the washing up");
+			});
 		});
 	});
 });

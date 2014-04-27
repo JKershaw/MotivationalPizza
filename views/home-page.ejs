@@ -1,19 +1,26 @@
 <% include components/pageHeader %>
 
-	<%if (info=="task-saved") {%>
-	<div id="info-box" class="alert alert-success">
-		Your new task has been saved.
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	</div>
-	<%}%>
+	<% if (info=="task-saved") { %>
+		
+		<div id="info-box" class="alert alert-success">
+			Your new task has been saved.
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		</div>
 
-	<script>
-		$(".alert").alert()
-	</script>
+		<script>
+			$(".alert").alert()
+		</script>
+
+		<p id='tasks'>Do the washing up</p>
+
+	<% } else { %>
+
 
 	<p id="no-current-tasks">
 		You have no current tasks.
 	</p>
+
+	<% } %>
 	<p>
 		<a class="btn btn-success" href="/NewTask" role="button">Add New Task</a>
 	</p>
