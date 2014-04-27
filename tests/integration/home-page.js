@@ -16,6 +16,6 @@ describe('Given I visit the home page', function(done) {
 	});
 
 	it("Then I see the time now", function() {
-		expect(browser.text()).to.contain("Sun");
+		expect(browser.text()).to.contain("2014");
 	});
 });
