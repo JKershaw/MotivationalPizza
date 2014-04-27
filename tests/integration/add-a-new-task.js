@@ -15,7 +15,7 @@ describe('Given I visit the home page', function(done) {
 		browser.visit('/', done);
 	});
 
-	it("Then I see the time now", function() {
-		expect(browser.text()).to.contain("2014");
+	it("Then I am told I have no current tasks", function() {
+		expect(browser.text("#no_current_tasks")).to.contain("You have no current tasks");
 	});
 });
