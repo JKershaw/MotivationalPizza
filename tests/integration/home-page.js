@@ -15,7 +15,7 @@ describe('Given I visit the home page', function(done) {
 		browser.visit('/', done);
 	});
 
-	it("Then the page loads fine", function() {
-		browser.statusCode.should.equal(200);
+	it("Then I see the time now", function() {
+		expect(browser.text()).to.contain("Sun");
 	});
 });

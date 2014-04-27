@@ -4,7 +4,7 @@ var express = require("express"),
 app.use(express.bodyParser());
 
 app.get('/', function(request, response) {
-	response.send(200);
+	response.send("Sun");
 });
 
 var port = process.env.PORT || 3000;
