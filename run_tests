@@ -1,0 +1,39 @@
+pkill node
+set -e
+
+jshint ./tests/integration ./tests/unit
+
+echo "Unit Tests"
+mocha tests/unit/ --ui qunit --reporter nyan --timeout 5000
+echo "Unit tests complete"
+
+echo "QUnit Tests"
+for D in tests/qunit/*; do
+    if [ -d "${D}" ]; then
+			DIR="$D/*.html"
+			echo "testing in $DIR"
+			phantomjs tests/qunit/runner.js $DIR
+	fi
+done
+echo "QUnit tests complete"
+
+
+echo "Integration Tests"
+foreman start &
+sleep 1
+mocha tests/integration/ --recursive --ui tdd --reporter nyan --timeout 10000
+echo "Integration tests complete"
+
+pkill node
+
+echo "All tests passed!"
+
+if [ $# -gt 0  ]; then
+	MESSAGE="$@"
+	echo "Committing with message '$MESSAGE'"
+	git add -A
+	git commit -am "$MESSAGE"
+	git push
+else
+  echo "No commit message, no commit"
+fi
