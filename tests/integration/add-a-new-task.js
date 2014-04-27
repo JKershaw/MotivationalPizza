@@ -44,7 +44,7 @@ describe('Given I visit the home page', function (done) {
 
 			it("And the task is listed", function () {
 				expect(browser.query('#no-current-tasks')).to.not.exist;
-				expect(browser.text('#tasks')).to.contain("Do the washing up");
+				expect(browser.text('.task')).to.contain("Do the washing up");
 			});
 		});
 	});
