@@ -16,6 +16,10 @@ app.get('/NewTask', function(request, response) {
 	response.render("new-task.ejs");
 });
 
+app.post('/SaveTask', function(request, response) {
+	response.redirect("/");
+});
+
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
 	console.log("Listening on " + port);
