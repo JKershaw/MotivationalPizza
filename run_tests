@@ -1,6 +1,10 @@
 pkill node
 set -e
 
+echo "Dropping database"
+mongo "motivational-pizza" --eval "db.dropDatabase()"
+
+echo "Running JSHint"
 jshint ./tests/integration ./tests/unit
 
 echo "Unit Tests"
