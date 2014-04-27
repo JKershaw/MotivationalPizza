@@ -4,12 +4,17 @@
 		Enter your new task details
 	</p>
 
-	<p>
-		<form action='/SaveTask' method="POST">
+	
+	<form action='/SaveTask' method="POST">
+		<p>
 			<input type="text" class="form-control" placeholder="Text input" id='task'> 
-			<button type="button" class="btn btn-success">Add Task</button>
-		</form>
-	</p>
+		</p>
+
+		<p>
+			<button type="submit" class="btn btn-success">Add Task</button>
+		</p>
+	</form>
+	
 
 
 <% include components/pageFooter %>
