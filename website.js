@@ -9,7 +9,10 @@ app.use(express.bodyParser());
 app.use(express.logger('dev'));
 
 app.get('/', function(request, response) {
-	response.render("home-page.ejs");
+	model = {
+		task: request.query.task || false
+	}
+	response.render("home-page.ejs", model);
 });
 
 app.get('/NewTask', function(request, response) {
@@ -17,7 +20,7 @@ app.get('/NewTask', function(request, response) {
 });
 
 app.post('/SaveTask', function(request, response) {
-	response.redirect("/");
+	response.redirect("/?task=saved");
 });
 
 var port = process.env.PORT || 3000;

@@ -1,8 +1,16 @@
 <% include components/pageHeader %>
 
-	<p class="bg-success" id="info-box">
+	<%if (task=="saved") {%>
+	<div id="info-box" class="alert alert-success">
 		Your new task has been saved.
-	</p>
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	</div>
+	<%}%>
+
+	<script>
+		$(".alert").alert()
+	</script>
+
 	<p id="no-current-tasks">
 		You have no current tasks.
 	</p>
