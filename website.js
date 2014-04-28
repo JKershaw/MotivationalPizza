@@ -10,6 +10,7 @@ app.use(express.logger('dev'));
 
 require("./routes/home-page")(app);
 require("./routes/new-task")(app);
+require("./routes/delete-task")(app);
 
 var port = process.env.PORT || 3000;
 
