@@ -6,14 +6,17 @@ module.exports = function (app) {
 
 		var taskQuery = new TaskQuery();
 
-		taskQuery.all(function (tasks) {
+		taskQuery.allWithStatus("open", function (openTasks) {
+			taskQuery.allWithStatus("done", function (doneTasks) {
 
-			model = {
-				info: request.query.info || false,
-				tasks: tasks
-			};
+				model = {
+					info: request.query.info || false,
+					openTasks: openTasks,
+					doneTasks: doneTasks
+				};
 
-			response.render("home-page.ejs", model);
+				response.render("home-page.ejs", model);
+			});
 		});
 
 	});

@@ -31,17 +31,17 @@
 	  </div>
 	  <div class="panel-body">
 
-		<% if (tasks.length > 0) { %>
+		<% if (openTasks.length > 0) { %>
 
-			<% for (var i = 0; i < tasks.length; i++) { %>
-				<div class='task task-<%=tasks[i].status%>' data-task-id='<%=tasks[i]._id%>'>
+			<% for (var i = 0; i < openTasks.length; i++) { %>
+				<div class='task task-open' data-task-id='<%=openTasks[i]._id%>'>
 					<h2>
-						<%=tasks[i].text%>
+						<%=openTasks[i].text%>
 					</h2>
 					<p>
-						<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=tasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
+						<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
 
-						<a class="btn btn-warning delete-task btn-xs" href="/DeleteTask/<%=tasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
+						<a class="btn btn-warning delete-task btn-xs" href="/DeleteTask/<%=openTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
 					</p>
 				</div>
 			<% } %>
@@ -53,6 +53,29 @@
 			</p>
 
 		<% } %>
+	  </div>
+	</div>
+
+
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Done!</h3>
+	  </div>
+	  <div class="panel-body">
+
+		<% for (i = 0; i < doneTasks.length; i++) { %>
+			<div class='task task-done' data-task-id='<%=doneTasks[i]._id%>'>
+				<h2>
+					<%=doneTasks[i].text%>
+				</h2>
+				<p>
+					<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=doneTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
+
+					<a class="btn btn-warning delete-task btn-xs" href="/DeleteTask/<%=doneTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
+				</p>
+			</div>
+		<% } %>
+
 	  </div>
 	</div>
 

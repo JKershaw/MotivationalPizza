@@ -43,9 +43,13 @@ describe('Given I visit the home page', function (done) {
 			});
 
 			it("And the task is now listed", function () {
-				expect(browser.query('#no-current-tasks')).to.not.exist;
 				expect(browser.text('.task-open')).to.contain("Do the washing up");
 			});
+
+			it("Then I am not told I have no current tasks", function () {
+				expect(browser.query('#no-current-tasks')).to.not.exist;
+			});
+
 		});
 	});
 });
