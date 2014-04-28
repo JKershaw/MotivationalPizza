@@ -7,7 +7,7 @@ module.exports = function (app) {
 		var command = new Command();
 
 		command.deleteTask(request.params.id, function () {
-			response.redirect("/");
+			response.redirect("/?info=task-deleted");
 		});
 	});
 };
