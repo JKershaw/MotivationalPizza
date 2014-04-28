@@ -42,7 +42,7 @@ describe('Given I visit the home page', function (done) {
 				expect(browser.text('#info-box')).to.contain("Your new task has been added");
 			});
 
-			it("And the task is listed", function () {
+			it("And the task is now listed", function () {
 				expect(browser.query('#no-current-tasks')).to.not.exist;
 				expect(browser.text('.task')).to.contain("Do the washing up");
 			});
