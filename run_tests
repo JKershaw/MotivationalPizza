@@ -37,6 +37,7 @@ if [ $# -gt 0  ]; then
 	echo "Committing with message '$MESSAGE'"
 	git add -A
 	git commit -am "$MESSAGE"
+	echo "Git Committed"
 	git push
 else
   echo "No commit message, no commit"

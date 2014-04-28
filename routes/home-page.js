@@ -10,14 +10,11 @@ module.exports = function (app) {
 
 			model = {
 				info: request.query.info || false,
-				tasks: [{
-					text: "Do the washing up"
-				}]
+				tasks: tasks
 			};
-			
+
 			response.render("home-page.ejs", model);
 		});
-
 
 	});
 };
