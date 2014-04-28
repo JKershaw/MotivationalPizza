@@ -20,7 +20,13 @@
 	<% if (tasks.length > 0) { %>
 
 		<% for (var i = 0; i < tasks.length; i++) { %>
-			<p class='task' data-task-id='<%=tasks[i]._id%>'><%=tasks[i].text%> <a class="delete-task" href="/DeleteTask/<%=tasks[i]._id%>">Delete</a></p>
+			<h2 class='task' data-task-id='<%=tasks[i]._id%>'>
+				<%=tasks[i].text%> <br/>
+				
+				<a class="btn btn-success complete-task btn-xs" href="/CompleteTask/<%=tasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
+
+				<a class="btn btn-warning delete-task btn-xs" href="/DeleteTask/<%=tasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
+			</h2>
 		<% } %>
 
 	<% } else { %>
