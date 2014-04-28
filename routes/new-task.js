@@ -10,8 +10,7 @@ module.exports = function (app) {
 
 		var command = new Command();
 
-		command.addTask(function () {
-
+		command.addTask(request.body['task-text'], function () {
 			response.redirect("/?info=task-added");
 		});
 	});
