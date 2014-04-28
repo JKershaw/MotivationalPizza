@@ -1,12 +1,12 @@
-var Command = require("../lib/Command");
+var TaskCommand = require("../lib/TaskCommand");
 
 module.exports = function (app) {
 
 	app.get('/DeleteTask/:id', function (request, response) {
 
-		var command = new Command();
+		var taskCommand = new TaskCommand();
 
-		command.deleteTask(request.params.id, function () {
+		taskCommand.remove(request.params.id, function () {
 			response.redirect("/?info=task-deleted");
 		});
 	});

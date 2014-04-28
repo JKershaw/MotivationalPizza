@@ -16,14 +16,22 @@
 		</div>
 
 	<% } %>
+	<% if (info=="task-done") { %>
+		
+		<div id="info-box" class="alert alert-success">
+			Your task has been done.
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		</div>
+
+	<% } %>
 
 	<% if (tasks.length > 0) { %>
 
 		<% for (var i = 0; i < tasks.length; i++) { %>
-			<h2 class='task' data-task-id='<%=tasks[i]._id%>'>
+			<h2 class='task task-<%=tasks[i].status%>' data-task-id='<%=tasks[i]._id%>'>
 				<%=tasks[i].text%> <br/>
 				
-				<a class="btn btn-success complete-task btn-xs" href="/CompleteTask/<%=tasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
+				<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=tasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
 
 				<a class="btn btn-warning delete-task btn-xs" href="/DeleteTask/<%=tasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
 			</h2>

@@ -1,4 +1,4 @@
-var Command = require("../lib/Command");
+var TaskCommand = require("../lib/TaskCommand");
 
 module.exports = function (app) {
 
@@ -8,9 +8,9 @@ module.exports = function (app) {
 
 	app.post('/NewTask', function (request, response) {
 
-		var command = new Command();
+		var taskCommand = new TaskCommand();
 
-		command.addTask(request.body['task-text'], function () {
+		taskCommand.add(request.body['task-text'], function () {
 			response.redirect("/?info=task-added");
 		});
 	});

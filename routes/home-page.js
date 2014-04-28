@@ -1,12 +1,12 @@
-var Query = require("../lib/Query");
+var TaskQuery = require("../lib/TaskQuery");
 
 module.exports = function (app) {
 
 	app.get('/', function (request, response) {
 
-		var query = new Query();
+		var taskQuery = new TaskQuery();
 
-		query.allTasks(function (tasks) {
+		taskQuery.all(function (tasks) {
 
 			model = {
 				info: request.query.info || false,
