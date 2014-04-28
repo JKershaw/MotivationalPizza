@@ -6,14 +6,18 @@ module.exports = function (app) {
 
 		var query = new Query();
 
-		model = {
-			info: request.query.info || false,
-			tasks: [{
-				text: "Do the washing up"
-			}]
-		}
+		query.allTasks(function (tasks) {
 
-		response.render("home-page.ejs", model);
+			model = {
+				info: request.query.info || false,
+				tasks: [{
+					text: "Do the washing up"
+				}]
+			};
+			
+			response.render("home-page.ejs", model);
+		});
+
 
 	});
 };
