@@ -7,11 +7,9 @@
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		</div>
 
-		<script>
-			$(".alert").alert()
-		</script>
-
-		<p class='task'><%=tasks[0].text%></p>
+		<% for (var i = 0; i < tasks.length; i++) { %>
+			<p class='task'><%=tasks[i].text%></p>
+		<% } %>
 
 	<% } else { %>
 
