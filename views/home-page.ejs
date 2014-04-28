@@ -2,7 +2,7 @@
 
 	<% if (info=="task-added") { %>
 		
-		<div id="info-box" class="alert alert-info fade in close" data-dismiss="alert" aria-hidden="true">
+		<div id="info-box" class="alert alert-info fade in" data-dismiss="alert" aria-hidden="true">
 			Your new task has been added.
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		</div>
@@ -10,7 +10,7 @@
 	<% } %>
 	<% if (info=="task-deleted") { %>
 		
-		<div id="info-box" class="alert alert-warning fade in close" data-dismiss="alert" aria-hidden="true">
+		<div id="info-box" class="alert alert-warning fade in" data-dismiss="alert" aria-hidden="true">
 			Your task has been deleted.
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		</div>
@@ -18,35 +18,43 @@
 	<% } %>
 	<% if (info=="task-done") { %>
 		
-		<div id="info-box" class="alert alert-success fade in close" data-dismiss="alert" aria-hidden="true">
+		<div id="info-box" class="alert alert-success fade in" data-dismiss="alert" aria-hidden="true">
 			Your task has been done.
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		</div>
 
 	<% } %>
 
-	<% if (tasks.length > 0) { %>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">To Do Today</h3>
+	  </div>
+	  <div class="panel-body">
 
-		<% for (var i = 0; i < tasks.length; i++) { %>
-			<div class='task task-<%=tasks[i].status%>' data-task-id='<%=tasks[i]._id%>'>
-				<h2>
-					<%=tasks[i].text%>
-				</h2>
-				<p>
-					<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=tasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
+		<% if (tasks.length > 0) { %>
 
-					<a class="btn btn-warning delete-task btn-xs" href="/DeleteTask/<%=tasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
-				</p>
-			</div>
+			<% for (var i = 0; i < tasks.length; i++) { %>
+				<div class='task task-<%=tasks[i].status%>' data-task-id='<%=tasks[i]._id%>'>
+					<h2>
+						<%=tasks[i].text%>
+					</h2>
+					<p>
+						<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=tasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
+
+						<a class="btn btn-warning delete-task btn-xs" href="/DeleteTask/<%=tasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
+					</p>
+				</div>
+			<% } %>
+
+		<% } else { %>
+
+			<p id="no-current-tasks">
+				Nothing to do!
+			</p>
+
 		<% } %>
-
-	<% } else { %>
-
-		<p id="no-current-tasks">
-			You have no current tasks.
-		</p>
-
-	<% } %>
+	  </div>
+	</div>
 
 	<p>
 		<a class="btn btn-default" href="/NewTask" role="button">Add New Task</a>
