@@ -36,7 +36,7 @@ describe('Given a task exists', function (done) {
 
 		describe("And I click the delete task button for this", function (done) {
 			before(function (done) {
-				browser.clickLink('.task[data-task-id="' + task_id + '"] > .delete-task', done);
+				browser.clickLink('.task[data-task-id="' + task_id + '"] .delete-task', done);
 			});
 
 			it("Then I can no longer see the task listed", function () {

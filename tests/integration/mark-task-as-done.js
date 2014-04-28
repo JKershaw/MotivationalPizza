@@ -36,7 +36,7 @@ describe('Given a task exists', function (done) {
 
 		describe("And I click the Done button for the task", function (done) {
 			before(function (done) {
-				browser.clickLink('.task[data-task-id="' + task_id + '"] > .done-task', done);
+				browser.clickLink('.task[data-task-id="' + task_id + '"] .done-task', done);
 			});
 
 			it("Then I can no longer see the task listed as active", function () {
