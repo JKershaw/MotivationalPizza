@@ -25,59 +25,65 @@
 
 	<% } %>
 
-	<div class="panel panel-default">
-	  <div class="panel-heading">
-	    <h3 class="panel-title">To Do Today</h3>
-	  </div>
-	  <div class="panel-body">
+	<div class="row">
+	  <div class="col-md-6">
 
-		<% if (openTasks.length > 0) { %>
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">To Do Today</h3>
+		  </div>
+		  <div class="panel-body">
 
-			<% for (var i = 0; i < openTasks.length; i++) { %>
-				<div class='task task-open' data-task-id='<%=openTasks[i]._id%>'>
+			<% if (openTasks.length > 0) { %>
+
+				<% for (var i = 0; i < openTasks.length; i++) { %>
+					<div class='task task-open' data-task-id='<%=openTasks[i]._id%>'>
+						<h2>
+							<%=openTasks[i].text%>
+						</h2>
+						<p>
+							<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
+
+							<a class="btn btn-danger delete-task btn-xs" href="/DeleteTask/<%=openTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
+						</p>
+					</div>
+				<% } %>
+
+			<% } else { %>
+
+				<p id="no-current-tasks">
+					Nothing to do!
+				</p>
+
+			<% } %>
+		  </div>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Done!</h3>
+		  </div>
+		  <div class="panel-body">
+
+			<% for (i = 0; i < doneTasks.length; i++) { %>
+				<div class='task task-done' data-task-id='<%=doneTasks[i]._id%>'>
 					<h2>
-						<%=openTasks[i].text%>
+						<%=doneTasks[i].text%>
 					</h2>
 					<p>
-						<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
+						<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=doneTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
 
-						<a class="btn btn-warning delete-task btn-xs" href="/DeleteTask/<%=openTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
+						<a class="btn btn-danger delete-task btn-xs" href="/DeleteTask/<%=doneTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
 					</p>
 				</div>
 			<% } %>
 
-		<% } else { %>
-
-			<p id="no-current-tasks">
-				Nothing to do!
-			</p>
-
-		<% } %>
-	  </div>
+		  </div>
+		</div>
 	</div>
-
-
-	<div class="panel panel-default">
-	  <div class="panel-heading">
-	    <h3 class="panel-title">Done!</h3>
-	  </div>
-	  <div class="panel-body">
-
-		<% for (i = 0; i < doneTasks.length; i++) { %>
-			<div class='task task-done' data-task-id='<%=doneTasks[i]._id%>'>
-				<h2>
-					<%=doneTasks[i].text%>
-				</h2>
-				<p>
-					<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=doneTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
-
-					<a class="btn btn-warning delete-task btn-xs" href="/DeleteTask/<%=doneTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
-				</p>
-			</div>
-		<% } %>
-
-	  </div>
-	</div>
+</div>
 
 	<p>
 		<a class="btn btn-default" href="/NewTask" role="button">Add New Task</a>
