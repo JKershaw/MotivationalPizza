@@ -40,11 +40,11 @@ describe('Given a task exists', function (done) {
 			});
 
 			it("Then I can no longer see the task listed as active", function () {
-				expect(browser.text('.task-done')).to.not.contain(task.text);
+				expect(browser.text('.task-open')).to.not.contain(task.text);
 			});
 
 			it("Then I see the task listed as complete", function () {
-				expect(browser.text('.done-task')).to.not.contain(task.text);
+				expect(browser.text('.task-done')).to.contain(task.text);
 			});
 
 			it("And I am told the task has been done", function () {
