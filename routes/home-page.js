@@ -13,8 +13,6 @@ module.exports = function (app) {
 				tasks: tasks
 			};
 
-			console.log(model);
-
 			response.render("home-page.ejs", model);
 		});
 
