@@ -15,7 +15,7 @@
 			<% if (openTasks.length > 0) { %>
 
 				<% for (var i = 0; i < openTasks.length; i++) { %>
-					<div class='task task-open' data-task-id='<%=openTasks[i]._id%>'>
+					<div class='task task-open' data-i="<%=i%>" data-task-id='<%=openTasks[i]._id%>'>
 						<h2>
 							<%=openTasks[i].text%>
 						</h2>
@@ -57,7 +57,7 @@
 		  <div class="panel-body">
 
 				<% for (var i = 0; i < notTodayTasks.length; i++) { %>
-					<div class='task task-not-today' data-task-id='<%=notTodayTasks[i]._id%>'>
+					<div class='task task-not-today' data-i="<%=i%>" data-task-id='<%=notTodayTasks[i]._id%>'>
 						<h3>
 							<%=notTodayTasks[i].text%>
 						</h3>
@@ -89,7 +89,7 @@
 		  	<h2>Today</h2>
 
 			<% for (i = 0; i < doneTodayTasks.length; i++) { %>
-				<div class='task task-done' data-task-id='<%=doneTodayTasks[i]._id%>'>
+				<div class='task task-done' data-i="<%=i%>" data-task-id='<%=doneTodayTasks[i]._id%>'>
 					<h3>
 						<%=doneTodayTasks[i].text%>
 					</h3>
