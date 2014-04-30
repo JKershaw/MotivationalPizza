@@ -24,7 +24,7 @@ describe('Given a task exists', function (done) {
 
 	before(function (done) {
 		taskCommand.add(task.text, function () {
-			taskQuery.find(task.text, function (task) {
+			taskQuery.findByText(task.text, function (task) {
 				task_id = task._id;
 				done();
 			});
