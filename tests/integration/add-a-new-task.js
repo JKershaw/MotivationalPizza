@@ -16,7 +16,7 @@ describe('Given I visit the home page', function (done) {
 	});
 
 	it("Then I am told I have no current tasks", function () {
-		expect(browser.text("#no-current-tasks")).to.contain("Nothing to do!");
+		expect(browser.text("#no-current-tasks")).to.contain("Oh sweet, you currently have no tasks to do.");
 	});
 
 	it("And there are no alerts", function () {
