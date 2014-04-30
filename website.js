@@ -13,6 +13,7 @@ require("./routes/new-task")(app);
 require("./routes/delete-task")(app);
 require("./routes/done-task")(app);
 require("./routes/not-today-task")(app);
+require("./routes/edit-task")(app);
 
 var port = process.env.PORT || 3000;
 
