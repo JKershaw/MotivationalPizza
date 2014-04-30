@@ -9,8 +9,8 @@ var browser = new Browser({
 	site: "http://localhost:3000"
 });
 
-var taskCommand = new require("../../lib/TaskCommand")();
-taskQuery = new require("../../lib/TaskQuery")();
+var taskCommand = new require("../../lib/TaskCommand")(),
+	taskQuery = new require("../../lib/TaskQuery")();
 
 var task = {
 	text: "Visit a bakery and buy a cake"
