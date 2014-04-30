@@ -1,12 +1,12 @@
-var HomePageModelFactory = require("../lib/modelFactories/HomePageModelFactory");
+var HomePageViewModelFactory = require("../lib/modelViewFactories/HomePageViewModelFactory");
 
 module.exports = function (app) {
 
 	app.get('/', function (request, response) {
 
-		var homePageModelFactory = new HomePageModelFactory();
+		var homePageViewModelFactory = new HomePageViewModelFactory();
 
-		homePageModelFactory.build(request.query.info, function (model) {
+		homePageViewModelFactory.build(request.query.info, function (model) {
 			response.render("home-page.ejs", model);
 		});
 	});

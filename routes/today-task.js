@@ -6,8 +6,12 @@ module.exports = function (app) {
 
 		var taskCommand = new TaskCommand();
 
-		taskCommand.markAsToday(request.params.id, function () {
-			response.redirect("/?info=task-updated");
+		taskCommand.markAsToday(request.params.id, function (successful) {
+			if (successful) {
+				response.redirect("/?info=task-updated");
+			} else {
+				response.redirect("/?info=error-too-many-today");
+			}
 		});
 	});
 };

@@ -1,0 +1,19 @@
+pkill node
+set -e
+
+export MONGO_CONNECTION_STRING=mongodb://localhost/motivational-pizza
+
+echo "Integration Tests"
+foreman start &
+sleep 1
+
+TESTFILE="tests/integration/mark-task-as-to-do-today-given-5-today-tasks-exist.js"
+echo "Running test $TESTFILE"
+echo "Dropping database"
+mongo "motivational-pizza" --eval "db.dropDatabase()"
+mocha $TESTFILE --recursive --ui tdd --reporter nyan --timeout 10000
+
+echo "Integration tests complete"
+
+pkill node
+
