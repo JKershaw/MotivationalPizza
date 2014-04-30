@@ -1,5 +1,9 @@
 <% include components/pageHeader %>
 
+	<p style="text-align: center">
+		<a class="btn btn-success btn-lg" href="/NewTask" role="button">Add New Task</a>
+	<p>
+
 	<% if (info=="task-added") { %>
 		
 		<div id="info-box" class="alert alert-info fade in" data-dismiss="alert" aria-hidden="true">
@@ -115,8 +119,5 @@
 	</div>
 </div>
 
-	<p>
-		<a class="btn btn-default" href="/NewTask" role="button">Add New Task</a>
-	</p>
 
 <% include components/pageFooter %>
