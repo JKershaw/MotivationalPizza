@@ -30,7 +30,15 @@ echo "QUnit tests complete"
 echo "Integration Tests"
 foreman start &
 sleep 1
-mocha tests/integration/ --recursive --ui tdd --reporter nyan --timeout 10000
+
+for D in tests/integration/*; do
+		TESTFILE="$D"
+		echo "Running test $TESTFILE"
+		echo "Dropping database"
+		mongo "motivational-pizza" --eval "db.dropDatabase()"
+		mocha $TESTFILE --recursive --ui tdd --reporter nyan --timeout 10000
+done
+
 echo "Integration tests complete"
 
 pkill node
