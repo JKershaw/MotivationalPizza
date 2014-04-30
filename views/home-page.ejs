@@ -26,6 +26,8 @@
 
 							<a class="btn btn-default edit-task btn-xs" href="/EditTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-edit"></span> Edit</a>
 
+							<a class="btn btn-default bump-task btn-xs" href="/BumpTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-arrow-up"></span></a>
+
 							<a class="btn btn-default delete-task btn-xs" href="/DeleteTask/<%=openTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-trash"></span></a>
 						</p>
 					</div>
@@ -65,6 +67,8 @@
 							<a class="btn btn-default today-task btn-xs" href="/TodayTask/<%=notTodayTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-calendar"></span> Today</a>
 
 							<a class="btn btn-default edit-task btn-xs" href="/EditTask/<%=notTodayTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-edit"></span> Edit</a>
+
+							<a class="btn btn-default bump-task btn-xs" href="/BumpTask/<%=notTodayTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-arrow-up"></span></a>
 
 							<a class="btn btn-default delete-task btn-xs" href="/DeleteTask/<%=notTodayTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
 						</p>

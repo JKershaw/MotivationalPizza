@@ -51,11 +51,29 @@ describe('Given several tasks exists', function (done) {
 		});
 
 		it("Then the most recently added task is at the top", function () {
-			expect(browser.text('.task-open[data-i="0"]')).to.contain(task1.text);
+			expect(browser.text('.task-open[data-i="0"]')).to.contain(task3.text);
 		});
 
 		it("Then the least recently added task is at the bottom", function () {
-			expect(browser.text('.task-open[data-i="2"]')).to.contain(task3.text);
+			expect(browser.text('.task-open[data-i="2"]')).to.contain(task1.text);
+		});
+
+		describe("And I click the Bump button for the last task", function (done) {
+			before(function (done) {
+				browser.clickLink('.task-open[data-i="2"] .bump-task', done);
+			});
+
+			it("Then the most recently added task is second in the list", function () {
+				expect(browser.text('.task-open[data-i="1"]')).to.contain(task3.text);
+			});
+
+			it("Then the least recently added task is at the top", function () {
+				expect(browser.text('.task-open[data-i="0"]')).to.contain(task1.text);
+			});
+
+			it("And I am told the task has been updated", function () {
+				expect(browser.text('#info-box')).to.contain("Your task has been updated");
+			});
 		});
 	});
 });
