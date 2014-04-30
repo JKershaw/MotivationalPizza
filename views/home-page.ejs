@@ -58,10 +58,12 @@
 
 				<% for (var i = 0; i < notTodayTasks.length; i++) { %>
 					<div class='task task-not-today' data-task-id='<%=notTodayTasks[i]._id%>'>
-						<h2>
+						<h3>
 							<%=notTodayTasks[i].text%>
-						</h2>
+						</h3>
 						<p>
+							<a class="btn btn-default today-task btn-xs" href="/TodayTask/<%=notTodayTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-calendar"></span> Today</a>
+
 							<a class="btn btn-default delete-task btn-xs" href="/DeleteTask/<%=notTodayTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
 						</p>
 					</div>
@@ -84,9 +86,9 @@
 
 			<% for (i = 0; i < doneTasks.length; i++) { %>
 				<div class='task task-done' data-task-id='<%=doneTasks[i]._id%>'>
-					<h2>
+					<h3>
 						<%=doneTasks[i].text%>
-					</h2>
+					</h3>
 				</div>
 			<% } %>
 
