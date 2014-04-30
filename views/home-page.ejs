@@ -1,43 +1,18 @@
 <% include components/pageHeader %>
 
-	<% if (info=="task-added") { %>
+	<% if (infoBox) { %>
 
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-			
-				<div id="info-box" class="alert alert-info fade in" data-dismiss="alert" aria-hidden="true">
-					Your new task has been added.
+				<div id="info-box" class="alert <%=infoBox.class%> fade in" data-dismiss="alert" aria-hidden="true">
+					<%=infoBox.text%>
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				</div>
-
 			</div>
 		</div>
 
 	<% } %>
-	<% if (info=="task-updated") { %>
-		
-		<div id="info-box" class="alert alert-info fade in" data-dismiss="alert" aria-hidden="true">
-			Your task has been updated.
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		</div>
-
-	<% } %>
-	<% if (info=="task-deleted") { %>
-		
-		<div id="info-box" class="alert alert-warning fade in" data-dismiss="alert" aria-hidden="true">
-			Your task has been deleted.
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		</div>
-
-	<% } %>
-	<% if (info=="task-done") { %>
-		
-		<div id="info-box" class="alert alert-success fade in" data-dismiss="alert" aria-hidden="true">
-			Your task has been done.
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		</div>
-
-	<% } %>
+	
 
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
