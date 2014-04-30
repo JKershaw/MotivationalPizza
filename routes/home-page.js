@@ -8,14 +8,17 @@ module.exports = function (app) {
 
 		taskQuery.allWithStatus("open", function (openTasks) {
 			taskQuery.allWithStatus("done", function (doneTasks) {
+				taskQuery.allWithStatus("not-today", function (notTodayTasks) {
 
-				model = {
-					info: request.query.info || false,
-					openTasks: openTasks,
-					doneTasks: doneTasks
-				};
+					model = {
+						info: request.query.info || false,
+						openTasks: openTasks,
+						doneTasks: doneTasks,
+						notTodayTasks: notTodayTasks
+					};
 
-				response.render("home-page.ejs", model);
+					response.render("home-page.ejs", model);
+				});
 			});
 		});
 

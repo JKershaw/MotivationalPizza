@@ -8,6 +8,14 @@
 		</div>
 
 	<% } %>
+	<% if (info=="task-updated") { %>
+		
+		<div id="info-box" class="alert alert-info fade in" data-dismiss="alert" aria-hidden="true">
+			Your task has been updated.
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		</div>
+
+	<% } %>
 	<% if (info=="task-deleted") { %>
 		
 		<div id="info-box" class="alert alert-warning fade in" data-dismiss="alert" aria-hidden="true">
@@ -44,6 +52,8 @@
 						<p>
 							<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
 
+							<a class="btn btn-default not-today-task btn-xs" href="/NotTodayTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-calendar"></span> Not Today</a>
+
 							<a class="btn btn-danger delete-task btn-xs" href="/DeleteTask/<%=openTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
 						</p>
 					</div>
@@ -58,6 +68,29 @@
 			<% } %>
 		  </div>
 		</div>
+
+		<% if (notTodayTasks.length > 0) { %>
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">To Do Some Other Time</h3>
+			  </div>
+			  <div class="panel-body">
+
+
+					<% for (var i = 0; i < notTodayTasks.length; i++) { %>
+						<div class='task task-not-today' data-task-id='<%=notTodayTasks[i]._id%>'>
+							<h2>
+								<%=notTodayTasks[i].text%>
+							</h2>
+							<p>
+								<a class="btn btn-danger delete-task btn-xs" href="/DeleteTask/<%=notTodayTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
+							</p>
+						</div>
+					<% } %>
+			  </div>
+			</div>
+		<% } %>
+
 	</div>
 
 	<div class="col-md-6">
@@ -72,11 +105,6 @@
 					<h2>
 						<%=doneTasks[i].text%>
 					</h2>
-					<p>
-						<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=doneTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-ok-circle"></span> Done</a>
-
-						<a class="btn btn-danger delete-task btn-xs" href="/DeleteTask/<%=doneTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
-					</p>
 				</div>
 			<% } %>
 
