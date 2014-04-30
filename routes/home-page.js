@@ -10,8 +10,27 @@ module.exports = function (app) {
 			taskQuery.allWithStatus("done", function (doneTasks) {
 				taskQuery.allWithStatus("not-today", function (notTodayTasks) {
 
+					var infoBox = false;
+
+					switch (request.query.info) {
+
+					case "task-added":
+						infoBox = "task-added";
+						break;
+					case "task-updated":
+						infoBox = "task-updated";
+						break;
+					case "task-deleted":
+						infoBox = "task-deleted";
+						break;
+					case "task-done":
+						infoBox = "task-done";
+						break;
+
+					}
+
 					model = {
-						info: request.query.info || false,
+						info: infoBox,
 						openTasks: openTasks,
 						doneTasks: doneTasks,
 						notTodayTasks: notTodayTasks
