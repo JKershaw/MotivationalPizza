@@ -13,7 +13,7 @@ if [ $# -lt 0  ]; then
 fi
 
 echo "Unit Tests"
-#mocha tests/unit/ --ui qunit --reporter nyan --timeout 5000
+mocha tests/unit/ --ui qunit --reporter nyan --timeout 5000
 echo "Unit tests complete"
 
 echo "QUnit Tests"
