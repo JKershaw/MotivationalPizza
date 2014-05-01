@@ -38,14 +38,20 @@ describe('Given a task exists', function (done) {
 			before(function (done) {
 				browser.clickLink('.task[data-task-id="' + task_id + '"] .delete-task', done);
 			});
+			describe("And I click Yes I'm sure", function (done) {
+				before(function (done) {
+					browser.clickLink('.task[data-task-id="' + task_id + '"] .delete-task-yes', done);
+				});
 
-			it("Then I can no longer see the task listed", function () {
-				expect(browser.text('.task')).to.not.contain(task.text);
+				it("Then I can no longer see the task listed", function () {
+					expect(browser.text('.task')).to.not.contain(task.text);
+				});
+
+				it("And I am told the task has been deleted", function () {
+					expect(browser.text('#info-box')).to.contain("Your task has been deleted");
+				});
 			});
 
-			it("And I am told the task has been deleted", function () {
-				expect(browser.text('#info-box')).to.contain("Your task has been deleted");
-			});
 		});
 	});
 });

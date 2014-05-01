@@ -28,7 +28,9 @@
 
 							<a class="btn btn-default bump-task btn-xs" href="/BumpTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-arrow-up"></span></a>
 
-							<a class="btn btn-default delete-task btn-xs" href="/DeleteTask/<%=openTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+							<a class="btn btn-default delete-task btn-xs" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+							<span class="delete-confirmation">Are you sure you want to <strong>delete</strong> this task? <a href="/DeleteTask/<%=openTasks[i]._id%>" class="delete-task-yes">Yes</a> / <a class="delete-task-no">No</a></span>
+
 						</p>
 					</div>
 				<% } %>
@@ -70,7 +72,8 @@
 
 							<a class="btn btn-default bump-task btn-xs" href="/BumpTask/<%=notTodayTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-arrow-up"></span></a>
 
-							<a class="btn btn-default delete-task btn-xs" href="/DeleteTask/<%=notTodayTasks[i]._id%>" role="button"><span class="glyphicon glyphicon-remove-circle"></span></a>
+							<a class="btn btn-default delete-task btn-xs" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+							<span class="delete-confirmation">Are you sure you want to <strong>delete</strong> this task? <a href="/DeleteTask/<%=notTodayTasks[i]._id%>" class="delete-task-yes">Yes</a> / <a class="delete-task-no">No</a></span>
 						</p>
 					</div>
 				<% } %>
