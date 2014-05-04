@@ -6,6 +6,7 @@ var express = require("express"),
 var path = require('path'),
 	ASSETS_DIRECTORY = path.join(__dirname, 'public');
 
+require('./lib/authentication/passport')(passport);
 
 app.configure(function () {
 
@@ -36,6 +37,8 @@ require("./routes/not-today-task")(app);
 require("./routes/today-task")(app);
 require("./routes/edit-task")(app);
 require("./routes/bump-task")(app);
+
+require("./routes/authentication/authentication")(app, passport);
 
 var port = process.env.PORT || 3000;
 
