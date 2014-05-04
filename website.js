@@ -1,12 +1,32 @@
 var express = require("express"),
 	app = express(),
-	path = require('path'),
+	passport = require('passport'),
+	flash = require('connect-flash');
+
+var path = require('path'),
 	ASSETS_DIRECTORY = path.join(__dirname, 'public');
 
-app.use(express.static(ASSETS_DIRECTORY));
 
-app.use(express.bodyParser());
-app.use(express.logger('dev'));
+app.configure(function () {
+
+	app.use(express.static(ASSETS_DIRECTORY));
+
+	app.use(express.bodyParser());
+	app.use(express.logger('dev'));
+
+	app.use(express.cookieParser());
+
+	app.set('view engine', 'ejs');
+
+	app.use(express.session({
+		secret: process.env.SESSION_SECRET
+	}));
+
+	app.use(passport.initialize());
+	app.use(passport.session());
+	app.use(flash());
+
+});
 
 require("./routes/home-page")(app);
 require("./routes/new-task")(app);
@@ -19,6 +39,6 @@ require("./routes/bump-task")(app);
 
 var port = process.env.PORT || 3000;
 
-app.listen(port, function() {
+app.listen(port, function () {
 	console.log("Listening on " + port);
 });

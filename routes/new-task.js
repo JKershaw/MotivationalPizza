@@ -11,7 +11,8 @@ module.exports = function (app) {
 		var taskCommand = new TaskCommand();
 
 		taskCommand.add(request.body['task-text'], function () {
-			response.redirect("/?info=task-added");
+			request.flash('info', 'task-added');
+			response.redirect("/");
 		});
 	});
 };

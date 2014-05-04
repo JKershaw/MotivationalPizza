@@ -7,7 +7,8 @@ module.exports = function (app) {
 		var taskCommand = new TaskCommand();
 
 		taskCommand.markAsDone(request.params.id, function () {
-			response.redirect("/?info=task-done");
+			request.flash('info', 'task-done');
+			response.redirect("/");
 		});
 	});
 };

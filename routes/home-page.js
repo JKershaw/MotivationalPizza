@@ -6,7 +6,9 @@ module.exports = function (app) {
 
 		var homePageViewModelFactory = new HomePageViewModelFactory();
 
-		homePageViewModelFactory.build(request.query.info, function (model) {
+		var info = request.flash('info')[0];
+
+		homePageViewModelFactory.build(info, function (model) {
 			response.render("home-page.ejs", model);
 		});
 	});

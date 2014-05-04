@@ -7,7 +7,8 @@ module.exports = function (app) {
 		var taskCommand = new TaskCommand();
 
 		taskCommand.bump(request.params.id, function () {
-			response.redirect("/?info=task-updated");
+			request.flash('info', 'task-updated');
+			response.redirect("/");
 		});
 	});
 };

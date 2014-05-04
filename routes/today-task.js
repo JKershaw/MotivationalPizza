@@ -8,9 +8,11 @@ module.exports = function (app) {
 
 		taskCommand.markAsToday(request.params.id, function (successful) {
 			if (successful) {
-				response.redirect("/?info=task-updated");
+				request.flash('info', 'task-updated');
+				response.redirect("/");
 			} else {
-				response.redirect("/?info=error-too-many-today");
+				request.flash('info', 'error-too-many-today');
+				response.redirect("/");
 			}
 		});
 	});

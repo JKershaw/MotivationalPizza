@@ -22,7 +22,8 @@ module.exports = function (app) {
 		var taskCommand = new TaskCommand();
 
 		taskCommand.updateText(request.params.id, request.body['task-text'], function () {
-			response.redirect("/?info=task-updated");
+			request.flash('info', 'task-updated');
+			response.redirect("/");
 		});
 	});
 };

@@ -7,7 +7,8 @@ module.exports = function (app) {
 		var taskCommand = new TaskCommand();
 
 		taskCommand.remove(request.params.id, function () {
-			response.redirect("/?info=task-deleted");
+			request.flash('info', 'task-deleted');
+			response.redirect("/");
 		});
 	});
 };
