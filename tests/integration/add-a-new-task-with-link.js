@@ -10,7 +10,7 @@ var browser = new Browser({
 });
 
 var task = {
-	text: "Do the washing up"
+	text: "Visit the website http://google.com"
 }
 
 describe('Given I visit the home page', function (done) {
@@ -19,21 +19,9 @@ describe('Given I visit the home page', function (done) {
 		browser.visit('/', done);
 	});
 
-	it("Then I am told I have no current tasks", function () {
-		expect(browser.text("#no-current-tasks")).to.contain("Oh sweet, you currently have no tasks to do.");
-	});
-
-	it("And there are no alerts", function () {
-		expect(browser.query('#info-box')).to.not.exist;
-	});
-
 	describe("When I click the Add New Task button", function (done) {
 		before(function (done) {
 			browser.clickLink('Add New Task', done);
-		});
-
-		it("Then I am propmpted to enter the task", function () {
-			expect(browser.text("#enter-task-instructions")).to.contain("Enter your new task details");
 		});
 
 		describe("When I enter the new task", function () {
@@ -42,16 +30,13 @@ describe('Given I visit the home page', function (done) {
 				browser.pressButton("Add Task", done);
 			});
 
-			it("Then I am told the task has been saved", function () {
-				expect(browser.text('#info-box')).to.contain("Your new task has been added");
-			});
-
 			it("And the task is now listed", function () {
 				expect(browser.text('.task-open')).to.contain(task.text);
 			});
 
-			it("Then I am not told I have no current tasks", function () {
-				expect(browser.query('#no-current-tasks')).to.not.exist;
+			it("And a link is included in the text", function () {
+				console.log(browser.html());
+				expect(browser.query('.task-open a[href="http://google.com"]')).to.exist;
 			});
 
 		});
