@@ -32,5 +32,19 @@ describe('Given I visit the sign up', function (done) {
 		it("Then I am told I am logged in", function () {
 			expect(browser.text("#logged-in")).to.contain("You are logged in as " + username);
 		});
+
+		describe("The I log out", function (done) {
+			before(function(done){
+				browser.clickLink("#log-out", done);
+			});
+
+			it("Then I am told I have signed up", function () {
+				expect(browser.text("#info-box")).to.contain("Bye! You've now signed out.");
+			});
+
+			it("Then I am not told I am logged in", function () {
+				expect(browser.text("#logged-in")).to.not.contain("You are logged in as " + username);
+			});
+		});
 	});
 });
