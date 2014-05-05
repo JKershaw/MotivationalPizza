@@ -12,6 +12,15 @@
 				</div>
 
 			<% } %>
+
+			<% if (openTasks.length >= 5) { %>
+
+				<div class="alert alert-warning">
+					<p>
+						You have plenty to do today. Before you add more tasks to today you should complete a one or mark one as due another day. Remember; <strong>if something is important it'll come back</strong>.
+					</p>
+				</div>
+			<% } %>
 		
 			<% if (openTasks.length > 0) { %>
 
@@ -46,12 +55,6 @@
 
 
 			<% if (openTasks.length >= 5) { %>
-
-				<div class="alert alert-warning">
-					<p>
-						You have plenty to do today. Before you add more tasks to today you should complete a one or mark one as due another day. Remember; <strong>if something is important it'll come back</strong>.
-					</p>
-				</div>
 
 				<p>
 					<a class="btn btn-success btn-lg btn-block disabled" href="/NewTask" role="button">Add New Task</a>
