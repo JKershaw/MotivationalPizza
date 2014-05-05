@@ -25,14 +25,14 @@ describe('Given a task for another day exists and five tasks for today exist', f
 
 	before(function (done) {
 		taskCommand.add(task.text, function () {
-			taskCommand.add(existingTodayTask.text, function () {
-				taskCommand.add(existingTodayTask.text, function () {
+			taskQuery.findByText(task.text, function (task) {
+				taskCommand.markAsNotToday(task._id, function () {
 					taskCommand.add(existingTodayTask.text, function () {
 						taskCommand.add(existingTodayTask.text, function () {
 							taskCommand.add(existingTodayTask.text, function () {
-								
-								taskQuery.findByText(task.text, function (task) {
-									taskCommand.markAsNotToday(task._id, function () {
+								taskCommand.add(existingTodayTask.text, function () {
+									taskCommand.add(existingTodayTask.text, function () {
+
 										task_id = task._id;
 										done();
 									});

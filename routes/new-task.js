@@ -10,8 +10,12 @@ module.exports = function (app) {
 
 		var taskCommand = new TaskCommand();
 
-		taskCommand.add(request.body['task-text'], function () {
-			request.flash('info', 'task-added');
+		taskCommand.add(request.body['task-text'], function (successful) {
+			if (successful) {
+				request.flash('info', 'task-added');
+			} else {
+				request.flash('info', 'error-too-many-today');
+			}
 			response.redirect("/");
 		});
 	});
