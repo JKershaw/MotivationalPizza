@@ -1,14 +1,22 @@
+PageRenderer = require("../../lib/util/PageRenderer");
+
 module.exports = function(app, passport) {
 
 	app.get('/login', function(request, response) {
-		response.render('login.ejs', { message: request.flash('loginMessage') }); 
+	
+	var pageRenderer = new PageRenderer(request, response);
+
+		pageRenderer.render('login.ejs', { message: request.flash('loginMessage') }); 
 	});
 
 	// process the login form
 	// app.post('/login', do all our passport stuff here);
 
 	app.get('/signup', function(request, response) {
-		response.render('signup.ejs', { message: request.flash('signupMessage') });
+	
+	var pageRenderer = new PageRenderer(request, response);
+
+		pageRenderer.render('signup.ejs', { message: request.flash('signupMessage') });
 	});
 
 	app.post('/signup', passport.authenticate('local-signup', {

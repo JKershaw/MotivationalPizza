@@ -1,9 +1,13 @@
-var TaskCommand = require("../lib/TaskCommand");
+var TaskCommand = require("../lib/TaskCommand"),
+	PageRenderer = require("../lib/util/PageRenderer");
 
 module.exports = function (app) {
 
 	app.get('/NewTask', function (request, response) {
-		response.render("new-task.ejs");
+
+		var pageRenderer = new PageRenderer(request, response);
+		
+		pageRenderer.render("new-task.ejs");
 	});
 
 	app.post('/NewTask', function (request, response) {

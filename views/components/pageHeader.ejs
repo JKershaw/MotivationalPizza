@@ -54,7 +54,7 @@
 				<a href='/'>Motivational Pizza</a><br />
 				<small>The best pizza-themed To Do list in the universe</small>
 			</h1>
-			<% if (typeof user != "undefined") { %>
+			<% if (user) { %>
 			<p id="logged-in">
 				You are logged in as <%=user.username%>
 			</p>

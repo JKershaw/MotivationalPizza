@@ -35,7 +35,6 @@ describe('Given I visit the home page', function (done) {
 			});
 
 			it("And a link is included in the text", function () {
-				console.log(browser.html());
 				expect(browser.query('.task-open a[href="http://google.com"]')).to.exist;
 			});
 

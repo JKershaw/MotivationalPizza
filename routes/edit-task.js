@@ -1,11 +1,13 @@
 var TaskQuery = require("../lib/TaskQuery"),
-	TaskCommand = require("../lib/TaskCommand");
+	TaskCommand = require("../lib/TaskCommand"),
+	PageRenderer = require("../lib/util/PageRenderer");
 
 module.exports = function (app) {
 
 	app.get('/EditTask/:id', function (request, response) {
 
-		var taskQuery = new TaskQuery();
+		var taskQuery = new TaskQuery(),
+			pageRenderer = new PageRenderer(request, response);
 
 		taskQuery.findById(request.params.id, function (task) {
 
@@ -13,7 +15,7 @@ module.exports = function (app) {
 				task: task
 			};
 
-			response.render("edit-task.ejs", model);
+			pageRenderer.render("edit-task.ejs", model);
 		});
 	});
 
