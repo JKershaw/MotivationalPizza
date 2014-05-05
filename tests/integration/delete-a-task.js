@@ -1,7 +1,9 @@
 /*jshint expr: true*/
 var expect = require('chai').expect,
 	assert = require("assert"),
-	Browser = require('zombie');
+	Browser = require('zombie'),
+	user = new require("./util/User")(),
+	tasks = new require("./util/Tasks")();
 
 require('chai').should();
 
@@ -9,21 +11,17 @@ var browser = new Browser({
 	site: "http://localhost:3000"
 });
 
-var taskCommand = new require("../../lib/TaskCommand")();
-taskQuery = new require("../../lib/TaskQuery")();
-
-var task = {
+var existingTasks = [{
 	text: "Go to the moon"
-};
+}];
 
 describe('Given a task exists', function (done) {
 
 	var task_id;
 
 	before(function (done) {
-		taskCommand.add(task.text, function () {
-			taskQuery.findByText(task.text, function (task) {
-				task_id = task._id;
+		user.signup(browser, function () {
+			tasks.add(existingTasks, browser, function () {
 				done();
 			});
 		});
@@ -36,15 +34,15 @@ describe('Given a task exists', function (done) {
 
 		describe("And I click the delete task button for this", function (done) {
 			before(function (done) {
-				browser.clickLink('.task[data-task-id="' + task_id + '"] .delete-task', done);
+				browser.clickLink('.task .delete-task', done);
 			});
 			describe("And I click Yes I'm sure", function (done) {
 				before(function (done) {
-					browser.clickLink('.task[data-task-id="' + task_id + '"] .delete-task-yes', done);
+					browser.clickLink('.task .delete-task-yes', done);
 				});
 
 				it("Then I can no longer see the task listed", function () {
-					expect(browser.text('.task')).to.not.contain(task.text);
+					expect(browser.text('.task')).to.not.contain(existingTasks[0].text);
 				});
 
 				it("And I am told the task has been deleted", function () {

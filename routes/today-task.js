@@ -4,7 +4,7 @@ module.exports = function (app) {
 
 	app.get('/TodayTask/:id', function (request, response) {
 
-		var taskCommand = new TaskCommand();
+		var taskCommand = new TaskCommand(request);
 
 		taskCommand.markAsToday(request.params.id, function (successful) {
 			if (successful) {

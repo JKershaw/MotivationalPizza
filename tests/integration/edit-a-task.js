@@ -1,7 +1,9 @@
 /*jshint expr: true*/
 var expect = require('chai').expect,
 	assert = require("assert"),
-	Browser = require('zombie');
+	Browser = require('zombie'),
+	user = new require("./util/User")(),
+	tasks = new require("./util/Tasks")();
 
 require('chai').should();
 
@@ -9,12 +11,9 @@ var browser = new Browser({
 	site: "http://localhost:3000"
 });
 
-var taskCommand = new require("../../lib/TaskCommand")();
-taskQuery = new require("../../lib/TaskQuery")();
-
-var task = {
+var existingTasks = [{
 	text: "Edit this task"
-}, editedTask = {
+}], editedTask = {
 		text: "This has now been edited! hurray!"
 	};
 
@@ -23,9 +22,8 @@ describe('Given a task exists', function (done) {
 	var task_id;
 
 	before(function (done) {
-		taskCommand.add(task.text, function () {
-			taskQuery.findByText(task.text, function (task) {
-				task_id = task._id;
+		user.signup(browser, function () {
+			tasks.add(existingTasks, browser, function () {
 				done();
 			});
 		});
@@ -38,7 +36,7 @@ describe('Given a task exists', function (done) {
 
 		describe("And I click the Edit button for the task", function (done) {
 			before(function (done) {
-				browser.clickLink('.task[data-task-id="' + task_id + '"] .edit-task', done);
+				browser.clickLink('.task .edit-task', done);
 			});
 
 			it("Then I am prompted to edit the task", function () {
@@ -46,7 +44,7 @@ describe('Given a task exists', function (done) {
 			});
 
 			it("And the existing task text is visible", function () {
-				expect(browser.query("#task-text[value='" + task.text + "']")).to.exist;
+				expect(browser.query("#task-text[value='" + existingTasks[0].text + "']")).to.exist;
 			});
 
 			describe("When I enter the new text", function () {

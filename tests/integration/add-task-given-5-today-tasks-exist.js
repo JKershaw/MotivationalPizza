@@ -1,7 +1,9 @@
 /*jshint expr: true*/
 var expect = require('chai').expect,
 	assert = require("assert"),
-	Browser = require('zombie');
+	Browser = require('zombie'),
+	user = new require("./util/User")(),
+	tasks = new require("./util/Tasks")();
 
 require('chai').should();
 
@@ -9,32 +11,27 @@ var browser = new Browser({
 	site: "http://localhost:3000"
 });
 
-var taskCommand = new require("../../lib/TaskCommand")();
-taskQuery = new require("../../lib/TaskQuery")();
-
-var task = {
+var newTask = {
 	text: "Womp womp womp"
 },
-	existingTodayTask = {
+	existingTasks = [{
 		text: "This task is for today"
-	};
+	}, {
+		text: "This task is for today"
+	}, {
+		text: "This task is for today"
+	}, {
+		text: "This task is for today"
+	}, {
+		text: "This task is for today"
+	}];
 
 describe('Given five tasks for today exist', function (done) {
 
-	var task_id;
-
 	before(function (done) {
-		taskCommand.add(existingTodayTask.text, function () {
-			taskCommand.add(existingTodayTask.text, function () {
-				taskCommand.add(existingTodayTask.text, function () {
-					taskCommand.add(existingTodayTask.text, function () {
-						taskCommand.add(existingTodayTask.text, function () {
-
-							done();
-
-						});
-					});
-				});
+		user.signup(browser, function () {
+			tasks.add(existingTasks, browser, function () {
+				done();
 			});
 		});
 	});
@@ -55,7 +52,7 @@ describe('Given five tasks for today exist', function (done) {
 
 			describe("When I enter the new task", function () {
 				before(function (done) {
-					browser.fill("#task-text", task.text);
+					browser.fill("#task-text", newTask.text);
 					browser.pressButton("Add Task", done);
 				});
 

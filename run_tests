@@ -36,7 +36,7 @@ for D in tests/integration/*; do
 		echo "Running test $TESTFILE"
 		echo "Dropping database"
 		mongo "motivational-pizza" --eval "db.dropDatabase()"
-		mocha $TESTFILE --recursive --ui tdd --reporter nyan --timeout 10000
+		mocha $TESTFILE --recursive --ui tdd --reporter nyan --timeout 20000
 done
 
 echo "Integration tests complete"

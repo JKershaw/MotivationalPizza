@@ -5,7 +5,7 @@ module.exports = function (app) {
 
 	app.get('/', function (request, response) {
 
-		var homePageViewModelFactory = new HomePageViewModelFactory(),
+		var homePageViewModelFactory = new HomePageViewModelFactory(request),
 			pageRenderer = new PageRenderer(request, response);
 
 		var info = request.flash('info')[0];

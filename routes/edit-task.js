@@ -6,7 +6,7 @@ module.exports = function (app) {
 
 	app.get('/EditTask/:id', function (request, response) {
 
-		var taskQuery = new TaskQuery(),
+		var taskQuery = new TaskQuery(request),
 			pageRenderer = new PageRenderer(request, response);
 
 		taskQuery.findById(request.params.id, function (task) {
@@ -21,7 +21,7 @@ module.exports = function (app) {
 
 	app.post('/EditTask/:id', function (request, response) {
 
-		var taskCommand = new TaskCommand();
+		var taskCommand = new TaskCommand(request);
 
 		taskCommand.updateText(request.params.id, request.body['task-text'], function () {
 			request.flash('info', 'task-updated');

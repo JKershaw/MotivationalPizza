@@ -1,7 +1,8 @@
 /*jshint expr: true*/
 var expect = require('chai').expect,
 	assert = require("assert"),
-	Browser = require('zombie');
+	Browser = require('zombie'),
+	user = new require("./util/User")();
 
 require('chai').should();
 
@@ -13,10 +14,12 @@ var task = {
 	text: "Do the washing up http://hereisalink.com"
 }
 
-describe('Given I visit the home page', function (done) {
+describe('Given I sign up and visit the home page', function (done) {
 
 	before(function (done) {
-		browser.visit('/', done);
+		user.signup(browser, function () {
+			browser.visit('/', done);
+		});
 	});
 
 	it("Then I am told I have no current tasks", function () {
@@ -56,6 +59,19 @@ describe('Given I visit the home page', function (done) {
 
 			it("Then I am not told I have no current tasks", function () {
 				expect(browser.query('#no-current-tasks')).to.not.exist;
+			});
+
+			describe('Given I sign up again as a different user and visit the home page', function (done) {
+
+				before(function (done) {
+					user.signup(browser, function () {
+						browser.visit('/', done);
+					});
+				});
+
+				it("Then I am told I have no current tasks", function () {
+					expect(browser.text("#no-current-tasks")).to.contain("Oh sweet, you currently have no tasks to do.");
+				});
 			});
 
 		});

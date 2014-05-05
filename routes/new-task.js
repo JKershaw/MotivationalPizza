@@ -12,7 +12,7 @@ module.exports = function (app) {
 
 	app.post('/NewTask', function (request, response) {
 
-		var taskCommand = new TaskCommand();
+		var taskCommand = new TaskCommand(request);
 
 		taskCommand.add(request.body['task-text'], function (successful) {
 			if (successful) {
