@@ -47,9 +47,25 @@
 
 			<% } %>
 
-			<p style="text-align: center">
-				<a class="btn btn-success btn-lg btn-block" href="/NewTask" role="button">Add New Task</a>
-			<p>
+
+			<% if (openTasks.length >= 5) { %>
+
+				<div class="alert alert-warning">
+					<p>
+						You have too much to do today. Before you add more you should complete a task or mark one as due another day. Remember; <strong>if something is important it'll come back</strong>.
+					</p>
+				</div>
+
+				<p>
+					<a class="btn btn-success btn-lg btn-block disabled" href="/NewTask" role="button">Add New Task</a>
+
+				</p>
+			<% } else { %>
+				<p>
+					<a class="btn btn-success btn-lg btn-block" href="/NewTask" role="button">Add New Task</a>
+					
+				</p>
+			<% } %>
 
 		</div>
 	</div>

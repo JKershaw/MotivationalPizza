@@ -39,23 +39,31 @@ describe('Given five tasks for today exist', function (done) {
 		});
 	});
 
-	describe("Then I click the Add New Task button", function (done) {
+	describe("Then I visit the home page", function (done) {
 		before(function (done) {
-			browser.visit("/", function () {
-				browser.clickLink('Add New Task', done);
-			});
+			browser.visit("/", done);
 		});
 
-		describe("When I enter the new task", function () {
+		it('And the Add New Task button is disabled', function () {
+			expect(browser.query('a[href="/NewTask"].disabled')).to.exist;
+		});
+
+		describe("Then I visit the Add New Task page", function (done) {
 			before(function (done) {
-				browser.fill("#task-text", task.text);
-				browser.pressButton("Add Task", done);
+				browser.visit("/NewTask", done);
 			});
 
-			it("And I am told there are too many things to do today as is", function () {
-				expect(browser.text('#info-box')).to.contain("Nope, sorry. You already have enough things to do today.");
-			});
+			describe("When I enter the new task", function () {
+				before(function (done) {
+					browser.fill("#task-text", task.text);
+					browser.pressButton("Add Task", done);
+				});
 
+				it("And I am told there are too many things to do today as is", function () {
+					expect(browser.text('#info-box')).to.contain("Nope, sorry. You already have enough things to do today.");
+				});
+
+			});
 		});
 	});
 });
