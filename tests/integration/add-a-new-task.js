@@ -10,7 +10,7 @@ var browser = new Browser({
 });
 
 var task = {
-	text: "Do the washing up"
+	text: "Do the washing up http://hereisalink.com"
 }
 
 describe('Given I visit the home page', function (done) {
@@ -48,6 +48,10 @@ describe('Given I visit the home page', function (done) {
 
 			it("And the task is now listed", function () {
 				expect(browser.text('.task-open')).to.contain(task.text);
+			});
+
+			it("And a link is included in the text", function () {
+				expect(browser.query('.task-open a[href="http://hereisalink.com"]')).to.exist;
 			});
 
 			it("Then I am not told I have no current tasks", function () {

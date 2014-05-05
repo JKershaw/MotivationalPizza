@@ -7,7 +7,7 @@ echo "Integration Tests"
 foreman start &
 sleep 1
 
-TESTFILE="tests/integration/sign-up-log-out-log-in.js"
+TESTFILE="tests/integration/add-a-new-task.js"
 echo "Running test $TESTFILE"
 echo "Dropping database"
 mongo "motivational-pizza" --eval "db.dropDatabase()"
