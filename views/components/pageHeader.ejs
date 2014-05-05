@@ -36,6 +36,10 @@
 				text-align: center;
 			}
 
+			body { 
+				margin-top: 1em;
+			}
+
 			.task-done h3 {
 				text-decoration: line-through;
 				color: #999;
@@ -50,12 +54,26 @@
 	</head>
 	<body>
 		<div class="container">
+
+			<p style="text-align: right">
+
+				<% if (user) { %>
+					<span id="logged-in">
+						You are logged in as <strong><%=user.username%></strong>. 
+					</span>
+
+					<a href="/logout" id='log-out'> Logout</a>
+					
+				<% } else { %>
+					
+					<a href="/signup" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-user"></span> Create an Account</a>
+
+					<a href="/login" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+				<% } %>
+			</p>
+
 			<h1>
 				<a href='/'>Motivational Pizza</a><br />
 				<small>The best pizza-themed To Do list in the universe</small>
 			</h1>
-			<% if (user) { %>
-			<p id="logged-in">
-				You are logged in as <%=user.username%>. <a href="/logout" id='log-out'>Log out</a>
-			</p>
-			<% } %>
+			
