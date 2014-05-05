@@ -8,7 +8,9 @@ module.exports = function (app) {
 
 		var info = request.flash('info')[0];
 
-		homePageViewModelFactory.build(info, function (model) {
+		console.log(request.user);
+
+		homePageViewModelFactory.build(info, request.user, function (model) {
 			response.render("home-page.ejs", model);
 		});
 	});
