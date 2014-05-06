@@ -14,7 +14,7 @@ var existingNotTodayTask = {
 
 var fakeRequest = {
 	user: {
-		_id: "qazwsxedcrfv"
+		_id: "2"
 	}
 };
 
