@@ -7,8 +7,10 @@ module.exports = function (app) {
 		var taskCommand = new TaskCommand(request);
 
 		taskCommand.markAsNotToday(request.params.id, function () {
-			request.flash('info', 'task-updated');
-			response.redirect("/");
+			taskCommand.bump(request.params.id, function () {
+				request.flash('info', 'task-updated');
+				response.redirect("/");
+			});
 		});
 	});
 };

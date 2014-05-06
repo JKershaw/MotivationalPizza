@@ -28,15 +28,17 @@ echo "QUnit tests complete"
 
 
 echo "Integration Tests"
+
+echo "Dropping database"
+mongo "motivational-pizza" --eval "db.dropDatabase()"
+
 foreman start &
 sleep 1
 
 for D in tests/integration/*; do
 		TESTFILE="$D"
 		echo "Running test $TESTFILE"
-		echo "Dropping database"
-		mongo "motivational-pizza" --eval "db.dropDatabase()"
-		mocha $TESTFILE --recursive --ui tdd --reporter nyan --timeout 20000
+		mocha $TESTFILE --recursive --ui tdd --reporter nyan --timeout 30000
 done
 
 echo "Integration tests complete"
