@@ -6,10 +6,9 @@ export MONGO_CONNECTION_STRING=mongodb://localhost/motivational-pizza
 echo "Dropping database"
 mongo "motivational-pizza" --eval "db.dropDatabase()"
 
-
 if [ $# -lt 0  ]; then
 	echo "Running JSHint"
-	jshint ./tests/integration ./tests/unit
+	jshint ./tests/integration ./tests/unit  ./tests/acceptance
 fi
 
 echo "Unit Tests"
@@ -34,14 +33,23 @@ mongo "motivational-pizza" --eval "db.dropDatabase()"
 
 foreman start &
 sleep 1
-
-for D in tests/integration/*; do
-		TESTFILE="$D"
-		echo "Running test $TESTFILE"
-		mocha $TESTFILE --recursive --ui tdd --reporter nyan --timeout 30000
-done
-
+mocha tests/integration/ --recursive --ui tdd --reporter nyan --timeout 2000
 echo "Integration tests complete"
+
+pkill node
+
+echo "Acceptance Tests"
+
+echo "Dropping database"
+mongo "motivational-pizza" --eval "db.dropDatabase()"
+
+foreman start &
+sleep 1
+
+echo "Running test tests/acceptance/"
+mocha tests/acceptance/ --recursive --ui tdd --reporter nyan --timeout 30000
+
+echo "Acceptance tests complete"
 
 pkill node
 

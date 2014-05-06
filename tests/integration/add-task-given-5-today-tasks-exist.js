@@ -2,64 +2,47 @@
 var expect = require('chai').expect,
 	assert = require("assert"),
 	Browser = require('zombie'),
-	user = new require("./util/User")(),
-	tasks = new require("./util/Tasks")();
-
-require('chai').should();
-
-var browser = new Browser({
-	site: "http://localhost:3000"
-});
+	TaskCommand = require("../../lib/TaskCommand"),
+	TaskQuery = require("../../lib/TaskQuery");
 
 var newTask = {
 	text: "Womp womp womp"
 },
-	existingTasks = [{
+	existingTask = {
 		text: "This task is for today"
-	}, {
-		text: "This task is for today"
-	}, {
-		text: "This task is for today"
-	}, {
-		text: "This task is for today"
-	}, {
-		text: "This task is for today"
-	}];
+	};
+
+var fakeRequest = {
+	user: {
+		_id: "1"
+	}
+};
+
+var taskCommand = new TaskCommand(fakeRequest),
+	taskQuery = new TaskQuery(fakeRequest);
 
 describe('Given five tasks for today exist', function (done) {
 
 	before(function (done) {
-		user.signup(browser, function () {
-			tasks.add(existingTasks, browser, function () {
-				done();
+		taskCommand.add(existingTask.text, function () {
+			taskCommand.add(existingTask.text, function () {
+				taskCommand.add(existingTask.text, function () {
+					taskCommand.add(existingTask.text, function () {
+						taskCommand.add(existingTask.text, function () {
+							done();
+						});
+					});
+				});
 			});
 		});
 	});
 
-	describe("Then I visit the home page", function (done) {
-		before(function (done) {
-			browser.visit("/", done);
-		});
+	describe("Then I try to add a new task", function (done) {
 
-		it('And the Add New Task button is disabled', function () {
-			expect(browser.query('a[href="/NewTask"].disabled')).to.exist;
-		});
-
-		describe("Then I visit the Add New Task page", function (done) {
-			before(function (done) {
-				browser.visit("/NewTask", done);
-			});
-
-			describe("When I enter the new task", function () {
-				before(function (done) {
-					browser.fill("#task-text", newTask.text);
-					browser.pressButton("Add Task", done);
-				});
-
-				it("And I am told there are too many things to do today as is", function () {
-					expect(browser.text('#info-box')).to.contain("Nope, sorry. You already have enough things to do today.");
-				});
-
+		it('The Command returns false', function (done) {
+			taskCommand.add(newTask.text, function (success) {
+				expect(success).to.equal(false);
+				done();
 			});
 		});
 	});

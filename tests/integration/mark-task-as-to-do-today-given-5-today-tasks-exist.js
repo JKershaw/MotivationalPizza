@@ -2,73 +2,60 @@
 var expect = require('chai').expect,
 	assert = require("assert"),
 	Browser = require('zombie'),
-	user = new require("./util/User")(),
-	tasks = new require("./util/Tasks")();
+	TaskCommand = require("../../lib/TaskCommand"),
+	TaskQuery = require("../../lib/TaskQuery");
 
-var browser = new Browser({
-	site: "http://localhost:3000"
-});
+var existingNotTodayTask = {
+	text: "Womp womp womp"
+},
+	existingTask = {
+		text: "This task is for today"
+	};
 
-var existingNotTodayTasks = [{
-	text: "I can't make this task for Today"
-}],
-	existingTasks = [{
-		text: "This task is for today"
-	}, {
-		text: "This task is for today"
-	}, {
-		text: "This task is for today"
-	}, {
-		text: "This task is for today"
-	}, {
-		text: "This task is for today"
-	}];
+var fakeRequest = {
+	user: {
+		_id: "qazwsxedcrfv"
+	}
+};
 
-describe('Given a task exists', function (done) {
+var taskCommand = new TaskCommand(fakeRequest),
+	taskQuery = new TaskQuery(fakeRequest);
+
+describe('Given a task for another day exists', function (done) {
 
 	before(function (done) {
-		user.signup(browser, function () {
-			tasks.add(existingNotTodayTasks, browser, function () {
-				done();
+		taskCommand.add(existingNotTodayTask.text, function () {
+			taskQuery.findByText(existingNotTodayTask.text, function (returnedTask) {
+				existingNotTodayTask = returnedTask;
+				taskCommand.markAsNotToday(existingNotTodayTask._id, function () {
+					done();
+				});
 			});
 		});
 	});
 
-	describe("Then I click the Not Today button for the task", function (done) {
+	describe('Given five tasks for today exist', function (done) {
+
 		before(function (done) {
-			browser.clickLink('.task .not-today-task', function () {
-				done();
+			taskCommand.add(existingTask.text, function () {
+				taskCommand.add(existingTask.text, function () {
+					taskCommand.add(existingTask.text, function () {
+						taskCommand.add(existingTask.text, function () {
+							taskCommand.add(existingTask.text, function () {
+								done();
+							});
+						});
+					});
+				});
 			});
 		});
 
-		describe('And Given five tasks for today exist', function (done) {
-			before(function (done) {
-				tasks.add(existingTasks, browser, function () {
+		describe("Then I try mark the original task as for today", function (done) {
+
+			it('The Command returns false', function (done) {
+				taskCommand.markAsToday(existingNotTodayTask._id, function (success) {
+					expect(success).to.equal(false);
 					done();
-				});
-			});
-
-			describe("And I visit the home page", function (done) {
-				before(function (done) {
-					browser.visit('/', done);
-				});
-
-				describe("And I click the Today button for the task", function (done) {
-					before(function (done) {
-						browser.clickLink('.task-not-today .today-task', done);
-					});
-
-					it("Then I see the task not listed as for today", function () {
-						expect(browser.text('.task-open')).to.not.contain(existingNotTodayTasks[0].text);
-					});
-
-					it("Then I can no longer see the task still listed as not for today", function () {
-						expect(browser.text('.task-not-today')).to.contain(existingNotTodayTasks[0].text);
-					});
-
-					it("And I am told there are too many things to do today as is", function () {
-						expect(browser.text('#info-box')).to.contain("Nope, sorry. You already have enough things to do today.");
-					});
 				});
 			});
 		});
