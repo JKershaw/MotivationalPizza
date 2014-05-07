@@ -21,7 +21,7 @@ module.exports = function (app) {
 			}
 
 			taskQuery.findByText(request.body['task-text'], function (task) {
-				taskCommand.tag(task._id, request.body['task-tag'], function () {
+				taskCommand.tag(task._id, request.body['task-tags'], function () {
 					request.flash('info', 'task-added');
 					response.redirect("/");
 				});

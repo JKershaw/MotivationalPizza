@@ -52,7 +52,7 @@ describe('Given a task exists', function (done) {
 			describe("When I enter the new text", function () {
 				before(function (done) {
 					browser.fill("#task-text", editedTask.text);
-					browser.fill("#task-tag-add", editedTask.tag);
+					browser.fill("#task-tags", editedTask.tag);
 					browser.pressButton("Edit Task", done);
 				});
 
@@ -74,7 +74,7 @@ describe('Given a task exists', function (done) {
 					});
 
 					it("And the task's tag is now listed", function () {
-						expect(browser.text('.tag')).to.contain(editedTask.tag);
+						expect(browser.query('#task-tags[value="' + editedTask.tag + '"]')).to.exist;
 					});
 				});
 			});

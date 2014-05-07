@@ -43,7 +43,7 @@ describe('Given I sign up and visit the home page', function (done) {
 		describe("When I enter the new task and tag", function () {
 			before(function (done) {
 				browser.fill("#task-text", task.text);
-				browser.fill("#task-tag", task.tag);
+				browser.fill("#task-tags", task.tag);
 				browser.pressButton("Add Task", done);
 			});
 

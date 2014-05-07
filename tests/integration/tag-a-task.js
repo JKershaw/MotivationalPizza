@@ -86,6 +86,7 @@ describe('Given a task exists', function (done) {
 						});
 					});
 				});
+				
 				describe('Then I try to tag it again with an empty', function (done) {
 
 					it('the tag command returns false', function (done) {

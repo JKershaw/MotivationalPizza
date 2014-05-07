@@ -11,20 +11,10 @@
 				<input type="text" class="form-control" id='task-text' name='task-text' value="<%=task.text%>" required autofocus> 
 			</div>
 
-			<% if (task.tags && task.tags.length > 0) { %>
-
-				<p> Tags: 
-					<%for (var tag_i = 0; tag_i < task.tags.length; tag_i ++) {%>
-						<span class="tag"><%=task.tags[tag_i].text%></span>
-					<%}%>
-				</p>
-
-			<%}%>
-
 			<div class="form-group">
 				<div class="input-group input-group-sm">
-					<span class="input-group-addon">Add Tag</span>
-					<input type="text" class="form-control" id='task-tag-add' name='task-tag-add'> 
+					<span class="input-group-addon">Tags</span>
+					<input type="text" class="form-control" id='task-tags' name='task-tags' value="<%=tags%>"> 
 				</div>
 			</div>
 
