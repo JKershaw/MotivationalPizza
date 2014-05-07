@@ -13,13 +13,16 @@ module.exports = function (app) {
 
 			var tags = "";
 
-			for (var i = 0; i < task.tags.length; i ++) {
-				
-				if (i > 0) {
-					tags = tags + ", ";
-				}
+			if (task.tags) {
 
-				tags = tags + task.tags[i].text;
+				for (var i = 0; i < task.tags.length; i++) {
+
+					if (i > 0) {
+						tags = tags + ", ";
+					}
+
+					tags = tags + task.tags[i].text;
+				}
 			}
 
 			model = {
