@@ -6,10 +6,9 @@ export MONGO_CONNECTION_STRING=mongodb://localhost/motivational-pizza
 echo "Dropping database"
 mongo "motivational-pizza" --eval "db.dropDatabase()"
 
-if [ $# -lt 0  ]; then
-	echo "Running JSHint"
-	jshint ./tests/integration ./tests/unit  ./tests/acceptance
-fi
+echo "Running JSHint"
+jshint ./tests/integration ./tests/unit  ./tests/acceptance
+
 
 echo "Unit Tests"
 mocha tests/unit/ --ui qunit --reporter nyan --timeout 5000
@@ -47,7 +46,7 @@ foreman start &
 sleep 1
 
 echo "Running test tests/acceptance/"
-mocha tests/acceptance/ --recursive --ui tdd --reporter nyan --timeout 30000
+mocha tests/acceptance/ --recursive --ui tdd --reporter nyan --timeout 30000 --bail
 
 echo "Acceptance tests complete"
 

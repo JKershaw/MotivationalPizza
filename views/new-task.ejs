@@ -1,19 +1,28 @@
 <% include components/pageHeader %>
 
-	<p id="enter-task-instructions">
-		Enter your new task details
-	</p>
-
-	
-	<form action='/NewTask' method="POST">
-		<p>
-			<input type="text" class="form-control" id='task-text' name='task-text' placeholder="Build a rocket ship..." required autofocus> 
+	<div class="col-sm-6 col-sm-offset-3">
+		<p id="enter-task-instructions">
+			Enter your new task details
 		</p>
 
-		<p>
-			<button type="submit" class="btn btn-default">Add Task</button>
-		</p>
-	</form>
+		<form action='/NewTask' method="POST">
+
+			<div class="form-group">
+				<input type="text" class="form-control" id='task-text' name='task-text' placeholder="Build a rocket ship..." required autofocus> 
+			</div>
+
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+					<span class="input-group-addon">Tag</span>
+					<input type="text" class="form-control" id='task-tag' name='task-tag' placeholder="space"> 
+				</div>
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-default">Add Task</button>
+			</div>
+		</form>
+	</div>
 	
 
 

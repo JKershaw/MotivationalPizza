@@ -1,19 +1,38 @@
 <% include components/pageHeader %>
 
-	<p id="edit-task-instructions">
-		Edit your task
-	</p>
-
-	
-	<form action='/EditTask/<%=task._id%>' method="POST">
-		<p>
-			<input type="text" class="form-control" id='task-text' name='task-text' value="<%=task.text%>" required autofocus> 
+	<div class="col-sm-6 col-sm-offset-3">
+		<p id="edit-task-instructions">
+			Edit your task
 		</p>
 
-		<p>
-			<button type="submit" class="btn btn-default">Edit Task</button>
-		</p>
-	</form>
+		<form action='/EditTask/<%=task._id%>' method="POST">
+
+			<div class="form-group">
+				<input type="text" class="form-control" id='task-text' name='task-text' value="<%=task.text%>" required autofocus> 
+			</div>
+
+			<% if (task.tags && task.tags.length > 0) { %>
+
+				<p> Tags: 
+					<%for (var tag_i = 0; tag_i < task.tags.length; tag_i ++) {%>
+						<span class="tag"><%=task.tags[tag_i].text%></span>
+					<%}%>
+				</p>
+
+			<%}%>
+
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+					<span class="input-group-addon">Add Tag</span>
+					<input type="text" class="form-control" id='task-tag-add' name='task-tag-add'> 
+				</div>
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-default">Edit Task</button>
+			</div>
+		</form>
+	</div>
 	
 
 

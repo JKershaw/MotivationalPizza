@@ -24,8 +24,10 @@ module.exports = function (app) {
 		var taskCommand = new TaskCommand(request);
 
 		taskCommand.updateText(request.params.id, request.body['task-text'], function () {
-			request.flash('info', 'task-updated');
-			response.redirect("/");
+			taskCommand.tag(request.params.id, request.body['task-tag-add'], function () {
+				request.flash('info', 'task-updated');
+				response.redirect("/");
+			});
 		});
 	});
 };

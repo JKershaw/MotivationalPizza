@@ -13,8 +13,10 @@ var browser = new Browser({
 
 var existingTasks = [{
 	text: "Edit this task"
-}], editedTask = {
-		text: "This has now been edited! hurray!"
+}],
+	editedTask = {
+		text: "This has now been edited! hurray!",
+		tag: "I'm adding this tag."
 	};
 
 describe('Given a task exists', function (done) {
@@ -50,6 +52,7 @@ describe('Given a task exists', function (done) {
 			describe("When I enter the new text", function () {
 				before(function (done) {
 					browser.fill("#task-text", editedTask.text);
+					browser.fill("#task-tag-add", editedTask.tag);
 					browser.pressButton("Edit Task", done);
 				});
 
@@ -61,6 +64,19 @@ describe('Given a task exists', function (done) {
 					expect(browser.text('.task-open')).to.contain(editedTask.text);
 				});
 
+				it("And the task's tag is now also listed", function () {
+					expect(browser.text('.task-open .tag')).to.contain(editedTask.tag);
+				});
+
+				describe("And I click the Edit button for the task", function (done) {
+					before(function (done) {
+						browser.clickLink('.task .edit-task', done);
+					});
+
+					it("And the task's tag is now listed", function () {
+						expect(browser.text('.tag')).to.contain(editedTask.tag);
+					});
+				});
 			});
 		});
 	});

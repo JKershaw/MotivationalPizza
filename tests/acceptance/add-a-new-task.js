@@ -11,8 +11,9 @@ var browser = new Browser({
 });
 
 var task = {
-	text: "Do the washing up http://hereisalink.com"
-}
+	text: "Do the washing up http://hereisalink.com",
+	tag: "Tagging"
+};
 
 describe('Given I sign up and visit the home page', function (done) {
 
@@ -39,9 +40,10 @@ describe('Given I sign up and visit the home page', function (done) {
 			expect(browser.text("#enter-task-instructions")).to.contain("Enter your new task details");
 		});
 
-		describe("When I enter the new task", function () {
+		describe("When I enter the new task and tag", function () {
 			before(function (done) {
 				browser.fill("#task-text", task.text);
+				browser.fill("#task-tag", task.tag);
 				browser.pressButton("Add Task", done);
 			});
 
@@ -51,6 +53,10 @@ describe('Given I sign up and visit the home page', function (done) {
 
 			it("And the task is now listed", function () {
 				expect(browser.text('.task-open')).to.contain(task.text);
+			});
+
+			it("And the task's tag is now also listed", function () {
+				expect(browser.text('.task-open .tag')).to.contain(task.tag);
 			});
 
 			it("And a link is included in the text", function () {

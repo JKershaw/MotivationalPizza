@@ -29,6 +29,15 @@
 						<h2>
 							<%-openTasks[i].text%>
 						</h2>
+						<% if (openTasks[i].tags && openTasks[i].tags.length > 0) { %>
+
+							<p> Tags: 
+								<%for (var tag_i = 0; tag_i < openTasks[i].tags.length; tag_i ++) {%>
+									<span class="tag"><%=openTasks[i].tags[tag_i].text%></span>
+								<%}%>
+							</p>
+
+						<%}%>
 						<p>
 							<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-check"></span> Done</a>
 
