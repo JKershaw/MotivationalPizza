@@ -20,9 +20,7 @@
 
 			<% if(commonTags.length > 0) {%>
 				<p>Common tags: 
-					<% for (var tag_i = 0; tag_i < commonTags.length; tag_i ++) { %>
-						<% if (tag_i > 0) { %>, <%}%><span class="tag"><%=commonTags[tag_i].text%></span>
-					<%}%>
+					<% for (var tag_i = 0; tag_i < commonTags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><a class="tag"><%=commonTags[tag_i].text%></a><%}%>
 				</p>
 			<%}%>
 
@@ -31,7 +29,7 @@
 			</div>
 		</form>
 	</div>
-	
 
+	<script src="/js/tag-selection-populates-tags-input.js"></script>
 
 <% include components/pageFooter %>

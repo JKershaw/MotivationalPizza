@@ -32,9 +32,7 @@
 						<% if (openTasks[i].tags && openTasks[i].tags.length > 0) { %>
 
 							<p> Tags: 
-								<% for (var tag_i = 0; tag_i < openTasks[i].tags.length; tag_i ++) { %>
-									<% if (tag_i > 0) { %>, <%}%><span class="tag"><%=openTasks[i].tags[tag_i].text%></span>
-								<%}%>
+								<% for (var tag_i = 0; tag_i < openTasks[i].tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=openTasks[i].tags[tag_i].text%></span><%}%>
 							</p>
 
 						<%}%>
@@ -94,6 +92,13 @@
 						<h3>
 							<%-notTodayTasks[i].text%>
 						</h3>
+						<% if (notTodayTasks[i].tags && notTodayTasks[i].tags.length > 0) { %>
+
+							<p><small> Tags: 
+								<% for (var tag_i = 0; tag_i < notTodayTasks[i].tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=notTodayTasks[i].tags[tag_i].text%></span><%}%>
+							</small></p>
+
+						<%}%>
 						<p>
 							<a class="btn btn-default today-task btn-xs" href="/TodayTask/<%=notTodayTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-calendar"></span> Today</a>
 
