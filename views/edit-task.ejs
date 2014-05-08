@@ -18,6 +18,14 @@
 				</div>
 			</div>
 
+			<% if(commonTags.length > 0) {%>
+				<p>Existing commonTags: 
+					<% for (var tag_i = 0; tag_i < commonTags.length; tag_i ++) { %>
+						<% if (tag_i > 0) { %>, <%}%><span class="tag"><%=commonTags[tag_i].text%></span>
+					<%}%>
+				</p>
+			<%}%>
+
 			<div class="form-group">
 				<button type="submit" class="btn btn-default">Edit Task</button>
 			</div>

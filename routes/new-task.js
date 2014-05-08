@@ -10,9 +10,9 @@ module.exports = function (app) {
 			taskQuery = new TaskQuery(request),
 			pageRenderer = new PageRenderer(request, response);
 
-		taskQuery.allTags(function (tags) {
+		taskQuery.allTags(function (commonTags) {
 			model = {
-				tags: tags
+				commonTags: commonTags
 			};
 			pageRenderer.render("new-task.ejs", model);
 		});

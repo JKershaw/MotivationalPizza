@@ -10,27 +10,30 @@ module.exports = function (app) {
 			pageRenderer = new PageRenderer(request, response);
 
 		taskQuery.findById(request.params.id, function (task) {
+			taskQuery.allTags(function (commonTags) {
 
-			var tags = "";
+				var tags = "";
 
-			if (task.tags) {
+				if (task.tags) {
 
-				for (var i = 0; i < task.tags.length; i++) {
+					for (var i = 0; i < task.tags.length; i++) {
 
-					if (i > 0) {
-						tags = tags + ", ";
+						if (i > 0) {
+							tags = tags + ", ";
+						}
+
+						tags = tags + task.tags[i].text;
 					}
-
-					tags = tags + task.tags[i].text;
 				}
-			}
 
-			model = {
-				task: task,
-				tags: tags
-			};
+				model = {
+					task: task,
+					tags: tags,
+					commonTags: commonTags
+				};
 
-			pageRenderer.render("edit-task.ejs", model);
+				pageRenderer.render("edit-task.ejs", model);
+			});
 		});
 	});
 
