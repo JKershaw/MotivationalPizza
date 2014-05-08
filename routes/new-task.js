@@ -5,8 +5,17 @@ var TaskCommand = require("../lib/TaskCommand"),
 module.exports = function (app) {
 
 	app.get('/NewTask', function (request, response) {
-		var pageRenderer = new PageRenderer(request, response);
-		pageRenderer.render("new-task.ejs");
+
+		var taskCommand = new TaskCommand(request),
+			taskQuery = new TaskQuery(request),
+			pageRenderer = new PageRenderer(request, response);
+
+		taskQuery.allTags(function (tags) {
+			model = {
+				tags: tags
+			};
+			pageRenderer.render("new-task.ejs", model);
+		});
 	});
 
 	app.post('/NewTask', function (request, response) {

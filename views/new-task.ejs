@@ -18,6 +18,15 @@
 				</div>
 			</div>
 
+			<% if(tags.length > 0) {%>
+			<p>Existing tags: 
+				<% for (var tag_i = 0; tag_i < tags.length; tag_i ++) { %>
+					<% if (tag_i > 0) { %>, <%}%><span class="tag"><%=tags[tag_i].text%></span>
+				<%}%>
+			</p>
+
+			<%}%>
+
 			<div class="form-group">
 				<button type="submit" class="btn btn-default">Add Task</button>
 			</div>
