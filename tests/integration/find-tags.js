@@ -11,7 +11,7 @@ var existingTask = {
 		text: "A whole new task, bro!"
 	},
 	tagText = "Tag!",
-	secondTagText = "Another Tag!, Woo!, Food";
+	secondTagText = "Another Tag!, Tag!, Food";
 
 var fakeRequest = {
 	user: {
@@ -71,9 +71,9 @@ describe('Given a task exists with no tags', function (done) {
 					});
 				});
 
-				it('Then the tags are returned', function (done) {
+				it('Then the tags are returned without duplication', function (done) {
 					taskQuery.allTags(function (tags) {
-						expect(tags.length).to.equal(4);
+						expect(tags.length).to.equal(3);
 						done();
 					});
 				});
