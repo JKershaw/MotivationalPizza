@@ -6,14 +6,12 @@ var expect = require('chai').expect,
 	TaskQuery = require("../../lib/TaskQuery");
 
 var existingTask = {
-	text: "This task is for today"
-},
-	tagText = "Tag!",
-	secondTagText = "Another Tag!";
+	text: "I'm going to mark this task as to do tomorrow"
+};
 
 var fakeRequest = {
 	user: {
-		_id: "6"
+		_id: "7"
 	}
 };
 
@@ -31,27 +29,22 @@ describe('Given a task exists', function (done) {
 		});
 	});
 
-	describe('And I tag it', function (done) {
+	describe('Given I mark the task as for tomorrow', function (done) {
 
-		it('Then tag command returns true', function (done) {
-			taskCommand.tag(existingTask._id, tagText, function (success) {
+		it('The Command returns true', function (done) {
+			taskCommand.markAsTomorrow(existingTask._id, function (success) {
 				expect(success).to.equal(true);
 				done();
 			});
-		});
 
-		describe('And I update its tag with a new tag', function (done) {
+			describe("Then query to find tasks for tomorrow", function (done) {
 
-			before(function (done) {
-				taskCommand.updateTag(existingTask._id, secondTagText, function () {
-					done();
-				});
-			});
-
-			it('Then the task now has two tags', function (done) {
-				taskQuery.findByText(existingTask.text, function (returnedTask) {
-					expect(returnedTask.tags[0].text).to.equal(secondTagText);
-					done();
+				it('The Query returns the status', function (done) {
+					taskQuery.allWithStatus("tomorrow", function (tasks) {
+						expect(tasks.length).to.equal(1);
+						expect(tasks[0].text).to.equal(existingTask.text);
+						done();
+					});
 				});
 			});
 		});

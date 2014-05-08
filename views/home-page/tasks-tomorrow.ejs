@@ -1,0 +1,27 @@
+<% if (tomorrowTasks.length > 0) { %>
+	
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">To Do Tomorrow</h3>
+	  </div>
+	  <div class="panel-body">
+
+			<% for (var i = 0; i < tomorrowTasks.length; i++) { %>
+				<div class='task task-tomorrow' data-i="<%=i%>" data-task-id='<%=tomorrowTasks[i]._id%>'>
+					<h3>
+						<%-tomorrowTasks[i].text%>
+					</h3>
+					<% if (tomorrowTasks[i].tags && tomorrowTasks[i].tags.length > 0) { %>
+
+						<p><small> Tags: 
+							<% for (var tag_i = 0; tag_i < tomorrowTasks[i].tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=tomorrowTasks[i].tags[tag_i].text%></span><%}%>
+						</small></p>
+
+					<%}%>
+					<% 	include task-buttons-tomorrow %>
+				</div>
+			<% } %>
+	  </div>
+	</div>
+
+<% } %>

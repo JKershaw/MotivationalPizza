@@ -1,0 +1,59 @@
+<% if (infoBox) { %>
+
+				<div id="info-box" class="alert <%=infoBox.class%> fade in" data-dismiss="alert" aria-hidden="true">
+					<%=infoBox.text%>
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				</div>
+
+			<% } %>
+
+			<% if (openTasks.length >= 5) { %>
+
+				<div class="alert alert-warning">
+					<p>
+						You have plenty to do today. Before you add more tasks to today you should complete a one or mark one as due another day. Remember; <strong>if something is important it'll come back</strong>.
+					</p>
+				</div>
+			<% } %>
+		
+			<% if (openTasks.length > 0) { %>
+
+				<% for (var i = 0; i < openTasks.length; i++) { %>
+					<div class='task task-open' data-i="<%=i%>" data-task-id='<%=openTasks[i]._id%>'>
+						<h2>
+							<%-openTasks[i].text%>
+						</h2>
+						<% if (openTasks[i].tags && openTasks[i].tags.length > 0) { %>
+
+							<p> Tags: 
+								<% for (var tag_i = 0; tag_i < openTasks[i].tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=openTasks[i].tags[tag_i].text%></span><%}%>
+							</p>
+
+						<%}%>
+
+						<% 	include task-buttons-open %>
+
+					</div>
+				<% } %>
+
+			<% } else { %>
+
+				<h2 id="no-current-tasks">
+					Oh sweet, you currently have no tasks to do.
+				</h2>
+
+			<% } %>
+
+
+			<% if (openTasks.length >= 5) { %>
+
+				<p>
+					<a class="btn btn-success btn-lg btn-block disabled" href="/NewTask" role="button">Add New Task</a>
+
+				</p>
+			<% } else { %>
+				<p>
+					<a class="btn btn-success btn-lg btn-block" href="/NewTask" role="button">Add New Task</a>
+					
+				</p>
+			<% } %>

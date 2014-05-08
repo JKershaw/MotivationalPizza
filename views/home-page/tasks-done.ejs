@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Done</h3>
+		  </div>
+		  <div class="panel-body">
+
+		  	<h2>Today</h2>
+
+			<% for (i = 0; i < doneTodayTasks.length; i++) { %>
+				<div class='task task-done' data-i="<%=i%>" data-task-id='<%=doneTodayTasks[i]._id%>'>
+					<h3>
+						<%-doneTodayTasks[i].text%>
+					</h3>
+				</div>
+			<% } %>
+
+			<h2>Older</h2>
+
+			<% for (i = 0; i < doneBeforeTodayTasks.length; i++) { %>
+				<div class='task task-done archived-task-done' data-task-id='<%=doneBeforeTodayTasks[i]._id%>'>
+					<h3>
+						<%-doneBeforeTodayTasks[i].text%>
+					</h3>
+				</div>
+			<% } %>
+
+		  </div>
+		</div>

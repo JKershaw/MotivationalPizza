@@ -4,75 +4,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 
-			<% if (infoBox) { %>
-
-				<div id="info-box" class="alert <%=infoBox.class%> fade in" data-dismiss="alert" aria-hidden="true">
-					<%=infoBox.text%>
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				</div>
-
-			<% } %>
-
-			<% if (openTasks.length >= 5) { %>
-
-				<div class="alert alert-warning">
-					<p>
-						You have plenty to do today. Before you add more tasks to today you should complete a one or mark one as due another day. Remember; <strong>if something is important it'll come back</strong>.
-					</p>
-				</div>
-			<% } %>
-		
-			<% if (openTasks.length > 0) { %>
-
-				<% for (var i = 0; i < openTasks.length; i++) { %>
-					<div class='task task-open' data-i="<%=i%>" data-task-id='<%=openTasks[i]._id%>'>
-						<h2>
-							<%-openTasks[i].text%>
-						</h2>
-						<% if (openTasks[i].tags && openTasks[i].tags.length > 0) { %>
-
-							<p> Tags: 
-								<% for (var tag_i = 0; tag_i < openTasks[i].tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=openTasks[i].tags[tag_i].text%></span><%}%>
-							</p>
-
-						<%}%>
-						<p>
-							<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon-check"></span> Done</a>
-
-							<a class="btn btn-default not-today-task btn-xs" href="/NotTodayTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-calendar"></span> Not Today</a>
-
-							<a class="btn btn-default edit-task btn-xs" href="/EditTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-edit"></span> Edit</a>
-
-							<a class="btn btn-default bump-task btn-xs" href="/BumpTask/<%=openTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-arrow-up"></span></a>
-
-							<a class="btn btn-default delete-task btn-xs" role="button"><span class="glyphicon glyphicon-trash"></span></a>
-							<span class="delete-confirmation">Are you sure you want to <strong>delete</strong> this task? <a href="/DeleteTask/<%=openTasks[i]._id%>" class="delete-task-yes">Yes</a> / <a class="delete-task-no">No</a></span>
-
-						</p>
-					</div>
-				<% } %>
-
-			<% } else { %>
-
-				<h2 id="no-current-tasks">
-					Oh sweet, you currently have no tasks to do.
-				</h2>
-
-			<% } %>
-
-
-			<% if (openTasks.length >= 5) { %>
-
-				<p>
-					<a class="btn btn-success btn-lg btn-block disabled" href="/NewTask" role="button">Add New Task</a>
-
-				</p>
-			<% } else { %>
-				<p>
-					<a class="btn btn-success btn-lg btn-block" href="/NewTask" role="button">Add New Task</a>
-					
-				</p>
-			<% } %>
+			<% include home-page/tasks-today %>
 
 		</div>
 	</div>
@@ -80,77 +12,16 @@
 	<div class="row">
 	  <div class="col-md-6">
 
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">To Do Some Other Time</h3>
-		  </div>
-		  <div class="panel-body">
+	  	<% include home-page/tasks-tomorrow %>
 
-				<% for (var i = 0; i < notTodayTasks.length; i++) { %>
-					<div class='task task-not-today' data-i="<%=i%>" data-task-id='<%=notTodayTasks[i]._id%>'>
-						<h3>
-							<%-notTodayTasks[i].text%>
-						</h3>
-						<% if (notTodayTasks[i].tags && notTodayTasks[i].tags.length > 0) { %>
-
-							<p><small> Tags: 
-								<% for (var tag_i = 0; tag_i < notTodayTasks[i].tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=notTodayTasks[i].tags[tag_i].text%></span><%}%>
-							</small></p>
-
-						<%}%>
-						<p>
-							<a class="btn btn-default today-task btn-xs" href="/TodayTask/<%=notTodayTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-calendar"></span> Today</a>
-
-							<a class="btn btn-default edit-task btn-xs" href="/EditTask/<%=notTodayTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-edit"></span> Edit</a>
-
-							<a class="btn btn-default bump-task btn-xs" href="/BumpTask/<%=notTodayTasks[i]._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-arrow-up"></span></a>
-
-							<a class="btn btn-default delete-task btn-xs" role="button"><span class="glyphicon glyphicon-trash"></span></a>
-							<span class="delete-confirmation">Are you sure you want to <strong>delete</strong> this task? <a href="/DeleteTask/<%=notTodayTasks[i]._id%>" class="delete-task-yes">Yes</a> / <a class="delete-task-no">No</a></span>
-						</p>
-					</div>
-				<% } %>
-
-				<% if (notTodayTasks.length == 0) { %>
-					<p>Nothing here.</p>
-				<% } %>
-		  </div>
-		</div>
+		<% include home-page/tasks-some-other-time %>
 
 	</div>
-
 	<div class="col-md-6">
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Done</h3>
-		  </div>
-		  <div class="panel-body">
 
-		  	<h2>Today</h2>
-
-			<% for (i = 0; i < doneTodayTasks.length; i++) { %>
-				<div class='task task-done' data-i="<%=i%>" data-task-id='<%=doneTodayTasks[i]._id%>'>
-					<h3>
-						<%-doneTodayTasks[i].text%>
-					</h3>
-				</div>
-			<% } %>
-
-			<h2>Older</h2>
-
-			<% for (i = 0; i < doneBeforeTodayTasks.length; i++) { %>
-				<div class='task task-done archived-task-done' data-task-id='<%=doneBeforeTodayTasks[i]._id%>'>
-					<h3>
-						<%-doneBeforeTodayTasks[i].text%>
-					</h3>
-				</div>
-			<% } %>
-
-		  </div>
-		</div>
+	  	<% include home-page/tasks-done %>
+		
 	</div>
-
 </div>
-
 
 <% include components/pageFooter %>
