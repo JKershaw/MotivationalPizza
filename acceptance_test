@@ -9,7 +9,7 @@ mongo "motivational-pizza" --eval "db.dropDatabase()"
 foreman start &
 sleep 1
 
-mocha tests/acceptance/mark-task-as-done.js --recursive --ui tdd --reporter nyan --timeout 30000 --bail
+mocha tests/acceptance/edit-a-task.js --recursive --ui tdd --reporter nyan --timeout 30000 --bail
 
 echo "Acceptance tests complete"
 

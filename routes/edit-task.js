@@ -1,4 +1,4 @@
-var TaskQuery = require("../lib/TaskQuery"),
+var EditTaskViewModelFactory = require("../lib/modelViewFactories/EditTaskViewModelFactory"),
 	TaskCommand = require("../lib/TaskCommand"),
 	PageRenderer = require("../lib/util/PageRenderer");
 
@@ -6,34 +6,11 @@ module.exports = function (app) {
 
 	app.get('/EditTask/:id', function (request, response) {
 
-		var taskQuery = new TaskQuery(request),
+		var editTaskViewModelFactory = new EditTaskViewModelFactory(request),
 			pageRenderer = new PageRenderer(request, response);
 
-		taskQuery.findById(request.params.id, function (task) {
-			taskQuery.allTags(function (commonTags) {
-
-				var tags = "";
-
-				if (task.tags) {
-
-					for (var i = 0; i < task.tags.length; i++) {
-
-						if (i > 0) {
-							tags = tags + ", ";
-						}
-
-						tags = tags + task.tags[i].text;
-					}
-				}
-
-				model = {
-					task: task,
-					tags: tags,
-					commonTags: commonTags
-				};
-
-				pageRenderer.render("edit-task.ejs", model);
-			});
+		editTaskViewModelFactory.build(function (model) {
+			pageRenderer.render("edit-task.ejs", model);
 		});
 	});
 
