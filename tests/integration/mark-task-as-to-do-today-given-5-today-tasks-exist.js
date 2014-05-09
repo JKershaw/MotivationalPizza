@@ -24,7 +24,7 @@ var taskCommand = new TaskCommand(fakeRequest),
 describe('Given a task for another day exists', function (done) {
 
 	before(function (done) {
-		taskCommand.add(existingNotTodayTask.text, function () {
+		taskCommand.add(existingNotTodayTask, function () {
 			taskQuery.findByText(existingNotTodayTask.text, function (returnedTask) {
 				existingNotTodayTask = returnedTask;
 				taskCommand.markAsNotToday(existingNotTodayTask._id, function () {
@@ -37,11 +37,11 @@ describe('Given a task for another day exists', function (done) {
 	describe('Given five tasks for today exist', function (done) {
 
 		before(function (done) {
-			taskCommand.add(existingTask.text, function () {
-				taskCommand.add(existingTask.text, function () {
-					taskCommand.add(existingTask.text, function () {
-						taskCommand.add(existingTask.text, function () {
-							taskCommand.add(existingTask.text, function () {
+			taskCommand.add(existingTask, function () {
+				taskCommand.add(existingTask, function () {
+					taskCommand.add(existingTask, function () {
+						taskCommand.add(existingTask, function () {
+							taskCommand.add(existingTask, function () {
 								done();
 							});
 						});

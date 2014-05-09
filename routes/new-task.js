@@ -6,8 +6,7 @@ module.exports = function (app) {
 
 	app.get('/NewTask', function (request, response) {
 
-		var taskCommand = new TaskCommand(request),
-			taskQuery = new TaskQuery(request),
+		var taskQuery = new TaskQuery(request),
 			pageRenderer = new PageRenderer(request, response);
 
 		taskQuery.allTags(function (commonTags) {
@@ -23,7 +22,12 @@ module.exports = function (app) {
 		var taskCommand = new TaskCommand(request),
 			taskQuery = new TaskQuery(request);
 
-		taskCommand.add(request.body['task-text'], function (successful) {
+		var newTask = {
+			text: request.body['task-text'],
+			tagsString: request.body['task-tags']
+		};
+
+		taskCommand.add(newTask, function (successful) {
 			if (!successful) {
 				request.flash('info', 'error-too-many-today');
 				return response.redirect("/");

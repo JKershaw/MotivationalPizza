@@ -25,7 +25,7 @@ var taskCommand = new TaskCommand(fakeRequest),
 describe('Given a task exists with no tags', function (done) {
 
 	before(function (done) {
-		taskCommand.add(existingTask.text, function () {
+		taskCommand.add(existingTask, function () {
 			taskQuery.findByText(existingTask.text, function (returnedTask) {
 				existingTask = returnedTask;
 				done();
@@ -61,7 +61,7 @@ describe('Given a task exists with no tags', function (done) {
 			describe('Given a new task exists with several tags', function (done) {
 
 				before(function (done) {
-					taskCommand.add(secondTask.text, function () {
+					taskCommand.add(secondTask, function () {
 						taskQuery.findByText(secondTask.text, function (returnedTask) {
 							secondTask = returnedTask;
 							taskCommand.tag(secondTask._id, secondTagText, function (success) {

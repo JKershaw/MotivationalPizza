@@ -21,7 +21,7 @@ var taskCommand = new TaskCommand(fakeRequest),
 describe('Given a task exists', function (done) {
 
 	before(function (done) {
-		taskCommand.add(existingTask.text, function () {
+		taskCommand.add(existingTask, function () {
 			taskQuery.findByText(existingTask.text, function (returnedTask) {
 				existingTask = returnedTask;
 				done();

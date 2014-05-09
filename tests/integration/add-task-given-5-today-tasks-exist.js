@@ -24,11 +24,11 @@ var taskCommand = new TaskCommand(fakeRequest),
 describe('Given five tasks for today exist', function (done) {
 
 	before(function (done) {
-		taskCommand.add(existingTask.text, function () {
-			taskCommand.add(existingTask.text, function () {
-				taskCommand.add(existingTask.text, function () {
-					taskCommand.add(existingTask.text, function () {
-						taskCommand.add(existingTask.text, function () {
+		taskCommand.add(existingTask, function () {
+			taskCommand.add(existingTask, function () {
+				taskCommand.add(existingTask, function () {
+					taskCommand.add(existingTask, function () {
+						taskCommand.add(existingTask, function () {
 							done();
 						});
 					});
@@ -40,7 +40,7 @@ describe('Given five tasks for today exist', function (done) {
 	describe("Then I try to add a new task", function (done) {
 
 		it('The Command returns false', function (done) {
-			taskCommand.add(newTask.text, function (success) {
+			taskCommand.add(newTask, function (success) {
 				expect(success).to.equal(false);
 				done();
 			});
