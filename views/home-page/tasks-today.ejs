@@ -39,7 +39,11 @@
 			<% } else { %>
 
 				<h2 id="no-current-tasks">
-					Oh sweet, you currently have no tasks to do.
+					<% if (pizzaForDinner) { %>
+						Hurray! You've done everything you need to today. Pizza for dinner!
+					<% } else { %>
+						Oh sweet, you currently have no tasks to do.
+					<% } %>
 				</h2>
 
 			<% } %>
