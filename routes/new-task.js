@@ -19,8 +19,7 @@ module.exports = function (app) {
 
 	app.post('/NewTask', function (request, response) {
 
-		var taskCommand = new TaskCommand(request),
-			taskQuery = new TaskQuery(request);
+		var taskCommand = new TaskCommand(request);
 
 		var newTask = {
 			text: request.body['task-text'],
