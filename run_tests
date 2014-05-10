@@ -3,13 +3,17 @@ set -e
 
 export MONGO_CONNECTION_STRING=mongodb://localhost/motivational-pizza
 
-echo "Running JSHint"
-jshint ./tests/acceptance
-jshint ./tests/unit
-jshint ./tests/integration
-jshint ./routes
-jshint ./lib
-echo "JSHint Completed"
+if [ $# -gt 0  ]; then
+	echo "Running JSHint"
+	jshint ./tests/acceptance
+	jshint ./tests/unit
+	jshint ./tests/integration
+	jshint ./routes
+	jshint ./lib
+	echo "JSHint Completed"
+else
+  echo "Skipping JSHint"
+fi
 
 echo "=========================================="
 echo "Unit Tests"
@@ -30,7 +34,6 @@ for D in tests/qunit/*; do
 	fi
 done
 echo "QUnit tests complete"
-
 
 echo "=========================================="
 echo "Integration Tests"
