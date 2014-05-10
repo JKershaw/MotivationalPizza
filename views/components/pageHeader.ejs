@@ -33,7 +33,10 @@
 			}
 
 			h1 {
-				text-align: center;
+				text-align: left;
+				margin-top: 0px;
+				font-size: 28px;
+				margin-bottom: 20px;
 			}
 
 			body { 
@@ -74,25 +77,36 @@
 	<body>
 		<div class="container">
 
-			<p style="text-align: right">
+			<div class="row">
+				<div class="col-md-8">
 
-				<% if (user) { %>
-					<span id="logged-in">
-						You are logged in as <strong><%=user.username%></strong>. 
-					</span>
+					<h1>
+						<a href='/'>Motivational Pizza</a>
+						<small>The best pizza-themed To Do list in the universe</small>
+					</h1>
 
-					<a href="/logout" id='log-out'> Logout</a>
-					
-				<% } else { %>
-					
-					<a href="/signup" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-user"></span> Create an Account</a>
+				</div>
+				
+				<div class="col-md-4">
+					<% if (user) { %>
 
-					<a href="/login" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-				<% } %>
-			</p>
+						<p style="text-align: right">
+							<span id="logged-in">
+								You are logged in as <strong><%=user.username%></strong>. 
+							</span>
 
-			<h1>
-				<a href='/'>Motivational Pizza</a><br />
-				<small>The best pizza-themed To Do list in the universe</small>
-			</h1>
+							<a href="/logout" id='log-out'> Logout</a>
+						</p>
+						
+					<% } else { %>
+
+						<p style="text-align: right">
+							<a href="/signup" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-user"></span> Create an Account</a>
+
+							<a href="/login" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+						</p>
+
+					<% } %>
+				</div>
+			</div>
 			
