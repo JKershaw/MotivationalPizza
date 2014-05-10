@@ -22,14 +22,14 @@
 
 		<% for (var i = 0; i < openTasks.length; i++) { %>
 			<div class='task task-open' data-i="<%=i%>" data-task-id='<%=openTasks[i]._id%>'>
-				<h2>
+				<h3>
 					<%-openTasks[i].text%>
-				</h2>
+				</h3>
 				<% if (openTasks[i].tags && openTasks[i].tags.length > 0) { %>
 
-					<p> Tags: 
+					<small>
 						<% for (var tag_i = 0; tag_i < openTasks[i].tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=openTasks[i].tags[tag_i].text%></span><%}%>
-					</p>
+					</small>
 
 				<%}%>
 

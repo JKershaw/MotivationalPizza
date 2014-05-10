@@ -13,6 +13,20 @@
 				$(this).parent().siblings().show();
 				$(this).parent().hide();
 			});
+
+			$(".more-task-options").on("click", function(){
+
+				$(this).hide();
+				$(this).siblings('.more-options').show();
+			});
+
+			$(".less-task-options").on("click", function(){
+				
+				$(this).parent().siblings('.more-task-options').show();
+				$(this).parent().hide();
+			});
+
+
 		</script>
 
 	</body>
