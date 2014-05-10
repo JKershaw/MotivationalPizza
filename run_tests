@@ -3,18 +3,20 @@ set -e
 
 export MONGO_CONNECTION_STRING=mongodb://localhost/motivational-pizza
 
-echo "Dropping database"
-mongo "motivational-pizza" --eval "db.dropDatabase()"
-
 echo "Running JSHint"
 jshint ./tests/integration ./tests/unit  ./tests/acceptance
 
-
+echo "=========================================="
 echo "Unit Tests"
+echo "=========================================="
+
 mocha tests/unit/ --ui qunit --reporter nyan --timeout 5000
 echo "Unit tests complete"
 
+echo "=========================================="
 echo "QUnit Tests"
+echo "=========================================="
+
 for D in tests/qunit/*; do
     if [ -d "${D}" ]; then
 			DIR="$D/*.html"
@@ -25,19 +27,19 @@ done
 echo "QUnit tests complete"
 
 
+echo "=========================================="
 echo "Integration Tests"
+echo "=========================================="
 
 echo "Dropping database"
 mongo "motivational-pizza" --eval "db.dropDatabase()"
 
-foreman start &
-sleep 1
 mocha tests/integration/ --recursive --ui tdd --reporter nyan --timeout 2000
 echo "Integration tests complete"
 
-pkill node
-
+echo "=========================================="
 echo "Acceptance Tests"
+echo "=========================================="
 
 echo "Dropping database"
 mongo "motivational-pizza" --eval "db.dropDatabase()"
@@ -46,13 +48,15 @@ foreman start &
 sleep 1
 
 echo "Running test tests/acceptance/"
-mocha tests/acceptance/ --recursive --ui tdd --reporter nyan --timeout 30000 --bail
+mocha tests/acceptance/ --recursive --ui tdd --reporter spec --timeout 30000 --bail
 
 echo "Acceptance tests complete"
 
-pkill node
-
+echo "=========================================="
 echo "All tests passed!"
+echo "=========================================="
+
+pkill node
 
 if [ $# -gt 0  ]; then
 	MESSAGE="$@"
