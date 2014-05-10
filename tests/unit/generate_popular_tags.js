@@ -1,7 +1,7 @@
 var assert = require('assert'),
 	MpApp = require('../../lib/app/MpApp');
 
-test("Given many tags exist, return the most popular one", function (done) {
+test("Given a few tags exist, return the most popular one", function (done) {
 
 	var results = [{
 		tags: [{
@@ -20,7 +20,8 @@ test("Given many tags exist, return the most popular one", function (done) {
 	}];
 
 	var expectedTags = [{
-		text: results[1].tags[1].text
+		text: results[1].tags[1].text,
+		popularity: 2
 	}],
 		userId = 1;
 
@@ -34,12 +35,60 @@ test("Given many tags exist, return the most popular one", function (done) {
 	});
 });
 
+
+test("Given a many tags exist, return the most popular one", function (done) {
+
+	var results = [{
+		tags: [{
+			text: "first tag"
+		}, {
+			text: "Lambs!"
+		}]
+	}, {
+		tags: [{
+			text: "second"
+		}, {
+			text: "Lambs!"
+		}, {
+			text: "Kittens!"
+		}, {
+			text: "womp!"
+		}, {
+			text: "fingers!"
+		} ]
+	}, {
+		tags: [{
+			text: "Kittens!"
+		}, {
+			text: "Lambs!"
+		}]
+	}];
+
+	var expectedTags = [{
+		text: "Lambs!",
+		popularity: 3
+	}, {
+		text: "Kittens!",
+		popularity: 2
+	}],
+		userId = 1;
+
+	var mpApp = new MpApp(new FakeRepository(results));
+
+	mpApp.query.popularTagsByUserId(userId, 2, function (returnedTags) {
+
+		assert.deepEqual(returnedTags, expectedTags);
+		done();
+
+	});
+});
+
 var FakeRepository = function (results) {
 
 	function find(query, callback) {
 		callback(results);
 	}
-	
+
 	return {
 		find: find
 	};
