@@ -67,9 +67,9 @@ describe('Given a task exists', function (done) {
 
 				describe('Then I try to tag it again with the same tag', function (done) {
 
-					it('the tag command returns false', function (done) {
+					it('the tag command returns true', function (done) {
 						taskCommand.tag(existingTask._id, tagText, function (success) {
-							expect(success).to.equal(false);
+							expect(success).to.equal(true);
 							done();
 						});
 					});
@@ -89,9 +89,9 @@ describe('Given a task exists', function (done) {
 				
 				describe('Then I try to tag it again with an empty', function (done) {
 
-					it('the tag command returns false', function (done) {
+					it('the tag command returns true', function (done) {
 						taskCommand.tag(existingTask._id, "", function (success) {
-							expect(success).to.equal(false);
+							expect(success).to.equal(true);
 							done();
 						});
 					});
