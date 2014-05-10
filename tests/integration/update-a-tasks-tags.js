@@ -11,13 +11,8 @@ var existingTask = {
 	tagText = "Tag!",
 	secondTagText = "Another Tag!";
 
-var fakeRequest = {
-	user: {
-		_id: "6"
-	}
-};
-
-var taskCommand = new TaskCommand(fakeRequest),
+var fakeRequest = require("./util/generateFakeRequest")(),
+	taskCommand = new TaskCommand(fakeRequest),
 	taskQuery = new TaskQuery(fakeRequest);
 
 describe('Given a task exists', function (done) {

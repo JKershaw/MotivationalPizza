@@ -12,13 +12,8 @@ var newTask = {
 		text: "This task is for today"
 	};
 
-var fakeRequest = {
-	user: {
-		_id: "1"
-	}
-};
-
-var taskCommand = new TaskCommand(fakeRequest),
+var fakeRequest = require("./util/generateFakeRequest")(),
+	taskCommand = new TaskCommand(fakeRequest),
 	taskQuery = new TaskQuery(fakeRequest);
 
 describe('Given five tasks for today exist', function (done) {

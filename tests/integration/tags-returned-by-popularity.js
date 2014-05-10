@@ -19,13 +19,8 @@ var task1 = {
 		tagsString: "cats, kittens, rain, house"
 	};
 
-var fakeRequest = {
-	user: {
-		_id: "500"
-	}
-};
-
-var taskCommand = new TaskCommand(fakeRequest),
+var fakeRequest = require("./util/generateFakeRequest")(),
+	taskCommand = new TaskCommand(fakeRequest),
 	taskQuery = new TaskQuery(fakeRequest);
 
 describe('Given some tasks exist', function (done) {

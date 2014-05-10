@@ -12,17 +12,9 @@ var existingNotTodayTask = {
 		text: "This task is for today"
 	};
 
-var fakeRequest = {
-	user: {
-		_id: "11"
-	}
-}, secondFakeRequest = {
-	user: {
-		_id: "12"
-	}
-};
-
-var taskCommand = new TaskCommand(fakeRequest),
+var fakeRequest = require("./util/generateFakeRequest")(),
+	secondFakeRequest = require("./util/generateFakeRequest")(),
+	taskCommand = new TaskCommand(fakeRequest),
 	taskQuery = new TaskQuery(fakeRequest);
 
 describe('Given a task for another day day exists', function (done) {

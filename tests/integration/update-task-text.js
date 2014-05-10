@@ -10,17 +10,9 @@ var existingTask = {
 },
 	editedText = "edited text";
 
-var fakeRequest = {
-	user: {
-		_id: "20"
-	}
-}, secondFakeRequest = {
-		user: {
-			_id: "21"
-		}
-	};
-
-var taskCommand = new TaskCommand(fakeRequest),
+var fakeRequest = require("./util/generateFakeRequest")(),
+	secondFakeRequest = require("./util/generateFakeRequest")(),
+	taskCommand = new TaskCommand(fakeRequest),
 	taskQuery = new TaskQuery(fakeRequest);
 
 describe('Given a task exists', function (done) {

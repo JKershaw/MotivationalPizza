@@ -13,13 +13,8 @@ var existingTask = {
 	tagText = "Tag!",
 	secondTagText = "Another Tag!, Tag!, Food";
 
-var fakeRequest = {
-	user: {
-		_id: "4"
-	}
-};
-
-var taskCommand = new TaskCommand(fakeRequest),
+var fakeRequest = require("./util/generateFakeRequest")(),
+	taskCommand = new TaskCommand(fakeRequest),
 	taskQuery = new TaskQuery(fakeRequest);
 
 describe('Given a task exists with no tags', function (done) {
