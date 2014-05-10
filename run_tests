@@ -4,7 +4,12 @@ set -e
 export MONGO_CONNECTION_STRING=mongodb://localhost/motivational-pizza
 
 echo "Running JSHint"
-jshint ./tests/integration ./tests/unit  ./tests/acceptance
+jshint ./tests/acceptance
+jshint ./tests/unit
+jshint ./tests/integration
+jshint ./routes
+jshint ./lib
+echo "JSHint Completed"
 
 echo "=========================================="
 echo "Unit Tests"
