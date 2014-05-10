@@ -9,7 +9,7 @@ module.exports = function (app) {
 		var taskQuery = new TaskQuery(request),
 			pageRenderer = new PageRenderer(request, response);
 
-		taskQuery.allTags(function (commonTags) {
+		taskQuery.popularTags(10, function (commonTags) {
 			model = {
 				commonTags: commonTags
 			};

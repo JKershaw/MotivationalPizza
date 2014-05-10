@@ -19,7 +19,7 @@ echo "=========================================="
 echo "Unit Tests"
 echo "=========================================="
 
-mocha tests/unit/ --ui qunit --reporter nyan --timeout 5000
+mocha tests/unit/ --ui qunit --reporter nyan --timeout 1000
 echo "Unit tests complete"
 
 echo "=========================================="
@@ -42,7 +42,7 @@ echo "=========================================="
 echo "Dropping database"
 mongo "motivational-pizza" --eval "db.dropDatabase()"
 
-mocha tests/integration/ --recursive --ui tdd --reporter nyan --timeout 2000
+mocha tests/integration/ --recursive --ui tdd --reporter nyan --timeout 3000
 echo "Integration tests complete"
 
 echo "=========================================="
