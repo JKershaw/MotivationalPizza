@@ -38,6 +38,7 @@ require("./routes/today-task")(app);
 require("./routes/edit-task")(app);
 require("./routes/bump-task")(app);
 require("./routes/tomorrow-task")(app);
+require("./routes/all-tomorrow-tasks-as-today")(app);
 
 require("./routes/authentication/authentication")(app, passport);
 
