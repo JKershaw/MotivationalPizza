@@ -4,6 +4,15 @@ set -e
 export MONGO_CONNECTION_STRING=mongodb://localhost/motivational-pizza
 
 if [ $# -gt 0  ]; then
+
+	echo "------------------------------------------"
+	echo "Syncing with GitHub"
+	echo "------------------------------------------"
+
+	git pull github
+fi
+
+if [ $# -gt 0  ]; then
 	echo "Running JSHint"
 	jshint ./tests/acceptance
 	jshint ./tests/unit
@@ -66,13 +75,27 @@ echo "=========================================="
 
 pkill node
 
+
 if [ $# -gt 0  ]; then
+
 	MESSAGE="$@"
 	echo "Committing with message '$MESSAGE'"
 	git add -A
 	git commit -am "$MESSAGE"
 	echo "Git Committed"
+
+	echo "------------------------------------------"
+	echo "Pushing to Heroku"
+	echo "------------------------------------------"
+
 	git push
+
+	echo "------------------------------------------"
+	echo "Pushing to GitHub"
+	echo "------------------------------------------"
+
+	git push github
+
 else
   echo "No commit message, no commit"
 fi
