@@ -3,18 +3,22 @@
 
 	<% include buttons/more %>
 
-	<span class='more-options'>
+	<span class='more-options' data-task-id="<%=task._id%>">
 
 		<% include buttons/less %>
 
-		<% include buttons/edit %>
-		
-		<% include buttons/today %>
-
-		<% include buttons/tomorrow %>
-
-		<% include buttons/some-other-time %>
-
-		<% include buttons/delete %>
 	</span>
+
+</p>
+
+<p class='more-options' data-task-id="<%=task._id%>">
+	<% include buttons/edit %>
+	
+	<% include buttons/today %>
+
+	<% include buttons/tomorrow %>
+
+	<% include buttons/some-other-time %>
+
+	<% include buttons/delete %>
 </p>

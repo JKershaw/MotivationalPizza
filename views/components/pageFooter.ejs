@@ -15,15 +15,23 @@
 			});
 
 			$(".more-task-options").on("click", function(){
+				
+				var taskId = $(this).data('task-id');
 
-				$(this).hide();
-				$(this).siblings('.more-options').show();
+				$('.more-options[data-task-id="' + taskId + '"]').show();
+
+				$('.more-task-options[data-task-id="' + taskId + '"]').hide();
+				$('.less-task-options[data-task-id="' + taskId + '"]').show();
 			});
 
 			$(".less-task-options").on("click", function(){
+
+				var taskId = $(this).data('task-id');
 				
-				$(this).parent().siblings('.more-task-options').show();
-				$(this).parent().hide();
+				$('.more-options[data-task-id="' + taskId + '"]').hide();
+
+				$('.more-task-options[data-task-id="' + taskId + '"]').show();
+				$('.less-task-options[data-task-id="' + taskId + '"]').hide();
 			});
 
 
