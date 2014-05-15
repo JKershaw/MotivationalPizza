@@ -12,15 +12,23 @@
 
 <p>
 	
-	<% include buttons/today %>
+	<% if (task.status == 'tomorrow') { %>
+	
+		<% include buttons/today %>
 
-	<% include buttons/edit %>
+	<% } else { %>
 
-	<a class="btn btn-default more-task-options btn-xs" role="button"> <span class="glyphicon glyphicon glyphicon-plus"></span></a>
+		<% include buttons/tomorrow %>
+
+	<% } %>
+
+	<% include buttons/more %>
 
 	<span class='more-options'>
 
-		<a class="btn btn-default less-task-options btn-xs" role="button"> <span class="glyphicon glyphicon glyphicon-minus"></span></a>
+		<% include buttons/less %>
+
+		<% include buttons/edit %>
 
 		<% if (task.status == 'tomorrow') { %>
 		
@@ -28,7 +36,7 @@
 
 		<% } else { %>
 
-			<% include buttons/tomorrow %>
+			<% include buttons/today %>
 
 		<% } %>
 

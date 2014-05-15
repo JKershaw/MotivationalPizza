@@ -13,20 +13,20 @@
 <p>
 	<% include buttons/done %>
 
-	<% include buttons/edit %>
-
-	<a class="btn btn-default more-task-options btn-xs" role="button"> <span class="glyphicon glyphicon glyphicon-plus"></span> More Options</a>
+	<% include buttons/more %>
 
 	<span class='more-options'>
 
-		<a class="btn btn-default less-task-options btn-xs" role="button"> <span class="glyphicon glyphicon glyphicon-minus"></span> Less Options</a>
+		<% include buttons/less %>
+
+		<% include buttons/edit %>
 
 		<% include buttons/tomorrow %>
 		
 		<% include buttons/some-other-time %>
 
 		<% include buttons/bump %>
-		
+
 		<% include buttons/delete %>
 	</span>
 

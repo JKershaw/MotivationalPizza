@@ -1,14 +1,17 @@
 <p>
 	<span class="task-text"><%-task.text%></span>
 
-	<a class="btn btn-default more-task-options btn-xs" role="button"> <span class="glyphicon glyphicon glyphicon-plus"></span></a>
+	<% include buttons/more %>
 
 	<span class='more-options'>
 
-		<a class="btn btn-default less-task-options btn-xs" role="button"> <span class="glyphicon glyphicon glyphicon-minus"></span></a>
-
+		<% include buttons/less %>
 
 		<% include buttons/edit %>
+		
+		<% include buttons/today %>
+
+		<% include buttons/tomorrow %>
 
 		<% include buttons/some-other-time %>
 
