@@ -1,5 +1,4 @@
 
-
 <% if (openTasks.length >= 5) { %>
 
 	<div class="alert alert-warning">
@@ -16,19 +15,7 @@
 		<% openTasks.forEach(function(task, i){ %>
 			<div class='task task-open' data-i="<%=i%>" data-task-id='<%=task._id%>'>
 				
-				<h3>
-					<%-task.text%>
-				</h3>
-				
-				<% if (task.tags && task.tags.length > 0) { %>
-
-					<small>
-						<% for (var tag_i = 0; tag_i < task.tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=task.tags[tag_i].text%></span><%}%>
-					</small>
-
-				<%}%>
-
-				<% 	include task-buttons-open %>
+				<% 	include task-open %>
 
 			</div>
 		<% }) %>

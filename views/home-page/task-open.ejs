@@ -1,3 +1,15 @@
+<h3>
+	<%-task.text%>
+</h3>
+
+<% if (task.tags && task.tags.length > 0) { %>
+
+	<small>
+		<% for (var tag_i = 0; tag_i < task.tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=task.tags[tag_i].text%></span><%}%>
+	</small>
+
+<%}%>
+
 <p>
 	<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=task._id%>"role="button"> <span class="glyphicon glyphicon-check"></span> Done</a>
 
