@@ -1,0 +1,67 @@
+<% include components/pageHeader %>
+
+
+	<form action='/SplitTask/<%=task._id%>' method="POST">
+
+		<div class="col-sm-6 col-sm-offset-3">
+			<p id="split-task-instructions">
+				Split your task in two
+			</p>
+
+			<div class="form-group">
+				<input type="text" class="form-control" id='original-task-text' name='original-task-text' value="<%=task.text%>" disabled> 
+			</div>
+
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+					<span class="input-group-addon">Tags</span>
+					<input type="text" class="form-control" id='original-task-tags' name='original-task-tags' value="<%=tags%>" disabled> 
+				</div>
+			</div>
+
+			<p style="text-align:center;"> <span class="glyphicon glyphicon-arrow-down"></span> </p>
+
+		</div>
+
+
+		<div class="col-sm-6">
+
+			<div class="form-group">
+				<input type="text" class="form-control" id='task1-text' name='task1-text' value="<%=task.text%>" required> 
+			</div>
+
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+					<span class="input-group-addon">Tags</span>
+					<input type="text" class="form-control" id='task1-tags' name='task1-tags' value="<%=tags%>"> 
+				</div>
+			</div>
+		</div>	
+		<div class="col-sm-6">
+
+			<div class="form-group">
+				<input type="text" class="form-control" id='task2-text' name='task2-text' value="<%=task.text%>" required> 
+			</div>
+
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+					<span class="input-group-addon">Tags</span>
+					<input type="text" class="form-control" id='task2-tags' name='task2-tags' value="<%=tags%>"> 
+				</div>
+			</div>
+		</div>	
+
+
+		<div class="col-sm-6 col-sm-offset-3">
+			<div class="form-group">
+				<button type="submit" class="btn btn-success btn-lg btn-block">Split Task</button>
+			</div>
+		</div>
+
+	</form>
+
+	<script src="/js/tag-selection-populates-tags-input.js"></script>
+	
+
+
+<% include components/pageFooter %>
