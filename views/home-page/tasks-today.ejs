@@ -20,15 +20,17 @@
 
 	<% if (openTasks.length > 0) { %>
 
-		<% for (var i = 0; i < openTasks.length; i++) { %>
-			<div class='task task-open' data-i="<%=i%>" data-task-id='<%=openTasks[i]._id%>'>
+		<% openTasks.forEach(function(task, i){ %>
+			<div class='task task-open' data-i="<%=i%>" data-task-id='<%=task._id%>'>
+				
 				<h3>
-					<%-openTasks[i].text%>
+					<%-task.text%>
 				</h3>
-				<% if (openTasks[i].tags && openTasks[i].tags.length > 0) { %>
+				
+				<% if (task.tags && task.tags.length > 0) { %>
 
 					<small>
-						<% for (var tag_i = 0; tag_i < openTasks[i].tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=openTasks[i].tags[tag_i].text%></span><%}%>
+						<% for (var tag_i = 0; tag_i < task.tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=task.tags[tag_i].text%></span><%}%>
 					</small>
 
 				<%}%>
@@ -36,7 +38,7 @@
 				<% 	include task-buttons-open %>
 
 			</div>
-		<% } %>
+		<% }) %>
 
 	<% } else { %>
 
