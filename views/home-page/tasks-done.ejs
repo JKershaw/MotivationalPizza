@@ -1,24 +1,24 @@
 <div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Done</h3>
-		  </div>
-		  <div class="panel-body">
+  <div class="panel-heading">
+    <h3 class="panel-title">Done</h3>
+  </div>
+  <div class="panel-body">
 
-		  	<h3>Today</h3>
+  	<h3>Today</h3>
 
-			<% doneTodayTasks.forEach(function(task, i){  %>
-				<div class='task task-done' data-i="<%=i%>" data-task-id='<%=task._id%>'>
-					<% 	include task-done %>
-				</div>
-			<% }) %>
-
-			<h3>Older</h3>
-
-			<% doneBeforeTodayTasks.forEach(function(task, i){ %>
-				<div class='task task-done archived-task-done' data-task-id='<%=task._id%>'>
-					<% 	include task-done %>
-				</div>
-			<% }) %>
-
-		  </div>
+	<% doneTodayTasks.forEach(function(task, i){  %>
+		<div class='task task-done' data-i="<%=i%>" data-task-id='<%=task._id%>'>
+			<% 	include task-done %>
 		</div>
+	<% }) %>
+
+	<h3>Older</h3>
+
+	<% doneBeforeTodayTasks.forEach(function(task, i){ %>
+		<div class='task task-done archived-task-done' data-task-id='<%=task._id%>'>
+			<% 	include task-done %>
+		</div>
+	<% }) %>
+
+  </div>
+</div>

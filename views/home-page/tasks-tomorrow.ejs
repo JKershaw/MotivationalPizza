@@ -11,17 +11,7 @@
 
 			<% tomorrowTasks.forEach(function(task, i){ %>
 				<div class='task task-tomorrow' data-i="<%=i%>" data-task-id='<%=task._id%>'>
-					<h3>
-						<%-task.text%>
-					</h3>
-					<% if (task.tags && task.tags.length > 0) { %>
-
-						<p><small> Tags: 
-							<% for (var tag_i = 0; tag_i < task.tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=task.tags[tag_i].text%></span><%}%>
-						</small></p>
-
-					<%}%>
-					<% 	include task-buttons-todo %>
+					<% 	include task-todo %>
 				</div>
 			<% }) %>
 	  </div>

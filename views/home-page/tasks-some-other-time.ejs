@@ -1,27 +1,17 @@
 <div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Some Other Time</h3>
-		  </div>
-		  <div class="panel-body">
+  <div class="panel-heading">
+    <h3 class="panel-title">Some Other Time</h3>
+  </div>
+  <div class="panel-body">
 
-				<% notTodayTasks.forEach(function(task, i){ %>
-					<div class='task task-not-today' data-i="<%=i%>" data-task-id='<%=task._id%>'>
-						<h3>
-							<%-task.text%>
-						</h3>
-						<% if (task.tags && task.tags.length > 0) { %>
+		<% notTodayTasks.forEach(function(task, i){ %>
+			<div class='task task-not-today' data-i="<%=i%>" data-task-id='<%=task._id%>'>
+				<% 	include task-todo %>
+			</div>
+		<% }) %>
 
-							<p><small> Tags: 
-								<% for (var tag_i = 0; tag_i < task.tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=task.tags[tag_i].text%></span><%}%>
-							</small></p>
-
-						<%}%>
-						<% 	include task-buttons-todo %>
-					</div>
-				<% }) %>
-
-				<% if (notTodayTasks.length == 0) { %>
-					<p>Nothing here.</p>
-				<% } %>
-		  </div>
-		</div>
+		<% if (notTodayTasks.length == 0) { %>
+			<p>Nothing here.</p>
+		<% } %>
+  </div>
+</div>
