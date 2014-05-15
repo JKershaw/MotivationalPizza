@@ -23,15 +23,11 @@ app.use(cookieParser());
 app.set('view engine', 'ejs');
 
 app.use(session({
-	secret: process.env.SESSION_SECRET
+	secret: process.env.SESSION_SECRET,
+	store: new MongoStore ({
+		url: process.env.MONGO_CONNECTION_STRING
+	})
 }));
-
-// app.use(express.session({
-// 	secret: process.env.SESSION_SECRET,
-// 	store: new MongoStore ({
-// 		db: process.env.MONGO_CONNECTION_STRING
-// 	})
-// }));
 
 app.use(passport.initialize());
 app.use(passport.session());
