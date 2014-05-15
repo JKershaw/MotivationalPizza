@@ -90,7 +90,7 @@ if [ $# -gt 0  ]; then
 	echo "Pushing to Heroku"
 	echo "------------------------------------------"
 
-	git push
+	git push heroku
 
 	echo "------------------------------------------"
 	echo "Pushing to GitHub"
