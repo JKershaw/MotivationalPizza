@@ -6,19 +6,19 @@
 
 		  	<h3>Today</h3>
 
-			<% for (i = 0; i < doneTodayTasks.length; i++) { %>
-				<div class='task task-done' data-i="<%=i%>" data-task-id='<%=doneTodayTasks[i]._id%>'>
+			<% doneTodayTasks.forEach(function(task, i){  %>
+				<div class='task task-done' data-i="<%=i%>" data-task-id='<%=task._id%>'>
 					<% 	include task-done-today %>
 				</div>
-			<% } %>
+			<% }) %>
 
 			<h3>Older</h3>
 
-			<% for (i = 0; i < doneBeforeTodayTasks.length; i++) { %>
-				<div class='task task-done archived-task-done' data-task-id='<%=doneBeforeTodayTasks[i]._id%>'>
+			<% doneBeforeTodayTasks.forEach(function(task, i){ %>
+				<div class='task task-done archived-task-done' data-task-id='<%=task[i]._id%>'>
 					<% 	include task-done-before-today %>
 				</div>
-			<% } %>
+			<% }) %>
 
 		  </div>
 		</div>
