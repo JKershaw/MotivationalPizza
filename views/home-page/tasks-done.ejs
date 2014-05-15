@@ -8,15 +8,15 @@
 
 			<% doneTodayTasks.forEach(function(task, i){  %>
 				<div class='task task-done' data-i="<%=i%>" data-task-id='<%=task._id%>'>
-					<% 	include task-done-today %>
+					<% 	include task-done %>
 				</div>
 			<% }) %>
 
 			<h3>Older</h3>
 
 			<% doneBeforeTodayTasks.forEach(function(task, i){ %>
-				<div class='task task-done archived-task-done' data-task-id='<%=task[i]._id%>'>
-					<% 	include task-done-before-today %>
+				<div class='task task-done archived-task-done' data-task-id='<%=task._id%>'>
+					<% 	include task-done %>
 				</div>
 			<% }) %>
 

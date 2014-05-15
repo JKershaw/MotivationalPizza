@@ -1,0 +1,20 @@
+<p>
+	<a class="btn btn-primary today-task btn-xs" href="/TodayTask/<%=task._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-calendar"></span> Today</a>
+
+	<a class="btn btn-default edit-task btn-xs" href="/EditTask/<%=task._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-edit"></span> Edit</a>
+
+	<a class="btn btn-default more-task-options btn-xs" role="button"> <span class="glyphicon glyphicon glyphicon-plus"></span> More Options</a>
+
+		<span class='more-options'>
+
+		<a class="btn btn-default less-task-options btn-xs" role="button"> <span class="glyphicon glyphicon glyphicon-minus"></span> Less Options</a>
+
+		<a class="btn btn-default not-today-task btn-xs" href="/NotTodayTask/<%=task._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-calendar"></span> Some Other Time</a>
+
+		<a class="btn btn-default bump-task btn-xs" href="/BumpTask/<%=task._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-arrow-up"></span></a>
+
+		<a class="btn btn-default delete-task btn-xs" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+		
+		<span class="delete-confirmation">Are you sure you want to <strong>delete</strong> this task? <a href="/DeleteTask/<%=task._id%>" class="delete-task-yes">Yes</a> / <a class="delete-task-no">No</a></span>
+	</span>
+</p>
