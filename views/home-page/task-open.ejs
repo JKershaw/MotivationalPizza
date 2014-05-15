@@ -11,7 +11,7 @@
 <%}%>
 
 <p>
-	<a class="btn btn-success done-task btn-xs" href="/DoneTask/<%=task._id%>"role="button"> <span class="glyphicon glyphicon-check"></span> Done</a>
+	<% include buttons/done %>
 
 	<a class="btn btn-default edit-task btn-xs" href="/EditTask/<%=task._id%>"role="button"> <span class="glyphicon glyphicon glyphicon-edit"></span> Edit</a>
 
