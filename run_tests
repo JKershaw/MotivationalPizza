@@ -10,6 +10,8 @@ if [ $# -gt 0  ]; then
 	echo "------------------------------------------"
 
 	git pull github
+else
+  echo "Skipping Git Pull from GitHub"
 fi
 
 if [ $# -gt 0  ]; then

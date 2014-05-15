@@ -1,33 +1,41 @@
 var express = require("express"),
 	app = express(),
+	bodyParser = require('body-parser'),
 	passport = require('passport'),
-	flash = require('connect-flash');
+	logger = require('morgan'),
+	cookieParser = require('cookie-parser'),
+	flash = require('connect-flash'),
+	session = require('express-session')
+	MongoStore = require('connect-mongo')(session);
 
 var path = require('path'),
 	ASSETS_DIRECTORY = path.join(__dirname, 'public');
 
 require('./lib/authentication/passport')(passport);
 
-app.configure(function () {
+app.use(express.static(ASSETS_DIRECTORY));
 
-	app.use(express.static(ASSETS_DIRECTORY));
+app.use(bodyParser());
+app.use(logger('dev'));
 
-	app.use(express.bodyParser());
-	app.use(express.logger('dev'));
+app.use(cookieParser());
 
-	app.use(express.cookieParser());
+app.set('view engine', 'ejs');
 
-	app.set('view engine', 'ejs');
+app.use(session({
+	secret: process.env.SESSION_SECRET
+}));
 
-	app.use(express.session({
-		secret: process.env.SESSION_SECRET
-	}));
+// app.use(express.session({
+// 	secret: process.env.SESSION_SECRET,
+// 	store: new MongoStore ({
+// 		db: process.env.MONGO_CONNECTION_STRING
+// 	})
+// }));
 
-	app.use(passport.initialize());
-	app.use(passport.session());
-	app.use(flash());
-
-});
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 require("./routes/home-page")(app);
 require("./routes/new-task")(app);
