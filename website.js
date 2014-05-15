@@ -6,9 +6,8 @@ var express = require("express"),
 	cookieParser = require('cookie-parser'),
 	flash = require('connect-flash'),
 	session = require('express-session')
-	MongoStore = require('connect-mongo')(session);
-
-var path = require('path'),
+	MongoStore = require('connect-mongo')(session)
+	path = require('path'),
 	ASSETS_DIRECTORY = path.join(__dirname, 'public');
 
 require('./lib/authentication/passport')(passport);
@@ -31,6 +30,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(flash());
 
 require("./routes/home-page")(app);
