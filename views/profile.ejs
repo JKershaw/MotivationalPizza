@@ -16,7 +16,7 @@
 
 				<p><strong>(UK only) Phone number:</strong></p>
 
-				<p><small>If your number starts with 0 (eg <strong>07</strong>9 123 ... ), the 0 is replaced with +44 (eg <strong>+447</strong>9 123 ... )</small></p>
+				<p><small>Drop the 0 at the start of your number (it's replaced with the +44)</small></p>
 
 				<div class="form-group">
 					<div class="input-group input-group-sm">
@@ -24,6 +24,8 @@
 						<input type="text" class="form-control" id='profile-phonenumber' name='profile-phonenumber' value="<% if (typeof user.phoneNumber != "undefined") {%><%=user.phoneNumber%><%}%>" placeholder="9876543210"> 
 					</div>
 				</div>
+
+				<p>Once you've saved your phone number, you can text your tasks to <strong>+44 1206 704037</strong>. If there's no room on your Today list, the task will go on your Tomorrow list.</p>
 
 
 				<div class="form-group">
