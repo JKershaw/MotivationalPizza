@@ -1,35 +1,36 @@
 <% include components/pageHeader %>
 
-	<div class="col-sm-6 col-sm-offset-3">
-		<p id="edit-task-instructions">
-			Edit your task
-		</p>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<p id="edit-task-instructions">
+				Edit your task
+			</p>
 
-		<form action='/EditTask/<%=task._id%>' method="POST">
+			<form action='/EditTask/<%=task._id%>' method="POST">
 
-			<div class="form-group">
-				<input type="text" class="form-control" id='task-text' name='task-text' value="<%=task.text%>" required autofocus> 
-			</div>
-
-			<div class="form-group">
-				<div class="input-group input-group-sm">
-					<span class="input-group-addon">Tags</span>
-					<input type="text" class="form-control" id='task-tags' name='task-tags' value="<%=tags%>"> 
+				<div class="form-group">
+					<input type="text" class="form-control" id='task-text' name='task-text' value="<%=task.text%>" required autofocus> 
 				</div>
-			</div>
 
-			<% if(commonTags.length > 0) {%>
-				<p>Common tags: 
-				<% for (var tag_i = 0; tag_i < commonTags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><a class="tag"><%=commonTags[tag_i].text%></a><%}%>
-				</p>
-			<%}%>
+				<div class="form-group">
+					<div class="input-group input-group-sm">
+						<span class="input-group-addon">Tags</span>
+						<input type="text" class="form-control" id='task-tags' name='task-tags' value="<%=tags%>"> 
+					</div>
+				</div>
 
-			<div class="form-group">
-				<button type="submit" class="btn btn-default">Edit Task</button>
-			</div>
-		</form>
+				<% if(commonTags.length > 0) {%>
+					<p>Common tags: 
+					<% for (var tag_i = 0; tag_i < commonTags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><a class="tag"><%=commonTags[tag_i].text%></a><%}%>
+					</p>
+				<%}%>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-default">Edit Task</button>
+				</div>
+			</form>
+		</div>
 	</div>
-
 	<script src="/js/tag-selection-populates-tags-input.js"></script>
 	
 

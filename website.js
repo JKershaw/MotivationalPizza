@@ -45,6 +45,7 @@ require("./routes/tomorrow-task")(app);
 require("./routes/split-task")(app);
 require("./routes/all-tomorrow-tasks-as-today")(app);
 
+require("./routes/profile")(app);
 require("./routes/sms")(app);
 
 require("./routes/authentication/authentication")(app, passport);

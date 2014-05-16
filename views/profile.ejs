@@ -1,0 +1,33 @@
+<% include components/pageHeader %>
+
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<h3 id="edit-profile-instructions">
+				Edit your profile
+			</h3>
+
+			<form action='/profile' method="POST">
+
+				<p><strong>User name:</strong></p>
+
+				<div class="form-group">
+					<input type="text" class="form-control" id='profile-username' name='profile-username' value="<%=user.username%>" disabled > 
+				</div>
+
+				<p><strong>(UK only) Phone number:</strong></p>
+
+				<div class="form-group">
+					<div class="input-group input-group-sm">
+						<span class="input-group-addon">+44</span>
+						<input type="text" class="form-control" id='profile-phonenumber' name='profile-phonenumber' value="<% if (typeof user.phoneNumber != "undefined") {%><%=user.phoneNumber%><%}%>"> 
+					</div>
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-default">Save Profile</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+<% include components/pageFooter %>
