@@ -9,6 +9,8 @@ module.exports = function (app) {
 		smsHandler = new SmsHandler(tasksRepository, usersRepository);
 
 	app.all('/SMS', function (request, response) {
-		smsHandler.handle(request.body, response);
+		smsHandler.handle(request.body, response, function(){
+			
+		});
 	});
 };
