@@ -1,7 +1,7 @@
 module.exports = function (app) {
 
 	app.all('/SMS', function (request, response) {
-		console.log("WEEEE!", request);
+		console.log("Body: ", request.body);
 		response.send(200);
 	});
 };
