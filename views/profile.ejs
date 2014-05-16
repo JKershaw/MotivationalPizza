@@ -16,12 +16,15 @@
 
 				<p><strong>(UK only) Phone number:</strong></p>
 
+				<p><small>If your number starts with 0 (eg <strong>07</strong>9 123 ... ), the 0 is replaced with +44 (eg <strong>+447</strong>9 123 ... )</small></p>
+
 				<div class="form-group">
 					<div class="input-group input-group-sm">
 						<span class="input-group-addon">+44</span>
-						<input type="text" class="form-control" id='profile-phonenumber' name='profile-phonenumber' value="<% if (typeof user.phoneNumber != "undefined") {%><%=user.phoneNumber%><%}%>"> 
+						<input type="text" class="form-control" id='profile-phonenumber' name='profile-phonenumber' value="<% if (typeof user.phoneNumber != "undefined") {%><%=user.phoneNumber%><%}%>" placeholder="9876543210"> 
 					</div>
 				</div>
+
 
 				<div class="form-group">
 					<button type="submit" class="btn btn-default">Save Profile</button>
