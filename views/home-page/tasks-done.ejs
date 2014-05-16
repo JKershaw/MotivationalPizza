@@ -1,3 +1,5 @@
+<% if ((doneTodayTasks.length > 0) || (doneBeforeTodayTasks.length > 0)) { %>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Done</h3>
@@ -12,13 +14,16 @@
 		</div>
 	<% }) %>
 
-	<h3>Older</h3>
+	<% if (doneBeforeTodayTasks.length > 0) { %>
+		<h3>Older</h3>
 
-	<% doneBeforeTodayTasks.forEach(function(task, i){ %>
-		<div class='task task-done archived-task-done' data-task-id='<%=task._id%>'>
-			<%	include task-done %>
-		</div>
-	<% }) %>
+		<% doneBeforeTodayTasks.forEach(function(task, i){ %>
+			<div class='task task-done archived-task-done' data-task-id='<%=task._id%>'>
+				<%	include task-done %>
+			</div>
+		<% }) %>
+	<% } %>
 
   </div>
 </div>
+<% } %>

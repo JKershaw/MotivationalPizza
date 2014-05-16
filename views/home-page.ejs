@@ -1,5 +1,10 @@
 <% include components/pageHeader %>
 
+<% if (!user) { %>
+
+	<% include components/not-logged-in-info %>
+
+<% } %>
 
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -8,7 +13,6 @@
 
 			<% include home-page/tasks-today %>
 
-			
 			<p class="add-new-task-button">
 				<% if (openTasks.length >= 5) { %>
 					<a class="btn btn-success btn-lg btn-block disabled" href="/NewTask" role="button">Add New Task</a>
