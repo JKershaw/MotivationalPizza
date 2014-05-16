@@ -5,7 +5,13 @@
   <div class="panel-body">
 
 		<% notTodayTasks.forEach(function(task, i){ %>
-			<div class='task task-not-today' data-i="<%=i%>" data-task-id='<%=task._id%>'>
+			<div class='task task-not-today' data-tags="<% 
+			if (task.tags) {
+				task.tags.forEach(function(tag, i){
+					%><%=tag.text%> <%
+				});
+			}
+			%>" data-i="<%=i%>" data-task-id='<%=task._id%>'>
 				<% 	include task-todo %>
 			</div>
 		<% }) %>
@@ -15,3 +21,6 @@
 		<% } %>
   </div>
 </div>
+
+
+<script src="/js/filter-by-tag.js"></script>
