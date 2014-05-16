@@ -4,6 +4,16 @@
   </div>
   <div class="panel-body">
 
+  	<% if (notTodayTags.length > 0) { %>
+  	<p>
+  		Filter: <a class="tag-filter" data-tag-clear="true">None</a><%
+  		for (var i = 0; i < notTodayTags.length; i++) {
+  			%>, <a class="tag-filter" data-tag-value="<%=notTodayTags[i]%>"><%=notTodayTags[i]%></a><%
+  		}%>
+  	</p>
+
+  	<% }%>
+
 		<% notTodayTasks.forEach(function(task, i){ %>
 			<div class='task task-not-today' data-tags="<% 
 			if (task.tags) {

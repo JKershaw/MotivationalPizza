@@ -67,7 +67,7 @@ foreman start &
 sleep 1
 
 echo "Running test tests/acceptance/"
-mocha tests/acceptance/ --recursive --ui tdd --reporter spec --timeout 30000 --bail
+mocha tests/acceptance/ --recursive --ui tdd --reporter spec --timeout 60000 --bail
 
 echo "Acceptance tests complete"
 
