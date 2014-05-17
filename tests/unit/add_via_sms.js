@@ -32,7 +32,7 @@ test("When I get an SMS without a valid number, error is returned", function (do
 		fakeResponse = new FakeResponse();
 
 	smsHandler = new SmsHandler(tasksRepository, usersRepository);
-	
+
 	var fakeSmsBody = {
 		Body: "newTaskText",
 		From: '+440123456789'
@@ -51,7 +51,7 @@ test("When I get an SMS without a valid number, error is returned", function (do
 test("When I add a task via an SMS message and there's 5 today tasks, it's marked for tomorrow ", function (done) {
 
 	var usersRepository = new FakeRepository([]),
-		tasksRepository = new FakeRepository([{},{},{},{},{}]),
+		tasksRepository = new FakeRepository([{}, {}, {}, {}, {}]),
 		fakeResponse = new FakeResponse();
 
 	smsHandler = new SmsHandler(tasksRepository, usersRepository);
@@ -99,10 +99,16 @@ var FakeRepository = function (findResults) {
 		callback(results);
 	}
 
+	function findById(query, callback) {
+		var results = [{}];
+		callback(results);
+	}
+
 	return {
 		find: find,
 		save: save,
-		findByPhoneNumber: findByPhoneNumber
+		findByPhoneNumber: findByPhoneNumber,
+		findById: findById
 	};
 };
 

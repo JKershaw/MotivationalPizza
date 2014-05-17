@@ -25,7 +25,7 @@ test("Given a few tags exist, return the most popular one", function (done) {
 	}],
 		userId = 1;
 
-	var mpApp = new MpApp(new FakeRepository(results));
+	var mpApp = new MpApp(new FakeRepository(results), new FakeRepository([]));
 
 	mpApp.query.popularTagsByUserId(userId, 1, function (returnedTags) {
 
@@ -123,8 +123,12 @@ var FakeRepository = function (results) {
 	function find(query, callback) {
 		callback(results);
 	}
+	function findById(query, callback) {
+		callback([]);
+	}
 
 	return {
-		find: find
+		find: find,
+		findById: findById
 	};
 };
