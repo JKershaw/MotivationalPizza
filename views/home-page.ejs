@@ -14,7 +14,7 @@
 			<% include home-page/tasks-today %>
 
 			<p class="add-new-task-button">
-				<% if (openTasks.length >= 5) { %>
+				<% if (todayIsfull) { %>
 					<a class="btn btn-success btn-lg btn-block disabled" href="/NewTask" role="button">Add New Task</a>
 				<% } else { %>
 					<a class="btn btn-success btn-lg btn-block" href="/NewTask" role="button">Add New Task</a>
