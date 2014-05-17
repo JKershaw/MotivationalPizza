@@ -1,5 +1,5 @@
 var assert = require('assert'),
-	TodayFullSpecification = require("../../lib/app/commands/specifications/TodayFullSpecification");
+	TodayFullSpecification = require("../../lib/app/specifications/TodayFullSpecification");
 
 test("Given a user has no preference and 1 task exists for today, return false", function (done) {
 
