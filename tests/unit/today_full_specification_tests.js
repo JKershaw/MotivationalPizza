@@ -37,7 +37,7 @@ test("Given a user a preference for 10 today days max, and 5 tasks exists for to
 
 	var tasksRepository = new FakeTasksRepository([{}, {}, {}, {}, {}]),
 		usersRepository = new FakeUsersRepository({
-			maxTodayTaskCount: 10
+			maxTodayTaskCount: "10"
 		}),
 		todayFullSpecification = new TodayFullSpecification(tasksRepository, usersRepository);
 
@@ -55,7 +55,7 @@ test("Given a user a preference for 10 today days max, and 10 tasks exists for t
 
 	var tasksRepository = new FakeTasksRepository([{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]),
 		usersRepository = new FakeUsersRepository({
-			maxTodayTaskCount: 10
+			maxTodayTaskCount: "10"
 		}),
 		todayFullSpecification = new TodayFullSpecification(tasksRepository, usersRepository);
 
@@ -73,7 +73,7 @@ test("Given a user a preference for 3 today days max, and 2 tasks exists for tod
 
 	var tasksRepository = new FakeTasksRepository([{}, {}]),
 		usersRepository = new FakeUsersRepository({
-			maxTodayTaskCount: 3
+			maxTodayTaskCount: "3"
 		}),
 		todayFullSpecification = new TodayFullSpecification(tasksRepository, usersRepository);
 
@@ -91,7 +91,7 @@ test("Given a user a preference for 3 today days max, and 3 tasks exists for tod
 
 	var tasksRepository = new FakeTasksRepository([{}, {}, {}]),
 		usersRepository = new FakeUsersRepository({
-			maxTodayTaskCount: 3
+			maxTodayTaskCount: "3"
 		}),
 		todayFullSpecification = new TodayFullSpecification(tasksRepository, usersRepository);
 
