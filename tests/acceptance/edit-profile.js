@@ -8,7 +8,8 @@ var expect = require('chai').expect,
 var browser = new Browser({
 	site: "http://localhost:3000"
 }),
-	newPhoneNumber = "7976048640";
+	newPhoneNumber = "7976048640",
+	newMaxTodayTaskCount = "100";
 
 describe("Given I'm logged in", function (done) {
 
@@ -31,11 +32,13 @@ describe("Given I'm logged in", function (done) {
 			it("Then I can see my profile information", function () {
 				expect(browser.query('#profile-username')).to.exist;
 				expect(browser.query('#profile-phonenumber')).to.exist;
+				expect(browser.query('#profile-maxtodaytaskcount')).to.exist;
 			});
 
 			describe("And I edit my phone number", function (done) {
 				before(function (done) {
 					browser.fill('#profile-phonenumber', newPhoneNumber);
+					browser.fill('#profile-maxtodaytaskcount', newMaxTodayTaskCount);
 					browser.pressButton("Save Profile", done);
 				});
 
@@ -50,6 +53,7 @@ describe("Given I'm logged in", function (done) {
 
 					it("Then I can see my new number listed", function () {
 						expect(browser.query('#profile-phonenumber[value="' + newPhoneNumber + '"]')).to.exist;
+						expect(browser.query('#profile-maxtodaytaskcount[value="' + newMaxTodayTaskCount + '"]')).to.exist;
 					});
 				});
 			});

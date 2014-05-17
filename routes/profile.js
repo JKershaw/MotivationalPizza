@@ -15,12 +15,14 @@ module.exports = function (app) {
 
 	app.post('/profile', function (request, response) {
 
-		var phoneNumber = request.body['profile-phonenumber'];
+		var phoneNumber = request.body['profile-phonenumber'],
+			maxTodayTaskCount = request.body['profile-maxtodaytaskcount'];
 
 		user.updatePhoneNumber(request.user, phoneNumber, function () {
-
-			request.flash('info', 'profile-updated');
-			response.redirect("/");
+			user.updateMaxTodayTaskCount(request.user, maxTodayTaskCount, function () {
+				request.flash('info', 'profile-updated');
+				response.redirect("/");
+			});
 		});
 	});
 };

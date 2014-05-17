@@ -14,6 +14,15 @@
 					<input type="text" class="form-control" id='profile-username' name='profile-username' value="<%=user.username%>" disabled > 
 				</div>
 
+				<p><strong>Maximum number of simultaneous tasks for today:</strong></p>
+
+				<p><small>You'll find you get more done the smaller this number is.</small></p>
+
+				<div class="form-group">
+					<input type="number" class="form-control" id='profile-maxtodaytaskcount' name='profile-maxtodaytaskcount' value="<% if (typeof user.maxTodayTaskCount != "undefined") {%><%=user.maxTodayTaskCount%><%} else {%>5<%}%>"> 
+
+				</div>
+
 				<p><strong>(UK only) Phone number:</strong></p>
 
 				<p><small>Drop the 0 at the start of your number (it's replaced with the +44)</small></p>
