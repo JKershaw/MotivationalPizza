@@ -1,5 +1,5 @@
 var assert = require('assert'),
-	MpApp = require('../../lib/app/MpApp');
+	MpApp = require('../../../lib/app/MpApp');
 
 test("Given a few tags exist, return the most popular one", function (done) {
 

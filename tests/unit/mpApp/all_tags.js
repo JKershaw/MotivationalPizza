@@ -1,5 +1,5 @@
 var assert = require('assert'),
-	MpApp = require('../../lib/app/MpApp');
+	MpApp = require('../../../lib/app/MpApp');
 
 test("Given one tag exists for three tasks, return them when allTags is called", function (done) {
 

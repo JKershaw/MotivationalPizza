@@ -30,7 +30,7 @@ echo "=========================================="
 echo "Unit Tests"
 echo "=========================================="
 
-mocha tests/unit/ --ui qunit --reporter nyan --timeout 1000
+mocha tests/unit/ --recursive --ui qunit --reporter nyan --timeout 1000
 echo "Unit tests complete"
 
 echo "=========================================="

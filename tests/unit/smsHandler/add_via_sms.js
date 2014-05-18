@@ -1,5 +1,5 @@
 var assert = require('assert'),
-	SmsHandler = require("../../lib/util/SmsHandler");
+	SmsHandler = require("../../../lib/util/SmsHandler");
 
 test("I can add a task via an SMS message", function (done) {
 

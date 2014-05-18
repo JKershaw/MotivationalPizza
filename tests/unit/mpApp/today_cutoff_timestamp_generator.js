@@ -1,5 +1,5 @@
 var assert = require('assert'),
-	DailyCutoffCalculator = require('../../lib/app/util/DailyCutoffCalculator');
+	DailyCutoffCalculator = require('../../../lib/app/util/DailyCutoffCalculator');
 
 test("Given a timestamp of now, return the timestamp for 3am this morning", function (done) {
 
