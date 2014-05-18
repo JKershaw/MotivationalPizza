@@ -1,11 +1,11 @@
 var PageRenderer = require("../lib/util/PageRenderer"),
-	User = require("../lib/authentication/User"),
+	UserCommand = require("../lib/UserCommand"),
 	UsersRepository = require('../lib/repositories/UsersRepository');
 
 module.exports = function (app) {
 
 	var usersRepository = new UsersRepository(),
-		user = new User(usersRepository);
+		userCommand = new UserCommand(usersRepository);
 
 	app.get('/profile', function (request, response) {
 
@@ -18,8 +18,8 @@ module.exports = function (app) {
 		var phoneNumber = request.body['profile-phonenumber'],
 			maxTodayTaskCount = request.body['profile-maxtodaytaskcount'];
 
-		user.updatePhoneNumber(request.user, phoneNumber, function () {
-			user.updateMaxTodayTaskCount(request.user, maxTodayTaskCount, function () {
+		userCommand.updatePhoneNumber(request.user, phoneNumber, function () {
+			userCommand.updateMaxTodayTaskCount(request.user, maxTodayTaskCount, function () {
 				request.flash('info', 'profile-updated');
 				response.redirect("/");
 			});
