@@ -43,7 +43,7 @@ test("When I markAsDone a task, the event store is used", function (done) {
 
 	mpAppCommand.markAsDone(newTask, function (success) {
 		assert.equal(eventStoreUsed, true);
-		assert.equal(eventTypeSaved, "markTaskAsDone");
+		assert.equal(eventTypeSaved, "TaskMarkAsDone");
 		done();
 	});
 });
@@ -56,7 +56,7 @@ test("When I markAsToday a task, the event store is used", function (done) {
 
 	mpAppCommand.markAsToday(newTask, function (success) {
 		assert.equal(eventStoreUsed, true);
-		assert.equal(eventTypeSaved, "markTaskAsToday");
+		assert.equal(eventTypeSaved, "TaskMarkAsToday");
 		done();
 	});
 });
