@@ -126,6 +126,19 @@ test("When I addTags a task, the event store is used", function (done) {
 	});
 });
 
+test("When I saveUser a task, the event store is used", function (done) {
+
+	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new Date(), new FakeRepository(), new FakeRepository());
+	eventStoreUsed = false;
+	eventTypeSaved = false;
+
+	mpAppCommand.saveUser({}, function (success) {
+		assert.equal(eventStoreUsed, true);
+		assert.equal(eventTypeSaved, "saveUser");
+		done();
+	});
+});
+
 var FakeEventStore = function () {
 
 	function save(eventType, eventData, callback) {
