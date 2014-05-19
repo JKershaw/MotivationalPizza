@@ -10,10 +10,14 @@ module.exports = function (app) {
 			pageRenderer = new PageRenderer(request, response);
 
 		taskQuery.popularTags(10, function (commonTags) {
-			model = {
-				commonTags: commonTags
-			};
-			pageRenderer.render("new-task.ejs", model);
+			taskQuery.isTodayFull(function (todayIsfull) {
+
+				model = {
+					commonTags: commonTags,
+					todayIsfull: todayIsfull
+				};
+				pageRenderer.render("new-task.ejs", model);
+			});
 		});
 	});
 
@@ -25,6 +29,14 @@ module.exports = function (app) {
 			text: request.body['task-text'],
 			tagsString: request.body['task-tags']
 		};
+
+		if (request.body['task-when'] == "tomorrow") {
+			newTask.status = "tomorrow";
+		}
+
+		if (request.body['task-when'] == "some-other-time") {
+			newTask.status = "not-today";
+		}
 
 		taskCommand.add(newTask, function (successful) {
 			if (!successful) {

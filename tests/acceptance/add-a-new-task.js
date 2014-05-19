@@ -37,7 +37,7 @@ describe('Given I sign up and visit the home page', function (done) {
 		});
 
 		it("Then I am propmpted to enter the task", function () {
-			expect(browser.text("#enter-task-instructions")).to.contain("Enter your new task details");
+			expect(browser.text("#enter-task-instructions")).to.contain("Your new task");
 		});
 
 		describe("When I enter the new task and tag", function () {
