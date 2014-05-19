@@ -69,7 +69,7 @@ test("When I markAsNotToday a task, the event store is used", function (done) {
 
 	mpAppCommand.markAsNotToday(newTask, function (success) {
 		assert.equal(eventStoreUsed, true);
-		assert.equal(eventTypeSaved, "markTaskAsNotToday");
+		assert.equal(eventTypeSaved, "TaskMarkAsSomeOtherTime");
 		done();
 	});
 });
@@ -82,7 +82,7 @@ test("When I markAsTomorrow a task, the event store is used", function (done) {
 
 	mpAppCommand.markAsTomorrow(newTask, function (success) {
 		assert.equal(eventStoreUsed, true);
-		assert.equal(eventTypeSaved, "markTaskAsTomorrow");
+		assert.equal(eventTypeSaved, "TaskMarkAsTomorrow");
 		done();
 	});
 });
@@ -95,7 +95,7 @@ test("When I updateText a task, the event store is used", function (done) {
 
 	mpAppCommand.updateText(newTask, "some text", function (success) {
 		assert.equal(eventStoreUsed, true);
-		assert.equal(eventTypeSaved, "updateTaskText");
+		assert.equal(eventTypeSaved, "TaskUpdateText");
 		done();
 	});
 });
@@ -108,7 +108,7 @@ test("When I bump a task, the event store is used", function (done) {
 
 	mpAppCommand.bump(newTask, function (success) {
 		assert.equal(eventStoreUsed, true);
-		assert.equal(eventTypeSaved, "bumpTask");
+		assert.equal(eventTypeSaved, "TaskBump");
 		done();
 	});
 });
@@ -121,7 +121,7 @@ test("When I addTags a task, the event store is used", function (done) {
 
 	mpAppCommand.addTags(newTask, [], function (success) {
 		assert.equal(eventStoreUsed, true);
-		assert.equal(eventTypeSaved, "addTaskTags");
+		assert.equal(eventTypeSaved, "TaskAddTags");
 		done();
 	});
 });
@@ -134,7 +134,7 @@ test("When I saveUser a task, the event store is used", function (done) {
 
 	mpAppCommand.saveUser({}, function (success) {
 		assert.equal(eventStoreUsed, true);
-		assert.equal(eventTypeSaved, "saveUser");
+		assert.equal(eventTypeSaved, "UserAdd");
 		done();
 	});
 });
