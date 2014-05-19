@@ -17,7 +17,7 @@ test("When I add a task, the event store is used", function (done) {
 
 	mpAppCommand.add(newTask, function (success) {
 		assert.equal(eventStoreUsed, true);
-		assert.equal(eventTypeSaved, "addTask");
+		assert.equal(eventTypeSaved, "TaskAdd");
 		done();
 	});
 });

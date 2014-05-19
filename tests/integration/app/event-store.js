@@ -23,7 +23,7 @@ describe('Given I add a task', function (done) {
 
 	it('The most recent event is for this task', function (done) {
 		mpApp.query.latestEvent(function (event) {
-			expect(event.type).to.equal("addTask");
+			expect(event.type).to.equal("TaskAdd");
 			expect(event.data.task.text).to.equal(task.text);
 			done();
 		});
