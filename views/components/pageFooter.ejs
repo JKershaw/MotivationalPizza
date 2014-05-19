@@ -35,28 +35,41 @@
 				$(this).parent().hide();
 			});
 
-			$(".more-task-options").on("click", function(){
-				
-				var taskId = $(this).data('task-id');
+			function listenForClicks(){
 
-				$('.more-options[data-task-id="' + taskId + '"]').show();
+				$(".more-task-options").on("click", function(){
+					
+					var taskId = $(this).data('task-id');
 
-				$('.more-task-options[data-task-id="' + taskId + '"]').hide();
-				$('.less-task-options[data-task-id="' + taskId + '"]').show();
+					$('.more-options[data-task-id="' + taskId + '"]').show();
+
+					$('.more-task-options[data-task-id="' + taskId + '"]').hide();
+					$('.less-task-options[data-task-id="' + taskId + '"]').show();
 
 
-				$('.task-text[data-task-id="' + taskId + '"]').show();
-			});
+					$('.task-text[data-task-id="' + taskId + '"]').show();
+					$('.task-text[data-task-id="' + taskId + '"]').addClass("less-task-options");
+					$('.task-text[data-task-id="' + taskId + '"]').removeClass("more-task-options");
+					listenForClicks();
+				});
 
-			$(".less-task-options").on("click", function(){
+				$(".less-task-options").on("click", function(){
 
-				var taskId = $(this).data('task-id');
-				
-				$('.more-options[data-task-id="' + taskId + '"]').hide();
+					var taskId = $(this).data('task-id');
+					
+					$('.more-options[data-task-id="' + taskId + '"]').hide();
 
-				$('.more-task-options[data-task-id="' + taskId + '"]').show();
-				$('.less-task-options[data-task-id="' + taskId + '"]').hide();
-			});
+					$('.more-task-options[data-task-id="' + taskId + '"]').show();
+					$('.less-task-options[data-task-id="' + taskId + '"]').hide();
+
+					$('.task-text[data-task-id="' + taskId + '"]').show();
+					$('.task-text[data-task-id="' + taskId + '"]').removeClass("less-task-options");
+					$('.task-text[data-task-id="' + taskId + '"]').addClass("more-task-options");
+					listenForClicks();
+				});
+			}
+
+			listenForClicks();
 
 
 		</script>
