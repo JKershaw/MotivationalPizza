@@ -30,7 +30,7 @@ test("When I remove a task, the event store is used", function (done) {
 
 	mpAppCommand.remove(newTask, function (success) {
 		assert.equal(eventStoreUsed, true);
-		assert.equal(eventTypeSaved, "removeTask");
+		assert.equal(eventTypeSaved, "TaskRemove");
 		done();
 	});
 });
