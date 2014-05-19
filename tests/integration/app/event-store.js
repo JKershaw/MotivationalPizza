@@ -14,7 +14,9 @@ var task = {
 describe('Given I add a task', function (done) {
 
 	before(function (done) {
-		mpApp.command.add(task, function () {
+		mpApp.command("TaskAdd", {
+			task: task
+		}, function () {
 			done();
 		});
 	});
@@ -30,7 +32,9 @@ describe('Given I add a task', function (done) {
 	describe('Given I bump a task', function (done) {
 
 		before(function (done) {
-			mpApp.command.bump(task, function () {
+			mpApp.command("TaskBump", {
+				task: task
+			}, function () {
 				done();
 			});
 		});

@@ -10,7 +10,7 @@ test("Try to add a task for today when enough already exist", function (done) {
 
 	var mpApp = new MpAppBuilder().build(new FakeRepository(), new FakeRepository());
 
-	mpApp.command.add(newTask, function (success) {
+	mpApp.command("TaskAdd", {task: newTask}, function (success) {
 
 		assert.equal(success, false);
 		done();
@@ -27,7 +27,7 @@ test("Try to add a task with another status when enough already exist", function
 
 	var mpApp = new MpAppBuilder().build(new FakeRepository(), new FakeRepository());
 
-	mpApp.command.add(newTask, function (success) {
+	mpApp.command("TaskAdd", {task: newTask}, function (success) {
 
 		assert.equal(success, true);
 		done();
