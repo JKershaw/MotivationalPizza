@@ -11,7 +11,7 @@ var eventStoreUsed, eventTypeSaved;
 
 test("When I add a task, the event store is used", function (done) {
 
-	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new FakeRepository(), new FakeRepository());
+	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new Date(), new FakeRepository(), new FakeRepository());
 	eventStoreUsed = false;
 	eventTypeSaved = false;
 
@@ -24,7 +24,7 @@ test("When I add a task, the event store is used", function (done) {
 
 test("When I remove a task, the event store is used", function (done) {
 
-	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new FakeRepository(), new FakeRepository());
+	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new Date(), new FakeRepository(), new FakeRepository());
 	eventStoreUsed = false;
 	eventTypeSaved = false;
 
@@ -37,7 +37,7 @@ test("When I remove a task, the event store is used", function (done) {
 
 test("When I markAsDone a task, the event store is used", function (done) {
 
-	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new FakeRepository(), new FakeRepository());
+	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new Date(), new FakeRepository(), new FakeRepository());
 	eventStoreUsed = false;
 	eventTypeSaved = false;
 
@@ -50,7 +50,7 @@ test("When I markAsDone a task, the event store is used", function (done) {
 
 test("When I markAsToday a task, the event store is used", function (done) {
 
-	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new FakeRepository(), new FakeRepository());
+	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new Date(), new FakeRepository(), new FakeRepository());
 	eventStoreUsed = false;
 	eventTypeSaved = false;
 
@@ -63,7 +63,7 @@ test("When I markAsToday a task, the event store is used", function (done) {
 
 test("When I markAsNotToday a task, the event store is used", function (done) {
 
-	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new FakeRepository(), new FakeRepository());
+	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new Date(), new FakeRepository(), new FakeRepository());
 	eventStoreUsed = false;
 	eventTypeSaved = false;
 
@@ -76,7 +76,7 @@ test("When I markAsNotToday a task, the event store is used", function (done) {
 
 test("When I markAsTomorrow a task, the event store is used", function (done) {
 
-	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new FakeRepository(), new FakeRepository());
+	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new Date(), new FakeRepository(), new FakeRepository());
 	eventStoreUsed = false;
 	eventTypeSaved = false;
 
@@ -89,7 +89,7 @@ test("When I markAsTomorrow a task, the event store is used", function (done) {
 
 test("When I updateText a task, the event store is used", function (done) {
 
-	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new FakeRepository(), new FakeRepository());
+	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new Date(), new FakeRepository(), new FakeRepository());
 	eventStoreUsed = false;
 	eventTypeSaved = false;
 
@@ -102,7 +102,7 @@ test("When I updateText a task, the event store is used", function (done) {
 
 test("When I bump a task, the event store is used", function (done) {
 
-	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new FakeRepository(), new FakeRepository());
+	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new Date(), new FakeRepository(), new FakeRepository());
 	eventStoreUsed = false;
 	eventTypeSaved = false;
 
@@ -115,7 +115,7 @@ test("When I bump a task, the event store is used", function (done) {
 
 test("When I addTags a task, the event store is used", function (done) {
 
-	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new FakeRepository(), new FakeRepository());
+	var mpAppCommand = new MpAppCommand(new FakeEventStore(), new Date(), new FakeRepository(), new FakeRepository());
 	eventStoreUsed = false;
 	eventTypeSaved = false;
 
