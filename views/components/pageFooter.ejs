@@ -43,6 +43,9 @@
 
 				$('.more-task-options[data-task-id="' + taskId + '"]').hide();
 				$('.less-task-options[data-task-id="' + taskId + '"]').show();
+
+
+				$('.task-text[data-task-id="' + taskId + '"]').show();
 			});
 
 			$(".less-task-options").on("click", function(){
