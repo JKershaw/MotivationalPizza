@@ -1,5 +1,5 @@
 var assert = require('assert'),
-	MpApp = require('../../../lib/app/MpApp');
+	MpAppBuilder = require('../../../lib/util/MpAppBuilder');
 
 test("Given one tag exists for three tasks, return them when allTags is called", function (done) {
 
@@ -29,7 +29,7 @@ test("Given one tag exists for three tasks, return them when allTags is called",
 	}],
 		userId = 1;
 
-	var mpApp = new MpApp(new FakeRepository(results));
+	var mpApp = new MpAppBuilder().build(new FakeRepository(results), new FakeRepository());
 
 	mpApp.query.allTagsByUserId(userId, function (returnedTags) {
 
@@ -84,7 +84,7 @@ test("Given several tags exists for several tasks, return them when allTags is c
 	}],
 		userId = 1;
 
-	var mpApp = new MpApp(new FakeRepository(results));
+	var mpApp = new MpAppBuilder().build(new FakeRepository(results), new FakeRepository());
 
 	mpApp.query.allTagsByUserId(userId, function (returnedTags) {
 

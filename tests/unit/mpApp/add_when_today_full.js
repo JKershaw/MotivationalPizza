@@ -1,5 +1,5 @@
 var assert = require('assert'),
-	MpApp = require('../../../lib/app/MpApp');
+	MpAppBuilder = require('../../../lib/util/MpAppBuilder');
 
 test("Try to add a task for today when enough already exist", function (done) {
 
@@ -8,7 +8,7 @@ test("Try to add a task for today when enough already exist", function (done) {
 		status: "open"
 	};
 
-	var mpApp = new MpApp(new FakeRepository(), new FakeRepository());
+	var mpApp = new MpAppBuilder().build(new FakeRepository(), new FakeRepository());
 
 	mpApp.command.add(newTask, function (success) {
 
@@ -25,7 +25,7 @@ test("Try to add a task with another status when enough already exist", function
 		status: "tomorrow"
 	};
 
-	var mpApp = new MpApp(new FakeRepository(), new FakeRepository());
+	var mpApp = new MpAppBuilder().build(new FakeRepository(), new FakeRepository());
 
 	mpApp.command.add(newTask, function (success) {
 

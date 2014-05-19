@@ -3,11 +3,9 @@ var expect = require('chai').expect,
 	assert = require("assert"),
 	Browser = require('zombie');
 
-var MpApp = require("../../../lib/app/MpApp"),
-	TasksRepository = require('../../../lib/repositories/TasksRepository'),
-	UsersRepository = require('../../../lib/repositories/UsersRepository');
+var MpAppBuilder = require("../../../lib/util/MpAppBuilder");
 
-var mpApp = new MpApp(new TasksRepository(), new UsersRepository());
+var mpApp = new MpAppBuilder().build();
 
 var task = {
 	text: "Oooh"

@@ -1,5 +1,5 @@
 var assert = require('assert'),
-	MpApp = require('../../../lib/app/MpApp');
+	MpAppBuilder = require('../../../lib/util/MpAppBuilder');
 
 test("Given a few tags exist, return the most popular one", function (done) {
 
@@ -25,7 +25,7 @@ test("Given a few tags exist, return the most popular one", function (done) {
 	}],
 		userId = 1;
 
-	var mpApp = new MpApp(new FakeRepository(results), new FakeRepository([]));
+	var mpApp = new MpAppBuilder().build(new FakeRepository(results), new FakeRepository([]));
 
 	mpApp.query.popularTagsByUserId(userId, 1, function (returnedTags) {
 
@@ -73,7 +73,7 @@ test("Given a many tags exist, return the most popular one", function (done) {
 	}],
 		userId = 1;
 
-	var mpApp = new MpApp(new FakeRepository(results));
+	var mpApp = new MpAppBuilder().build(new FakeRepository(results), new FakeRepository([]));
 
 	mpApp.query.popularTagsByUserId(userId, 2, function (returnedTags) {
 
@@ -108,7 +108,7 @@ test("Given 6 tags exist and I try to return 10, return only 5", function (done)
 
 	var userId = 1;
 
-	var mpApp = new MpApp(new FakeRepository(results));
+	var mpApp = new MpAppBuilder().build(new FakeRepository(results), new FakeRepository([]));
 
 	mpApp.query.popularTagsByUserId(userId, 10, function (returnedTags) {
 
