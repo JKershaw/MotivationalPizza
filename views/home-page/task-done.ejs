@@ -1,15 +1,11 @@
 <p>
-	<span class="task-text more-task-options" data-task-id="<%=task._id%>"><%-task.text%></span>
+	<span class="task-text" data-task-id="<%=task._id%>"><%-task.text%></span>
 
 </p>
 
 <p class='more-options' data-task-id="<%=task._id%>">
 
-	<span class='more-options' data-task-id="<%=task._id%>">
-
-		<% include buttons/less %>
-
-	</span>
+	<% include buttons/less %>
 
 	<% include buttons/edit %>
 	

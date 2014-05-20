@@ -35,42 +35,42 @@
 				$(this).parent().hide();
 			});
 
-			function listenForClicks(){
 
-				$(".more-task-options").on("click", function(){
-					
-					var taskId = $(this).data('task-id');
+			$(".more-task-options").on("click", function(){
+				var taskId = $(this).data('task-id');
+				showMoreTaskOptions(taskId);
+			});
 
-					$('.more-options[data-task-id="' + taskId + '"]').show();
+			$(".less-task-options").on("click", function(){
+				var taskId = $(this).data('task-id');
+				showLessTaskOptions(taskId);
+			});
 
-					$('.more-task-options[data-task-id="' + taskId + '"]').hide();
-					$('.less-task-options[data-task-id="' + taskId + '"]').show();
+			$(".task-done .task-text").on("click", function(){
+				var taskId = $(this).data('task-id');
+				if($('.more-options[data-task-id="' + taskId + '"]:visible').length > 0){
+					showLessTaskOptions(taskId);
+				} else {
+					showMoreTaskOptions(taskId);
+				}
+			});
 
+			function showMoreTaskOptions(taskId){
+				$('.more-options[data-task-id="' + taskId + '"]').show();
 
-					$('.task-text[data-task-id="' + taskId + '"]').show();
-					$('.task-text[data-task-id="' + taskId + '"]').addClass("less-task-options");
-					$('.task-text[data-task-id="' + taskId + '"]').removeClass("more-task-options");
-					listenForClicks();
-				});
+				$('.more-task-options[data-task-id="' + taskId + '"]').hide();
+				$('.less-task-options[data-task-id="' + taskId + '"]').show();
 
-				$(".less-task-options").on("click", function(){
-
-					var taskId = $(this).data('task-id');
-					
-					$('.more-options[data-task-id="' + taskId + '"]').hide();
-
-					$('.more-task-options[data-task-id="' + taskId + '"]').show();
-					$('.less-task-options[data-task-id="' + taskId + '"]').hide();
-
-					$('.task-text[data-task-id="' + taskId + '"]').show();
-					$('.task-text[data-task-id="' + taskId + '"]').removeClass("less-task-options");
-					$('.task-text[data-task-id="' + taskId + '"]').addClass("more-task-options");
-					listenForClicks();
-				});
 			}
 
-			listenForClicks();
+			function showLessTaskOptions(taskId){
+				
+				$('.more-options[data-task-id="' + taskId + '"]').hide();
 
+				$('.more-task-options[data-task-id="' + taskId + '"]').show();
+				$('.less-task-options[data-task-id="' + taskId + '"]').hide();
+
+			}
 
 		</script>
 
