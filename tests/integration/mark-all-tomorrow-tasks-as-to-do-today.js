@@ -49,8 +49,8 @@ describe('Given two tomorrow tasks exist', function (done) {
 			it('The Query returns the statuses', function (done) {
 				taskQuery.allWithStatus("open", function (tasks) {
 					expect(tasks.length).to.equal(2);
-					expect(tasks[1].text).to.equal(existingTask1.text);
-					expect(tasks[0].text).to.equal(existingTask2.text);
+					expect(tasks[0].text).to.equal(existingTask1.text);
+					expect(tasks[1].text).to.equal(existingTask2.text);
 					done();
 				});
 			});
