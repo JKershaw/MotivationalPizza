@@ -18,11 +18,23 @@ module.exports = function (app) {
 
 		var taskCommand = new TaskCommand(request);
 
-		taskCommand.updateText(request.params.id, request.body['task-text'], function () {
-			taskCommand.updateTag(request.params.id, request.body['task-tags'], function () {
-				request.flash('info', 'task-updated');
-				response.redirect("/");
-			});
+		var updatedTask = {
+			text: request.body['task-text'],
+			tagsString: request.body['task-tags']
+		};
+
+		if (request.body['task-when'] == "tomorrow") {
+			updatedTask.status = "tomorrow";
+		}
+
+		if (request.body['task-when'] == "some-other-time") {
+			updatedTask.status = "not-today";
+		}
+
+		taskCommand.update(request.params.id, updatedTask, function () {
+			request.flash('info', 'task-updated');
+			response.redirect("/");
 		});
+
 	});
 };

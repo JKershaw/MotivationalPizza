@@ -40,7 +40,9 @@ describe('Given a task exists with no tags', function (done) {
 		describe('given I tag the task', function (done) {
 
 			before(function (done) {
-				taskCommand.tag(existingTask._id, tagText, function (success) {
+				var updateTag = existingTask;
+				updateTag.tagsString = tagText;
+				taskCommand.update(updateTag._id, updateTag, function (success) {
 					done();
 				});
 			});
@@ -58,8 +60,9 @@ describe('Given a task exists with no tags', function (done) {
 				before(function (done) {
 					taskCommand.add(secondTask, function () {
 						taskQuery.findByText(secondTask.text, function (returnedTask) {
-							secondTask = returnedTask;
-							taskCommand.tag(secondTask._id, secondTagText, function (success) {
+							var updateTag = returnedTask;
+							updateTag.tagsString = secondTagText;
+							taskCommand.update(updateTag._id, updateTag, function (success) {
 								done();
 							});
 						});

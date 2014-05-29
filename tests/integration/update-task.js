@@ -6,12 +6,14 @@ var expect = require('chai').expect,
 	TaskQuery = require("../../lib/TaskQuery");
 
 var existingTask = {
-	text: "This task is for today"
+	text: "Womp womp womp"
 },
+	editedText = "Foo Bar",
 	tagText = "Tag!",
 	secondTagText = "Another Tag!";
 
 var fakeRequest = require("./util/generateFakeRequest")(),
+	secondFakeRequest = require("./util/generateFakeRequest")(),
 	taskCommand = new TaskCommand(fakeRequest),
 	taskQuery = new TaskQuery(fakeRequest);
 
@@ -26,28 +28,23 @@ describe('Given a task exists', function (done) {
 		});
 	});
 
-	describe('And I tag it', function (done) {
+	describe("Then I edit the task's text and tags", function (done) {
 
-		it('Then tag command returns true', function (done) {
-			taskCommand.tag(existingTask._id, tagText, function (success) {
-				expect(success).to.equal(true);
+		before(function (done) {
+			existingTask.text = editedText;
+			existingTask.tagsString = tagText + ", " + secondTagText;
+			taskCommand.update(existingTask._id, existingTask, function (success) {
 				done();
 			});
 		});
 
-		describe('And I update its tag with a new tag', function (done) {
-
-			before(function (done) {
-				taskCommand.updateTag(existingTask._id, secondTagText, function () {
-					done();
-				});
-			});
-
-			it('Then the task now has two tags', function (done) {
-				taskQuery.findByText(existingTask.text, function (returnedTask) {
-					expect(returnedTask.tags[0].text).to.equal(secondTagText);
-					done();
-				});
+		it('The task has been edited', function (done) {
+			taskQuery.allWithStatus("open", function (tasks) {
+				expect(tasks.length).to.equal(1);
+				expect(tasks[0].text).to.equal(editedText);
+				expect(tasks[0].tags[0].text).to.equal(tagText);
+				expect(tasks[0].tags[1].text).to.equal(secondTagText);
+				done();
 			});
 		});
 	});
