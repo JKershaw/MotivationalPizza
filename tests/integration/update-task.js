@@ -32,6 +32,7 @@ describe('Given a task exists', function (done) {
 
 		before(function (done) {
 			existingTask.text = editedText;
+			existingTask.status = "tomorrow";
 			existingTask.tagsString = tagText + ", " + secondTagText;
 			taskCommand.update(existingTask._id, existingTask, function (success) {
 				done();
@@ -39,9 +40,10 @@ describe('Given a task exists', function (done) {
 		});
 
 		it('The task has been edited', function (done) {
-			taskQuery.allWithStatus("open", function (tasks) {
+			taskQuery.allWithStatus("tomorrow", function (tasks) {
 				expect(tasks.length).to.equal(1);
 				expect(tasks[0].text).to.equal(editedText);
+				expect(tasks[0].status).to.equal("tomorrow");
 				expect(tasks[0].tags[0].text).to.equal(tagText);
 				expect(tasks[0].tags[1].text).to.equal(secondTagText);
 				done();

@@ -23,6 +23,10 @@ module.exports = function (app) {
 			tagsString: request.body['task-tags']
 		};
 
+		if (request.body['task-when'] == "today") {
+			updatedTask.status = "open";
+		}
+
 		if (request.body['task-when'] == "tomorrow") {
 			updatedTask.status = "tomorrow";
 		}
