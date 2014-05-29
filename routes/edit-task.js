@@ -35,7 +35,13 @@ module.exports = function (app) {
 			updatedTask.status = "not-today";
 		}
 
-		taskCommand.update(request.params.id, updatedTask, function () {
+		taskCommand.update(request.params.id, updatedTask, function (successful) {
+			
+			if (!successful) {
+				request.flash('info', 'error-too-many-today');
+				return response.redirect("/");
+			}
+
 			request.flash('info', 'task-updated');
 			response.redirect("/");
 		});
