@@ -8,6 +8,11 @@
 		<% for (var tag_i = 0; tag_i < task.tags.length; tag_i ++) { %><% if (tag_i > 0) { %>, <%}%><span class="tag"><%=task.tags[tag_i].text%></span><%}%>
 	</small></p>
 
+
+<%}%>
+
+<%if (task.dueDate) {%>
+	<p><small><%-task.dueDateCountdownString%></small></p>
 <%}%>
 
 <p>

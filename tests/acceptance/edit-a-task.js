@@ -17,7 +17,7 @@ var existingTasks = [{
 	editedTask = {
 		text: "This has now been edited! hurray!",
 		tag: "I'm adding this tag.",
-		dueDate: "2014-1-20"
+		dueDate: "2014-01-20"
 	};
 
 describe('Given a task exists', function (done) {
