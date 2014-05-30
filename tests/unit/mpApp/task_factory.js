@@ -30,7 +30,10 @@ test("Given a basic raw task, a task is returned", function (done) {
 	taskFactory = new TaskFactory();
 
 	taskFactory.build(rawTask, function (task) {
-		assert.deepEqual(rawTask, expectedtask);
+		assert.equal(task.status, expectedtask.status);
+		assert.equal(task.isDueToday, expectedtask.isDueToday);
+		assert.equal(task.isDueTomorrow, expectedtask.isDueTomorrow);
+		assert.equal(task.isDueSomeOtherTime, expectedtask.isDueSomeOtherTime);
 		done();
 	});
 });
@@ -52,7 +55,10 @@ test("Given a task due tomorrow, a  valid task is returned", function (done) {
 	taskFactory = new TaskFactory();
 
 	taskFactory.build(rawTask, function (task) {
-		assert.deepEqual(rawTask, expectedtask);
+		assert.equal(task.status, expectedtask.status);
+		assert.equal(task.isDueToday, expectedtask.isDueToday);
+		assert.equal(task.isDueTomorrow, expectedtask.isDueTomorrow);
+		assert.equal(task.isDueSomeOtherTime, expectedtask.isDueSomeOtherTime);
 		done();
 	});
 });
@@ -74,7 +80,10 @@ test("Given a task due some other time, a  valid task is returned", function (do
 	taskFactory = new TaskFactory();
 
 	taskFactory.build(rawTask, function (task) {
-		assert.deepEqual(rawTask, expectedtask);
+		assert.equal(task.status, expectedtask.status);
+		assert.equal(task.isDueToday, expectedtask.isDueToday);
+		assert.equal(task.isDueTomorrow, expectedtask.isDueTomorrow);
+		assert.equal(task.isDueSomeOtherTime, expectedtask.isDueSomeOtherTime);
 		done();
 	});
 });
