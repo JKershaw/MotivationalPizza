@@ -16,7 +16,8 @@ var existingTasks = [{
 }],
 	editedTask = {
 		text: "This has now been edited! hurray!",
-		tag: "I'm adding this tag."
+		tag: "I'm adding this tag.",
+		dueDate: "2014-1-20"
 	};
 
 describe('Given a task exists', function (done) {
@@ -53,6 +54,7 @@ describe('Given a task exists', function (done) {
 				before(function (done) {
 					browser.fill("#task-text", editedTask.text);
 					browser.fill("#task-tags", editedTask.tag);
+					browser.fill("#task-duedate", editedTask.dueDate);
 					browser.pressButton("Edit Task", done);
 				});
 
@@ -75,6 +77,10 @@ describe('Given a task exists', function (done) {
 
 					it("And the task's tag is now listed", function () {
 						expect(browser.query('#task-tags[value="' + editedTask.tag + '"]')).to.exist;
+					});
+
+					it("And the task's duedate is listed", function () {
+						expect(browser.query('#task-duedate[value="' + editedTask.dueDate + '"]')).to.exist;
 					});
 				});
 			});

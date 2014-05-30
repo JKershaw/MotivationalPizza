@@ -10,9 +10,14 @@ var browser = new Browser({
 	site: "http://localhost:3000"
 });
 
+var date = new Date();
+
+var todaysDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+
 var task = {
 	text: "Do the washing up http://hereisalink.com",
-	tag: "Tagging"
+	tag: "Tagging",
+	dueDate: todaysDate
 };
 
 describe('Given I sign up and visit the home page', function (done) {
@@ -44,6 +49,7 @@ describe('Given I sign up and visit the home page', function (done) {
 			before(function (done) {
 				browser.fill("#task-text", task.text);
 				browser.fill("#task-tags", task.tag);
+				browser.fill("#task-duedate", task.dueDate);
 				browser.pressButton("Add Task", done);
 			});
 

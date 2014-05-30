@@ -20,7 +20,8 @@ module.exports = function (app) {
 
 		var updatedTask = {
 			text: request.body['task-text'],
-			tagsString: request.body['task-tags']
+			tagsString: request.body['task-tags'],
+			dueDate: request.body['task-duedate']
 		};
 
 		if (request.body['task-when'] == "today") {
