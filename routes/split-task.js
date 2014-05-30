@@ -19,11 +19,11 @@ module.exports = function (app) {
 		var taskCommand = new TaskCommand(request);
 
 		var newTasks = [{
-			text: request.body['task1-text'],
-			tagsString: request.body['task1-tags']
+			'task-text': request.body['task1-text'],
+			'task-tags': request.body['task1-tags']
 		}, {
-			text: request.body['task2-text'],
-			tagsString: request.body['task2-tags']
+			'task-text': request.body['task2-text'],
+			'task-tags': request.body['task2-tags']
 		}];
 
 		taskCommand.split(request.params.id, newTasks, function (successful) {

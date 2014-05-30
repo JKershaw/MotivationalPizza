@@ -6,13 +6,13 @@ var expect = require('chai').expect,
 	TaskQuery = require("../../lib/TaskQuery");
 
 var existingTask = {
-	text: "This task is gonna get splitted!",
-	status: "done"
+	'task-text': "This task is gonna get splitted!",
+	'task-when': "tomorrow"
 },
 	newTasks = [{
-		text: "This is one task"
+		'task-text': "This is one task"
 	}, {
-		text: "And this is another task"
+		'task-text': "And this is another task"
 	}];
 
 var fakeRequest = require("./util/generateFakeRequest")(),
@@ -23,7 +23,7 @@ describe('Given a task exists', function (done) {
 
 	before(function (done) {
 		taskCommand.add(existingTask, function () {
-			taskQuery.findByText(existingTask.text, function (returnedTask) {
+			taskQuery.findByText(existingTask['task-text'], function (returnedTask) {
 				existingTask = returnedTask;
 				done();
 			});
@@ -42,7 +42,7 @@ describe('Given a task exists', function (done) {
 		describe('Then I get the existing task', function (done) {
 
 			it('The task has been removed', function (done) {
-				taskQuery.findByText(existingTask.text, function (returnedTask) {
+				taskQuery.findByText(existingTask['task-text'], function (returnedTask) {
 					expect(returnedTask).to.equal(false);
 					done();
 				});
@@ -51,24 +51,24 @@ describe('Given a task exists', function (done) {
 			describe('Then I get the new tasks', function (done) {
 
 				it('The first task has been added', function (done) {
-					taskQuery.findByText(newTasks[0].text, function (returnedTask) {
+					taskQuery.findByText(newTasks[0]['task-text'], function (returnedTask) {
 						expect(returnedTask).to.not.equal(false);
 						done();
 					});
 				});
 
 				it('The second task has been added', function (done) {
-					taskQuery.findByText(newTasks[1].text, function (returnedTask) {
+					taskQuery.findByText(newTasks[1]['task-text'], function (returnedTask) {
 						expect(returnedTask).to.not.equal(false);
 						done();
 					});
 				});
 
 				it("both returned tasks have the same stats as the original task", function (done) {
-					taskQuery.findByText(newTasks[0].text, function (returnedTask1) {
-						taskQuery.findByText(newTasks[1].text, function (returnedTask2) {
-							expect(returnedTask1.status).to.equal("done");
-							expect(returnedTask2.status).to.equal("done");
+					taskQuery.findByText(newTasks[0]['task-text'], function (returnedTask1) {
+						taskQuery.findByText(newTasks[1]['task-text'], function (returnedTask2) {
+							expect(returnedTask1.status).to.equal("tomorrow");
+							expect(returnedTask2.status).to.equal("tomorrow");
 							done();
 						});
 					});

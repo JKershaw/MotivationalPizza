@@ -18,25 +18,7 @@ module.exports = function (app) {
 
 		var taskCommand = new TaskCommand(request);
 
-		var updatedTask = {
-			text: request.body['task-text'],
-			tagsString: request.body['task-tags'],
-			dueDate: request.body['task-duedate']
-		};
-
-		if (request.body['task-when'] == "today") {
-			updatedTask.status = "open";
-		}
-
-		if (request.body['task-when'] == "tomorrow") {
-			updatedTask.status = "tomorrow";
-		}
-
-		if (request.body['task-when'] == "some-other-time") {
-			updatedTask.status = "not-today";
-		}
-
-		taskCommand.update(request.params.id, updatedTask, function (successful) {
+		taskCommand.update(request.params.id, request.body, function (successful) {
 			
 			if (!successful) {
 				request.flash('info', 'error-too-many-today');
@@ -46,6 +28,5 @@ module.exports = function (app) {
 			request.flash('info', 'task-updated');
 			response.redirect("/");
 		});
-
 	});
 };

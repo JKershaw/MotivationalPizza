@@ -6,20 +6,20 @@ var expect = require('chai').expect,
 	TaskQuery = require("../../lib/TaskQuery");
 
 var existingTasks = [{
-	text: "1 This task is gonna get splitted!"
+	'task-text': "1 This task is gonna get splitted!"
 }, {
-	text: "2 This task is gonna get splitted!"
+	'task-text': "2 This task is gonna get splitted!"
 }, {
-	text: "3 This task is gonna get splitted!"
+	'task-text': "3 This task is gonna get splitted!"
 }, {
-	text: "4 This task is gonna get splitted!"
+	'task-text': "4 This task is gonna get splitted!"
 }, {
-	text: "5 This task is gonna get splitted!"
+	'task-text': "5 This task is gonna get splitted!"
 }],
 	newTasks = [{
-		text: "This is one task"
+		'task-text': "This is one task"
 	}, {
-		text: "And this is another task"
+		'task-text': "And this is another task"
 	}];
 
 var fakeRequest = require("./util/generateFakeRequest")(),
@@ -34,7 +34,7 @@ describe('Given a task exists', function (done) {
 				taskCommand.add(existingTasks[2], function () {
 					taskCommand.add(existingTasks[3], function () {
 						taskCommand.add(existingTasks[4], function () {
-							taskQuery.findByText(existingTasks[4].text, function (returnedTask) {
+							taskQuery.findByText(existingTasks[4]['task-text'], function (returnedTask) {
 								existingTasks[4] = returnedTask;
 								done();
 							});

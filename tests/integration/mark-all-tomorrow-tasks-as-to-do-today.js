@@ -6,9 +6,9 @@ var expect = require('chai').expect,
 	TaskQuery = require("../../lib/TaskQuery");
 
 var existingTask1 = {
-	text: "Bake a cake"
+	'task-text': "Bake a cake"
 }, existingTask2 = {
-		text: "Bake another cake"
+		'task-text': "Bake another cake"
 	};
 
 var fakeRequest = require("./util/generateFakeRequest")(),
@@ -19,11 +19,11 @@ describe('Given two tomorrow tasks exist', function (done) {
 
 	before(function (done) {
 		taskCommand.add(existingTask1, function () {
-			taskQuery.findByText(existingTask1.text, function (returnedTask) {
+			taskQuery.findByText(existingTask1['task-text'], function (returnedTask) {
 				existingTask1 = returnedTask;
 				taskCommand.markAsTomorrow(existingTask1._id, function (success) {
 					taskCommand.add(existingTask2, function () {
-						taskQuery.findByText(existingTask2.text, function (returnedTask) {
+						taskQuery.findByText(existingTask2['task-text'], function (returnedTask) {
 							existingTask2 = returnedTask;
 							taskCommand.markAsTomorrow(existingTask2._id, function (success) {
 								done();

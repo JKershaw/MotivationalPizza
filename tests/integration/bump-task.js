@@ -6,7 +6,7 @@ var expect = require('chai').expect,
 	TaskQuery = require("../../lib/TaskQuery");
 
 var existingTask = {
-		text: "This task is gonna get bumped!"
+		'task-text': "This task is gonna get bumped!"
 	};
 
 var fakeRequest = require("./util/generateFakeRequest")(),
@@ -18,7 +18,7 @@ describe('Given a task for today day exists', function (done) {
 
 	before(function (done) {
 		taskCommand.add(existingTask, function () {
-			taskQuery.findByText(existingTask.text, function (returnedTask) {
+			taskQuery.findByText(existingTask['task-text'], function (returnedTask) {
 				existingTask = returnedTask;
 				done();
 			});

@@ -6,7 +6,7 @@ var expect = require('chai').expect,
 	TaskQuery = require("../../lib/TaskQuery");
 
 var existingTask = {
-	text: "This task is to be deleted"
+	'task-text': "This task is to be deleted"
 },
 	tagText = "Tag!",
 	secondTagText = "Another Tag!";
@@ -19,7 +19,7 @@ describe('Given a task exists', function (done) {
 
 	before(function (done) {
 		taskCommand.add(existingTask, function () {
-			taskQuery.findByText(existingTask.text, function (returnedTask) {
+			taskQuery.findByText(existingTask['task-text'], function (returnedTask) {
 				existingTask = returnedTask;
 				done();
 			});
@@ -38,7 +38,7 @@ describe('Given a task exists', function (done) {
 		describe('Then I get the task', function (done) {
 
 			it('The task has been removed', function (done) {
-				taskQuery.findByText(existingTask.text, function (returnedTask) {
+				taskQuery.findByText(existingTask['task-text'], function (returnedTask) {
 					expect(returnedTask).to.equal(false);
 					done();
 				});

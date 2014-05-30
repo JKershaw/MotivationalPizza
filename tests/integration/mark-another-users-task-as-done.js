@@ -6,11 +6,8 @@ var expect = require('chai').expect,
 	TaskQuery = require("../../lib/TaskQuery");
 
 var existingTask = {
-	text: "Womp womp womp"
-},
-	existingTask = {
-		text: "This task is for today"
-	};
+	'task-text': "Womp womp womp"
+};
 
 var fakeRequest = require("./util/generateFakeRequest")(),
 	secondFakeRequest = require("./util/generateFakeRequest")(),
@@ -21,7 +18,7 @@ describe('Given a task for today day exists', function (done) {
 
 	before(function (done) {
 		taskCommand.add(existingTask, function () {
-			taskQuery.findByText(existingTask.text, function (returnedTask) {
+			taskQuery.findByText(existingTask['task-text'], function (returnedTask) {
 				existingTask = returnedTask;
 				taskCommand.markAsNotToday(existingTask._id, function () {
 					done();

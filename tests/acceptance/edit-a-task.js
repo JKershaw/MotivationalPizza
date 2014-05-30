@@ -50,11 +50,12 @@ describe('Given a task exists', function (done) {
 				expect(browser.query("#task-text[value='" + existingTasks[0].text + "']")).to.exist;
 			});
 
-			describe("When I enter the new text", function () {
+			describe("When I enter the new details", function () {
 				before(function (done) {
 					browser.fill("#task-text", editedTask.text);
 					browser.fill("#task-tags", editedTask.tag);
 					browser.fill("#task-duedate", editedTask.dueDate);
+					browser.choose("Some other time");
 					browser.pressButton("Edit Task", done);
 				});
 
@@ -63,11 +64,11 @@ describe('Given a task exists', function (done) {
 				});
 
 				it("And the task is now listed", function () {
-					expect(browser.text('.task-open')).to.contain(editedTask.text);
+					expect(browser.text('.task-not-today')).to.contain(editedTask.text);
 				});
 
 				it("And the task's tag is now also listed", function () {
-					expect(browser.text('.task-open .tag')).to.contain(editedTask.tag);
+					expect(browser.text('.task-not-today .tag')).to.contain(editedTask.tag);
 				});
 
 				describe("And I click the Edit button for the task", function (done) {

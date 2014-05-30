@@ -6,17 +6,17 @@ var expect = require('chai').expect,
 	TaskQuery = require("../../lib/TaskQuery");
 
 var task1 = {
-	text: "This task is for today",
-	tagsString: "one, two, cats, kittens"
+	'task-text': "This task is for today",
+	'task-tags': "one, two, cats, kittens"
 }, task2 = {
-		text: "This is another task is for today",
-		tagsString: "cats, kittens, dogs, cheese"
+		'task-text': "This is another task is for today",
+		'task-tags': "cats, kittens, dogs, cheese"
 	}, task3 = {
-		text: "This is yet another task is for today",
-		tagsString: "cats, dogs, trees, birds"
+		'task-text': "This is yet another task is for today",
+		'task-tags': "cats, dogs, trees, birds"
 	}, task4 = {
-		text: "This is yet another task is for today",
-		tagsString: "cats, kittens, rain, house"
+		'task-text': "This is yet another task is for today",
+		'task-tags': "cats, kittens, rain, house"
 	};
 
 var fakeRequest = require("./util/generateFakeRequest")(),

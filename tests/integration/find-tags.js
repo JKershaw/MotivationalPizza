@@ -6,9 +6,9 @@ var expect = require('chai').expect,
 	TaskQuery = require("../../lib/TaskQuery");
 
 var existingTask = {
-	text: "This task is for today"
+	'task-text': "This task is for today"
 }, secondTask = {
-		text: "A whole new task, bro!"
+		'task-text': "A whole new task, bro!"
 	},
 	tagText = "Tag!",
 	secondTagText = "Another Tag!, Tag!, Food";
@@ -21,7 +21,7 @@ describe('Given a task exists with no tags', function (done) {
 
 	before(function (done) {
 		taskCommand.add(existingTask, function () {
-			taskQuery.findByText(existingTask.text, function (returnedTask) {
+			taskQuery.findByText(existingTask['task-text'], function (returnedTask) {
 				existingTask = returnedTask;
 				done();
 			});
@@ -41,7 +41,7 @@ describe('Given a task exists with no tags', function (done) {
 
 			before(function (done) {
 				var updateTag = existingTask;
-				updateTag.tagsString = tagText;
+				updateTag['task-tags'] = tagText;
 				taskCommand.update(updateTag._id, updateTag, function (success) {
 					done();
 				});
@@ -59,9 +59,9 @@ describe('Given a task exists with no tags', function (done) {
 
 				before(function (done) {
 					taskCommand.add(secondTask, function () {
-						taskQuery.findByText(secondTask.text, function (returnedTask) {
+						taskQuery.findByText(secondTask['task-text'], function (returnedTask) {
 							var updateTag = returnedTask;
-							updateTag.tagsString = secondTagText;
+							updateTag['task-tags'] = secondTagText;
 							taskCommand.update(updateTag._id, updateTag, function (success) {
 								done();
 							});
