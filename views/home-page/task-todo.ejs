@@ -12,7 +12,7 @@
 
 <p>
 	
-	<% if (task.status == 'tomorrow') { %>
+	<% if (task.isDueTomorrow) { %>
 	
 		<% include buttons/today %>
 
@@ -30,7 +30,7 @@
 
 		<% include buttons/edit %>
 
-		<% if (task.status == 'tomorrow') { %>
+		<% if (task.isDueTomorrow) { %>
 		
 			<% include buttons/some-other-time %>
 

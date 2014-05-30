@@ -14,13 +14,13 @@
 
 				<div class="form-group">
 					<label class="radio-inline">
-						<input type="radio" id="task-when" name="task-when" value="today" <% if (todayIsfull) { %>disabled<%} else {%><%if (task.status == "open") {%>checked<%}%><%}%>> Today
+						<input type="radio" id="task-when" name="task-when" value="today" <% if (todayIsfull) { %>disabled<%} else {%><%if (task.isDueToday) {%>checked<%}%><%}%>> Today
 					</label>
 					<label class="radio-inline">
-						<input type="radio" id="task-when" name="task-when" value="tomorrow" <%if (task.status == "tomorrow") {%>checked<%}%>> Tomorrow
+						<input type="radio" id="task-when" name="task-when" value="tomorrow" <%if (task.isDueTomorrow) {%>checked<%}%>> Tomorrow
 					</label>
 					<label class="radio-inline">
-						<input type="radio" id="task-when" name="task-when" value="some-other-time" <%if (task.status == "not-today") {%>checked<%}%>> Some other time
+						<input type="radio" id="task-when" name="task-when" value="some-other-time" <%if (task.isDueSomeOtherTime) {%>checked<%}%>> Some other time
 					</label>
 				</div>
 
