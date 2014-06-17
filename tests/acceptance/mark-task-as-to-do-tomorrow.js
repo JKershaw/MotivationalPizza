@@ -10,7 +10,7 @@ var browser = new Browser({
 });
 
 var existingTasks = [{
-	text: "marking a task as for tomorrow"
+	text: "marking a task as for soon"
 }];
 
 describe('Given a task exists', function (done) {
@@ -28,7 +28,7 @@ describe('Given a task exists', function (done) {
 			browser.visit('/', done);
 		});
 
-		describe("And I click the Tomorrow button for the task", function (done) {
+		describe("And I click the Soon button for the task", function (done) {
 			before(function (done) {
 				browser.clickLink('.task .tomorrow-task', done);
 			});
@@ -37,7 +37,7 @@ describe('Given a task exists', function (done) {
 				expect(browser.text('.task-open')).to.not.contain(existingTasks[0].text);
 			});
 
-			it("Then I see the task listed as for tomorrow", function () {
+			it("Then I see the task listed as for soon", function () {
 				expect(browser.text('.task-tomorrow')).to.contain(existingTasks[0].text);
 			});
 

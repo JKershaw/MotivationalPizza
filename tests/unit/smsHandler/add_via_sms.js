@@ -89,7 +89,7 @@ test("When I add a task via an SMS message and there's 5 today tasks, it's marke
 	smsHandler.handle(fakeSmsBody, fakeResponse, function (success) {
 
 		assert.equal(success, true);
-		assert.equal(responseSendValue, "This task has been added to Tomorrow's list.");
+		assert.equal(responseSendValue, "This task has been added to your Soon list.");
 		assert.equal(repositorySavedTask.text, fakeSmsBody.Body);
 		assert.equal(repositorySavedTask.status, "tomorrow");
 		done();

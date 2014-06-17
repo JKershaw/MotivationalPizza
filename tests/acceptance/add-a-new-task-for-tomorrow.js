@@ -28,11 +28,11 @@ describe('Given I sign up and visit the home page', function (done) {
 			browser.clickLink('Add New Task', done);
 		});
 
-		describe("When I enter the new task and tag, and select Tomorrow is when i want it done", function () {
+		describe("When I enter the new task and tag, and select Soon is when i want it done", function () {
 			before(function (done) {
 				browser.fill("#task-text", task.text);
 				browser.fill("#task-tags", task.tag);
-				browser.choose("Tomorrow");
+				browser.choose("Soon");
 				browser.pressButton("Add Task", done);
 			});
 

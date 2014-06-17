@@ -32,7 +32,7 @@
 						<input type="radio" id="task-when" name="task-when" value="today" <% if (todayIsfull) { %>disabled<%} else {%><%if (task.isDueToday) {%>checked<%}%><%}%>> Today
 					</label>
 					<label class="radio-inline">
-						<input type="radio" id="task-when" name="task-when" value="tomorrow" <%if (task.isDueTomorrow) {%>checked<%}%>> Tomorrow
+						<input type="radio" id="task-when" name="task-when" value="tomorrow" <%if (task.isDueTomorrow) {%>checked<%}%>> Soon
 					</label>
 					<label class="radio-inline">
 						<input type="radio" id="task-when" name="task-when" value="some-other-time" <%if (task.isDueSomeOtherTime) {%>checked<%}%>> Some other time
