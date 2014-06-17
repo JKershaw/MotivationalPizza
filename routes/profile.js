@@ -16,12 +16,15 @@ module.exports = function (app) {
 	app.post('/profile', function (request, response) {
 
 		var phoneNumber = request.body['profile-phonenumber'],
+			usPhoneNumber = request.body['profile-usphonenumber'],
 			maxTodayTaskCount = request.body['profile-maxtodaytaskcount'];
 
 		userCommand.updatePhoneNumber(request.user, phoneNumber, function () {
-			userCommand.updateMaxTodayTaskCount(request.user, maxTodayTaskCount, function () {
-				request.flash('info', 'profile-updated');
-				response.redirect("/");
+			userCommand.updateUsPhoneNumber(request.user, usPhoneNumber, function () {
+				userCommand.updateMaxTodayTaskCount(request.user, maxTodayTaskCount, function () {
+					request.flash('info', 'profile-updated');
+					response.redirect("/");
+				});
 			});
 		});
 	});

@@ -25,6 +25,31 @@ test("I can add a task via an SMS message", function (done) {
 	});
 });
 
+
+test("I can add a task via an SMS message from the USA", function (done) {
+
+	var usersRepository = new FakeRepository([]),
+		tasksRepository = new FakeRepository([]),
+		fakeResponse = new FakeResponse();
+
+	smsHandler = new SmsHandler(tasksRepository, usersRepository);
+
+	var fakeSmsBody = {
+		Body: "newTaskText",
+		From: '+16465491536'
+	};
+
+	smsHandler.handle(fakeSmsBody, fakeResponse, function (success) {
+
+		assert.equal(success, true);
+		assert.equal(responseSendValue, "Your task has been added.");
+		assert.equal(repositorySavedTask.text, fakeSmsBody.Body);
+		assert.equal(repositorySavedTask.status, "open");
+		done();
+
+	});
+});
+
 test("When I get an SMS without a valid number, error is returned", function (done) {
 
 	var usersRepository = new FakeRepository([]),
@@ -99,6 +124,18 @@ var FakeRepository = function (findResults) {
 		callback(results);
 	}
 
+	function findByUsPhoneNumber(phoneNumber, callback) {
+
+		var results = [];
+		if (phoneNumber == "6465491536") {
+			results = [{
+				_id: "1"
+			}];
+		}
+
+		callback(results);
+	}
+
 	function findById(query, callback) {
 		var results = [{}];
 		callback(results);
@@ -108,6 +145,7 @@ var FakeRepository = function (findResults) {
 		find: find,
 		save: save,
 		findByPhoneNumber: findByPhoneNumber,
+		findByUsPhoneNumber: findByUsPhoneNumber,
 		findById: findById
 	};
 };
