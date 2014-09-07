@@ -19,7 +19,6 @@ if [ $# -gt 0  ]; then
 	echo "Running JSHint"
 	jshint ./tests/acceptance
 	jshint ./tests/unit
-	jshint ./tests/integration
 	jshint ./routes
 	jshint ./lib
 	echo "JSHint Completed"
@@ -33,29 +32,6 @@ echo "=========================================="
 
 mocha tests/unit/ --recursive --ui qunit --reporter nyan --timeout 1000
 echo "Unit tests complete"
-
-echo "=========================================="
-echo "QUnit Tests"
-echo "=========================================="
-
-for D in tests/qunit/*; do
-    if [ -d "${D}" ]; then
-			DIR="$D/*.html"
-			echo "testing in $DIR"
-			#phantomjs tests/qunit/runner.js $DIR
-	fi
-done
-echo "QUnit tests complete"
-
-echo "=========================================="
-echo "Integration Tests"
-echo "=========================================="
-
-echo "Dropping database"
-mongo "motivational-pizza" --eval "db.dropDatabase()"
-
-mocha tests/integration/ --recursive --ui tdd --reporter nyan --timeout 3000
-echo "Integration tests complete"
 
 echo "=========================================="
 echo "Acceptance Tests"

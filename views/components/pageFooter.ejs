@@ -22,57 +22,6 @@
 			</div>
 		</div>
 
-		<script>
-			$(".alert").alert();
-
-			$(".delete-task").on("click", function(){
-				$(this).siblings(".delete-confirmation").show();
-				$(this).hide();
-			});
-
-			$(".delete-task-no").on("click", function(){
-				$(this).parent().siblings().show();
-				$(this).parent().hide();
-			});
-
-
-			$(".more-task-options").on("click", function(){
-				var taskId = $(this).data('task-id');
-				showMoreTaskOptions(taskId);
-			});
-
-			$(".less-task-options").on("click", function(){
-				var taskId = $(this).data('task-id');
-				showLessTaskOptions(taskId);
-			});
-
-			$(".task-done .task-text").on("click", function(){
-				var taskId = $(this).data('task-id');
-				if($('.more-options[data-task-id="' + taskId + '"]:visible').length > 0){
-					showLessTaskOptions(taskId);
-				} else {
-					showMoreTaskOptions(taskId);
-				}
-			});
-
-			function showMoreTaskOptions(taskId){
-				$('.more-options[data-task-id="' + taskId + '"]').show();
-
-				$('.more-task-options[data-task-id="' + taskId + '"]').hide();
-				$('.less-task-options[data-task-id="' + taskId + '"]').show();
-
-			}
-
-			function showLessTaskOptions(taskId){
-				
-				$('.more-options[data-task-id="' + taskId + '"]').hide();
-
-				$('.more-task-options[data-task-id="' + taskId + '"]').show();
-				$('.less-task-options[data-task-id="' + taskId + '"]').hide();
-
-			}
-
-		</script>
 
 	</body>
 </html>

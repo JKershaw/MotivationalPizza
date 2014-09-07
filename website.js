@@ -34,20 +34,6 @@ app.use(passport.session());
 app.use(flash());
 
 require("./routes/home-page")(app);
-require("./routes/new-task")(app);
-require("./routes/delete-task")(app);
-require("./routes/done-task")(app);
-require("./routes/not-today-task")(app);
-require("./routes/today-task")(app);
-require("./routes/edit-task")(app);
-require("./routes/bump-task")(app);
-require("./routes/tomorrow-task")(app);
-require("./routes/split-task")(app);
-require("./routes/all-tomorrow-tasks-as-today")(app);
-
-require("./routes/profile")(app);
-require("./routes/sms")(app);
-
 require("./routes/authentication/authentication")(app, passport);
 
 var port = process.env.PORT || 3000;

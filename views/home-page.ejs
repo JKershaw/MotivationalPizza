@@ -4,35 +4,16 @@
 
 	<% include components/not-logged-in-info %>
 
-<% } %>
+<% } else { %>
 
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 
-			<% include home-page/info-box %>
-
-			<% include home-page/tasks-today %>
-
-			<p class="add-new-task-button">
-				<a class="btn btn-success btn-lg btn-block" href="/NewTask" role="button">Add New Task</a>
-			</p>
+			Logged in, Home Page
 
 		</div>
 	</div>
-
-	<div class="row">
-	  <div class="col-md-6">
-
-	  	<% include home-page/tasks-tomorrow %>
-
-		<% include home-page/tasks-some-other-time %>
-
-	</div>
-	<div class="col-md-6">
-
-	  	<% include home-page/tasks-done %>
-		
-	</div>
+<% } %>
 </div>
 
 <% include components/pageFooter %>

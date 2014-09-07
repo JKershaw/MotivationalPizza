@@ -25,10 +25,6 @@ describe('Given I visit the sign up', function (done) {
 			browser.pressButton("#signup", done);
 		});
 
-		it("Then I am told I have signed up", function () {
-			expect(browser.text("#info-box")).to.contain("Hi there, you've signed up.");
-		});
-
 		it("Then I am told I am logged in", function () {
 			expect(browser.text("#logged-in")).to.contain("You are logged in as " + username);
 		});
@@ -36,10 +32,6 @@ describe('Given I visit the sign up', function (done) {
 		describe("The I log out", function (done) {
 			before(function (done) {
 				browser.clickLink("#log-out", done);
-			});
-
-			it("Then I am told I have logged out", function () {
-				expect(browser.text("#info-box")).to.contain("Bye! You've now logged out.");
 			});
 
 			it("Then I am not told I am logged in", function () {
@@ -56,10 +48,6 @@ describe('Given I visit the sign up', function (done) {
 					});
 				});
 
-				it("Then I am told I have logged in", function () {
-					expect(browser.text("#info-box")).to.contain("Welcome back, you've logged in!");
-				});
-
 				it("Then I am told I am logged in", function () {
 					expect(browser.text("#logged-in")).to.contain("You are logged in as " + username);
 				});
@@ -67,10 +55,6 @@ describe('Given I visit the sign up', function (done) {
 				describe("The I log out", function (done) {
 					before(function (done) {
 						browser.clickLink("#log-out", done);
-					});
-
-					it("Then I am told I have logged out", function () {
-						expect(browser.text("#info-box")).to.contain("Bye! You've now logged out.");
 					});
 
 					it("Then I am not told I am logged in", function () {
