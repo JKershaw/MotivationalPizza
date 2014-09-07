@@ -1,6 +1,6 @@
 {
   "name": "motivational-pizza",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "dependencies": {
     "express": "4.*",
     "express-session": "*",
