@@ -26,5 +26,16 @@ describe('Given I am logged in', function (done) {
 		it("Then I can see the new goal listed", function () {
 			expect(browser.text("#dailyGoals")).to.contain("Build a rocket ship");
 		});
+
+		describe('Then I mark the goal as complete', function (done) {
+
+			before(function (done) {
+				browser.clickLink(".dailyGoalCompleteLink", done);
+			});
+
+			it("Then I can see the new updated listed", function () {
+				expect(browser.text(".dailyGoalCompleted")).to.contain("Build a rocket ship");
+			});
+		});
 	});
 });
