@@ -10,10 +10,10 @@ module.exports = function (app) {
 
 		if (request.user) {
 			homePageViewModelFactory.build(function (model) {
-				pageRenderer.render("home-page-not-logged-in.ejs", model);
+				pageRenderer.render("home-page.ejs", model);
 			});
 		} else {
-			pageRenderer.render("home-page.ejs");
+			pageRenderer.render("home-page-not-logged-in.ejs");
 		}
 
 	});
