@@ -32,13 +32,11 @@
 
 			<% } %>
 
-			<li class="list-group-item list-group-item-info"><span class="glyphicon glyphicon-unchecked"></span> Cras sit amet nibh libero</li>
-			<li class="list-group-item list-group-item-warning"><span class="glyphicon glyphicon-unchecked"></span> Porta ac consectetur ac</li>
-			<li class="list-group-item list-group-item-danger"><span class="glyphicon glyphicon-unchecked"></span> Vestibulum at eros</li>
-			<li class="list-group-item list-group-item-danger"><span class="glyphicon glyphicon-unchecked"></span> Vestibulum at eros</li>
+			<% for (var dailyCompleteGoals_i = 0; dailyCompleteGoals_i < goals.today.complete.length; dailyCompleteGoals_i++ ) { %>
 
-			<li class="list-group-item list-group-item-danger"><span class="glyphicon glyphicon-check"></span> Vestibulum at eros</li>
-			<li class="list-group-item list-group-item-info"><span class="glyphicon glyphicon-check"></span> Cras sit amet nibh libero</li>
+				<li class="list-group-item list-group-item-success"><span class="glyphicon glyphicon-check"></span> <%=goals.today.complete[dailyCompleteGoals_i].text%></li>
+
+			<% } %>
 
 		</ul>
 
