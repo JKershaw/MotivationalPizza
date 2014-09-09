@@ -10,10 +10,10 @@ module.exports = function (app) {
 
 		var newDailyGoal = {
 			text: request.body.newDailyGoalName,
-			color: request.body.newDailyTaskColour,
+			colour: request.body.newDailyTaskColour,
 			created_at: new Date().getTime(),
 			complete: false,
-			user_id: request.user._id
+			user_id: request.user._id.toString()
 		};
 
 		dailyGoalsRepository.save(newDailyGoal, function(){
