@@ -46,6 +46,17 @@ describe('Given I am logged in', function (done) {
 				it("Then I can see the new updated listed", function () {
 					expect(browser.text(".dailyGoalIncompleted")).to.contain("Build a rocket ship");
 				});
+
+				describe('Then I remove goal', function (done) {
+
+					before(function (done) {
+						browser.clickLink(".dailyGoalIncompleted .dailyGoalRemoveLink", done);
+					});
+
+					it("Then I can not see the goal listed", function () {
+						expect(browser.text(".dailyGoalIncompleted")).not.to.contain("Build a rocket ship");
+					});
+				});
 			});
 		});
 	});

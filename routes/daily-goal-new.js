@@ -13,6 +13,7 @@ module.exports = function (app) {
 			colour: request.body.newDailyTaskColour,
 			created_at: new Date().getTime(),
 			complete: false,
+			completed_at: 0,
 			user_id: request.user._id.toString()
 		};
 

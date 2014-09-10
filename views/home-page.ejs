@@ -28,14 +28,21 @@
 		<ul class="list-group" id="dailyGoals">
 			<% for (var dailyIncompleteGoals_i = 0; dailyIncompleteGoals_i < goals.today.incomplete.length; dailyIncompleteGoals_i++ ) { %>
 
-			<li class="list-group-item list-group-item-success dailyGoalIncompleted"><a href="/markDailyGoalAsCompleted/<%=goals.today.incomplete[dailyIncompleteGoals_i]._id%>" class="dailyGoalCompleteLink"><span class="glyphicon glyphicon-unchecked"></span></a> <%=goals.today.incomplete[dailyIncompleteGoals_i].text%></li>
+			<li class="list-group-item list-group-item-success dailyGoalIncompleted">
+				<a href="/markDailyGoalAsCompleted/<%=goals.today.incomplete[dailyIncompleteGoals_i]._id%>" class="dailyGoalCompleteLink"><span class="glyphicon glyphicon-unchecked"></span></a> <%=goals.today.incomplete[dailyIncompleteGoals_i].text%>
+				
+				<a href="/removeDailyGoal/<%=goals.today.incomplete[dailyIncompleteGoals_i]._id%>" class="dailyGoalRemoveLink"><span class="glyphicon glyphicon-remove" style="float:right"></span></a>
+			</li>
 
 			<% } %>
 
 			<% for (var dailyCompleteGoals_i = 0; dailyCompleteGoals_i < goals.today.complete.length; dailyCompleteGoals_i++ ) { %>
-			<li class="list-group-item list-group-item-success dailyGoalCompleted"><a href="/markDailyGoalAsIncompleted/<%=goals.today.complete[dailyCompleteGoals_i]._id%>" class="dailyGoalIncompleteLink"><span class="glyphicon glyphicon-check"></span></a> <%=goals.today.complete[dailyCompleteGoals_i].text%></li>
-			<% } %>
+			<li class="list-group-item list-group-item-success dailyGoalCompleted">
+				<a href="/markDailyGoalAsIncompleted/<%=goals.today.complete[dailyCompleteGoals_i]._id%>" class="dailyGoalIncompleteLink"><span class="glyphicon glyphicon-check"></span></a> <%=goals.today.complete[dailyCompleteGoals_i].text%>
 
+				<a href="/removeDailyGoal/<%=goals.today.complete[dailyCompleteGoals_i]._id%>" class="dailyGoalRemoveLink"><span class="glyphicon glyphicon-remove" style="float:right"></span></a>
+			</li>
+			<% } %>
 		</ul>
 
 		<hr>
@@ -47,7 +54,6 @@
 				$('#showNewDailyGoalForm').on("click", function(){
 					$('#showNewDailyGoalForm').hide();
 					$('#newDailyGoalForm').slideDown();
-
 				});
 			});
 		</script>

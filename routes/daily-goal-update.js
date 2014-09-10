@@ -25,7 +25,7 @@ module.exports = function (app) {
 		var dailyGoalsRepository = new Repository("dailyGoals");
 
 		var updatedDailyGoal = {
-			completed_at: new Date().getTime(),
+			completed_at: 0,
 			complete: false
 		};
 

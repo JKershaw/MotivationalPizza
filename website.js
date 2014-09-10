@@ -36,6 +36,7 @@ app.use(flash());
 require("./routes/home-page")(app);
 require("./routes/daily-goal-new")(app);
 require("./routes/daily-goal-update")(app);
+require("./routes/daily-goal-remove")(app);
 require("./routes/authentication/authentication")(app, passport);
 
 var port = process.env.PORT || 3000;
