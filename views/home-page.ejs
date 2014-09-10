@@ -28,25 +28,37 @@
 		<ul class="list-group" id="dailyGoals">
 			<% for (var dailyIncompleteGoals_i = 0; dailyIncompleteGoals_i < goals.today.incomplete.length; dailyIncompleteGoals_i++ ) { %>
 
-				<li class="list-group-item list-group-item-success dailyGoalIncompleted"><a href="/markDailyGoalAsCompleted/<%=goals.today.incomplete[dailyIncompleteGoals_i]._id%>" class="dailyGoalCompleteLink"><span class="glyphicon glyphicon-unchecked"></span></a> <%=goals.today.incomplete[dailyIncompleteGoals_i].text%></li>
+			<li class="list-group-item list-group-item-success dailyGoalIncompleted"><a href="/markDailyGoalAsCompleted/<%=goals.today.incomplete[dailyIncompleteGoals_i]._id%>" class="dailyGoalCompleteLink"><span class="glyphicon glyphicon-unchecked"></span></a> <%=goals.today.incomplete[dailyIncompleteGoals_i].text%></li>
 
 			<% } %>
 
 			<% for (var dailyCompleteGoals_i = 0; dailyCompleteGoals_i < goals.today.complete.length; dailyCompleteGoals_i++ ) { %>
-
-				<li class="list-group-item list-group-item-success dailyGoalCompleted"><a href="/markDailyGoalAsIncompleted/<%=goals.today.complete[dailyCompleteGoals_i]._id%>" class="dailyGoalIncompleteLink"><span class="glyphicon glyphicon-check"></span></a> <%=goals.today.complete[dailyCompleteGoals_i].text%></li>
-
+			<li class="list-group-item list-group-item-success dailyGoalCompleted"><a href="/markDailyGoalAsIncompleted/<%=goals.today.complete[dailyCompleteGoals_i]._id%>" class="dailyGoalIncompleteLink"><span class="glyphicon glyphicon-check"></span></a> <%=goals.today.complete[dailyCompleteGoals_i].text%></li>
 			<% } %>
 
 		</ul>
 
 		<hr>
 
-		<form role="form" action='/newGoalForToday' method='POST'>
-			<p>
+		<button type="button" class="btn btn-default btn-xs" id="showNewDailyGoalForm"><span class="glyphicon glyphicon-plus"></span> New Goal</button>
+
+		<script>
+			$(function() {
+				$('#showNewDailyGoalForm').on("click", function(){
+					$('#showNewDailyGoalForm').hide();
+					$('#newDailyGoalForm').slideDown();
+
+				});
+			});
+		</script>
+
+		<div id="newDailyGoalForm" style="display: none">
+
+			<form role="form" action='/newGoalForToday' method='POST'>
+				<p>
 				<input type="text" class="form-control" name="newDailyGoalName" id="newDailyGoalName" placeholder="New goal">
-			</p>
-			<p>
+				</p>
+				<p>
 				<label class="radio-inline">
 					<input type="radio" name="newDailyTaskColour" id="dailyTaskColourGreen" value="none" checked> None
 				</label>
@@ -62,17 +74,19 @@
 				<label class="radio-inline">
 					<input type="radio" name="newDailyTaskColour" id="dailyTaskColourGreen" value="orange"> Orange
 				</label>
-			</p>
-			<p>
+				</p>
+				<p>
 				Repetition
-			</p>
-			<p>
+				</p>
+				<p>
 				Quantity
-			</p>
-			<p>
-				<button type="submit" class="btn btn-default btn-xs" id="newDailyGoalSubmit"><span class="glyphicon glyphicon-plus"></span> Add New Task</button>
-			</p>
-		</form>
+				</p>
+				<p>
+				<button type="submit" class="btn btn-default btn-xs" id="newDailyGoalSubmit"><span class="glyphicon glyphicon-plus"></span> Add</button>
+				</p>
+			</form>
+
+		</div>
 
 
 	</div>
